@@ -45,7 +45,10 @@ df = load_data(mode_key)
 if not df.empty:
     st.sidebar.markdown("---")
     st.sidebar.header("📍 Filtres")
-    quartiers = st.sidebar.multiselect("Sélectionner les Secteurs/Quartiers", options=sorted(df['quartier'].unique()), default=df['quartier'].unique())
+    
+    # Handle NaNs and mix of types in 'quartier' for sorting
+    unique_quartiers = sorted([str(q) for q in df['quartier'].unique() if pd.notna(q)])
+    quartiers = st.sidebar.multiselect("Sélectionner les Secteurs/Quartiers", options=unique_quartiers, default=unique_quartiers)
     
     if mode_key == "DVF":
         date_range = st.sidebar.date_input("Période d'analyse", [df['date_mutation'].min(), df['date_mutation'].max()])
