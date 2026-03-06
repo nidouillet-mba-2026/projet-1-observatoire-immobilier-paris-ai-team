@@ -73,7 +73,7 @@ def crawl_dvf_toulon(output_file="data/dvf_toulon_2020_now.csv"):
         'adresse_nom_voie': 'first',
         'code_postal': 'first',
         'nom_commune': 'first',
-        'section_prefixe': 'first' # Use prefix for neighborhood proxy if needed
+        'section_prefixe': 'first'
     }
     
     df_clean = df.groupby('id_mutation').agg(agg_rules).reset_index()
@@ -82,16 +82,8 @@ def crawl_dvf_toulon(output_file="data/dvf_toulon_2020_now.csv"):
     df_clean['budget'] = df_clean['valeur_fonciere']
     df_clean['surface'] = df_clean['surface_reelle_bati']
     
-    # For Toulon, we use postcode or section prefix for quartier
-    def format_cp(cp):
-        try:
-            if pd.isnull(cp) or str(cp).lower() == 'none':
-                return "Toulon"
-            return f"Toulon {int(float(cp))}"
-        except:
-            return f"Toulon {cp}"
-            
-    df_clean['quartier'] = df_clean['code_postal'].apply(format_cp)
+    # Define "quartier" as the cadastral section (Prefix + Section Code)
+    df_clean['quartier'] = df_clean['section_prefixe'].apply(lambda s: f"Section {s}" if pd.notnull(s) else "Section Inconnue")
     
     result = df_clean[['date_mutation', 'budget', 'surface', 'quartier', 'adresse_nom_voie']]
     result = result.sort_values('date_mutation', ascending=False)
