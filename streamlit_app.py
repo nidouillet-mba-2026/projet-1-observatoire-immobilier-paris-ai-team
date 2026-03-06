@@ -31,7 +31,7 @@ def load_data(data_type="DVF"):
             'Quartier': 'quartier',
             'Prix_m2_calculé': 'prix_m2'
         })
-        # Annonces don't have a mutation date, we can use a dummy or skip time charts
+        # Annonces don't have a mutation date, we use today's date to avoid errors in filtering logic
         df['date_mutation'] = pd.Timestamp.now()
     return df
 
@@ -51,10 +51,20 @@ if not df.empty:
     quartiers = st.sidebar.multiselect("Sélectionner les Secteurs/Quartiers", options=unique_quartiers, default=unique_quartiers)
     
     if mode_key == "DVF":
-        date_range = st.sidebar.date_input("Période d'analyse", [df['date_mutation'].min(), df['date_mutation'].max()])
+        # Robust date range handling (from Alexis' branch)
+        default_dates = [df['date_mutation'].min().date(), df['date_mutation'].max().date()]
+        date_range = st.sidebar.date_input("Période d'analyse", value=default_dates)
+        
+        if isinstance(date_range, (tuple, list)) and len(date_range) == 2:
+            start_date, end_date = date_range
+        elif isinstance(date_range, (tuple, list)) and len(date_range) == 1:
+            start_date = end_date = date_range[0]
+        else:
+            start_date = end_date = date_range
+
         mask = (df['quartier'].isin(quartiers)) & \
-               (df['date_mutation'].dt.date >= date_range[0]) & \
-               (df['date_mutation'].dt.date <= date_range[1])
+               (df['date_mutation'].dt.date >= start_date) & \
+               (df['date_mutation'].dt.date <= end_date)
     else:
         mask = (df['quartier'].isin(quartiers))
         
@@ -67,7 +77,6 @@ if not df.empty:
     
     tabs = st.tabs(tab_titles)
     
-    # Check if we have 4 or 3 tabs based on mode
     t1 = tabs[0]
     t2 = tabs[1]
     t3 = tabs[2]
@@ -99,29 +108,33 @@ if not df.empty:
 
     with t2:
         st.header("Analyse par Secteur")
+        
+        # Aggregating small sections into "Autres" for clarity
+        top_n = 15
+        df_vol = df_filtered.groupby('quartier').size().sort_values(ascending=False).reset_index(name='nb_ventes')
+        top_sections = df_vol.head(top_n)['quartier'].tolist()
+        
+        df_pie_clean = df_vol.copy()
+        if len(df_vol) > top_n:
+            df_pie_clean.loc[~df_pie_clean['quartier'].isin(top_sections), 'quartier'] = 'Autres sections'
+            df_pie_clean = df_pie_clean.groupby('quartier')['nb_ventes'].sum().reset_index()
+
         c1, c2 = st.columns([1, 1])
         
         with c1:
-            st.subheader("💰 Prix au m²")
-            df_q = df_filtered.groupby('quartier')['prix_m2'].median().sort_values(ascending=False).head(20).reset_index()
-            fig_q = px.bar(df_q, x='prix_m2', y='quartier', orientation='h', 
+            st.subheader(f"💰 Top {top_n} Prix au m² (Médian)")
+            df_q_data = df_filtered.groupby('quartier')['prix_m2'].median().sort_values(ascending=False).head(top_n).reset_index()
+            fig_q = px.bar(df_q_data, x='prix_m2', y='quartier', orientation='h', 
                            color='prix_m2', color_continuous_scale='Blues',
-                           labels={'prix_m2': 'Prix m² Médian (€)', 'quartier': 'Secteur'})
+                           labels={'prix_m2': 'Prix m² Médian (€)', 'quartier': 'Section'})
             fig_q.update_layout(yaxis={'categoryorder':'total ascending'})
             st.plotly_chart(fig_q, use_container_width=True)
 
         with c2:
-            st.subheader("🥧 Répartition du volume")
-            # For pie, grouping others if too many
-            df_vol = df_filtered.groupby('quartier').size().sort_values(ascending=False).reset_index(name='nb')
-            if len(df_vol) > 15:
-                top_15 = df_vol.head(15)['quartier'].tolist()
-                df_vol.loc[~df_vol['quartier'].isin(top_15), 'quartier'] = 'Autres'
-                df_vol = df_vol.groupby('quartier')['nb'].sum().reset_index()
-                
-            fig_pie = px.pie(df_vol, values='nb', names='quartier', hole=0.4,
+            st.subheader(f"🥧 Part de marché (Top {top_n} + Autres)")
+            fig_pie = px.pie(df_pie_clean, values='nb_ventes', names='quartier', hole=0.4,
                              color_discrete_sequence=px.colors.qualitative.Pastel)
-            fig_pie.update_traces(textinfo='percent')
+            fig_pie.update_traces(textinfo='percent+label')
             st.plotly_chart(fig_pie, use_container_width=True)
 
     if mode_key == "DVF" and t4:
@@ -161,6 +174,7 @@ if not df.empty:
     elif mode_key == "Annonces":
         with t3:
             st.header("Liste des Annonces en cours")
+            st.write("Source : Bien'Ici")
             st.dataframe(df_filtered, use_container_width=True)
 
 else:
