@@ -70,15 +70,19 @@ def apply_css():
     [data-testid="stSidebar"] .stRadio > label {{ color: {GOLD} !important; font-weight: 600; font-size: 0.9rem; }}
 
     /* ── Hide default streamlit chrome ── */
-    #MainMenu {{ visibility: hidden; }}
-    footer {{ visibility: hidden; }}
-    header {{ visibility: hidden; height: 0 !important; }}
+    #MainMenu {{ display: none !important; }}
+    footer {{ display: none !important; }}
+    [data-testid="stToolbar"] {{ display: none !important; }}
+    [data-testid="stDecoration"] {{ display: none !important; }}
+    [data-testid="stHeader"] {{ background: transparent !important; }}
 
-    /* ── Bouton toggle sidebar : toujours visible même sidebar fermée ── */
+    /* ── Bouton toggle sidebar : toujours visible et cliquable ── */
     [data-testid="collapsedControl"] {{
+        display: flex !important;
         visibility: visible !important;
-        height: auto !important;
-        top: 8px !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 999 !important;
     }}
 
     /* ── Metric cards ── */
