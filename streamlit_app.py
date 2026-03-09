@@ -36,6 +36,16 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
+# SESSION STATE INITIALIZATION
+# ─────────────────────────────────────────────
+if "selected_quartiers" not in st.session_state:
+    st.session_state.selected_quartiers = []
+if "selected_sources" not in st.session_state:
+    st.session_state.selected_sources = []
+if "selected_types" not in st.session_state:
+    st.session_state.selected_types = []
+
+# ─────────────────────────────────────────────
 # SIDEBAR VISIBILITY MANAGEMENT
 # ─────────────────────────────────────────────
 st.markdown("""
@@ -571,9 +581,13 @@ if mode_key == "Acheteurs":
             st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
             st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Filtres</p>', unsafe_allow_html=True)
             sources_dispo = sorted(df_ach['source'].dropna().unique().tolist()) if 'source' in df_ach.columns else []
-            sources_sel = st.multiselect("Source", sources_dispo, default=sources_dispo)
+            # Filtrer la sélection précédente pour ne garder que les sources disponibles
+            sources_sel = st.multiselect("Source", sources_dispo, default=[s for s in st.session_state.selected_sources if s in sources_dispo])
+            st.session_state.selected_sources = sources_sel
+            
             types_bien = sorted(df_ach['type_bien'].dropna().unique().tolist()) if 'type_bien' in df_ach.columns else []
-            types_sel = st.multiselect("Type de bien", types_bien, default=types_bien)
+            types_sel = st.multiselect("Type de bien", types_bien, default=[t for t in st.session_state.selected_types if t in types_bien])
+            st.session_state.selected_types = types_sel
 
         mask_ach = pd.Series([True] * len(df_ach), index=df_ach.index)
         if 'source' in df_ach.columns and sources_sel:
@@ -738,7 +752,10 @@ if mode_key not in ("Acheteurs",) and not df.empty:
         st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Filtres</p>', unsafe_allow_html=True)
 
         unique_quartiers = sorted([str(q) for q in df['quartier'].unique() if pd.notna(q)])
-        quartiers = st.multiselect("Secteurs / Quartiers", options=unique_quartiers, default=unique_quartiers)
+        # Filtrer la sélection précédente pour ne garder que les quartiers disponibles
+        quartiers = st.multiselect("Secteurs / Quartiers", options=unique_quartiers, 
+                                   default=[q for q in st.session_state.selected_quartiers if q in unique_quartiers])
+        st.session_state.selected_quartiers = quartiers
 
         if mode_key == "DVF":
             default_dates = [df['date_mutation'].min().date(), df['date_mutation'].max().date()]
