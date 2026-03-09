@@ -556,20 +556,32 @@ if mode_key == "Acheteurs":
                 if 'type_bien' in dfa.columns:
                     section_title("Type de bien recherché")
                     fig = px.pie(dfa['type_bien'].value_counts().reset_index(),
-                                 values='count', names='type_bien', hole=0.45,
+                                 values='count', names='type_bien', hole=0.5,
                                  color_discrete_sequence=CHART_COLORS)
-                    fig.update_traces(textposition='outside', textinfo='percent+label',
-                                      marker=dict(line=dict(color='white', width=2)))
+                    fig.update_traces(
+                        textposition='inside', textinfo='percent',
+                        insidetextfont=dict(size=12, color='white'),
+                        marker=dict(line=dict(color='white', width=2)),
+                        hovertemplate='<b>%{label}</b><br>%{value} profils<br>%{percent}<extra></extra>',
+                    )
+                    fig.update_layout(legend=dict(orientation='v', x=1.0, y=0.5,
+                        font=dict(size=11, color='#111827'), bgcolor='rgba(0,0,0,0)'))
                     st.plotly_chart(styled_chart(fig), use_container_width=True)
 
             with col2:
                 if 'type_achat' in dfa.columns:
                     section_title("Motif d'achat")
                     fig = px.pie(dfa['type_achat'].value_counts().reset_index(),
-                                 values='count', names='type_achat', hole=0.45,
+                                 values='count', names='type_achat', hole=0.5,
                                  color_discrete_sequence=[NAVY, GOLD, BLUE, GREEN])
-                    fig.update_traces(textposition='outside', textinfo='percent+label',
-                                      marker=dict(line=dict(color='white', width=2)))
+                    fig.update_traces(
+                        textposition='inside', textinfo='percent',
+                        insidetextfont=dict(size=12, color='white'),
+                        marker=dict(line=dict(color='white', width=2)),
+                        hovertemplate='<b>%{label}</b><br>%{value} profils<br>%{percent}<extra></extra>',
+                    )
+                    fig.update_layout(legend=dict(orientation='v', x=1.0, y=0.5,
+                        font=dict(size=11, color='#111827'), bgcolor='rgba(0,0,0,0)'))
                     st.plotly_chart(styled_chart(fig), use_container_width=True)
 
             if 'source' in dfa.columns:
@@ -762,10 +774,12 @@ if mode_key not in ("Acheteurs",) and not df.empty:
         df_vol = df_filtered.groupby('quartier').size().sort_values(ascending=False).reset_index(name='nb')
         top_sections = df_vol.head(top_n)['quartier'].tolist()
 
-        df_pie = df_vol.copy()
-        if len(df_vol) > top_n:
-            df_pie.loc[~df_pie['quartier'].isin(top_sections), 'quartier'] = 'Autres'
-            df_pie = df_pie.groupby('quartier')['nb'].sum().reset_index()
+        # Pie : top 8 quartiers + Autres
+        top_pie = 8
+        df_pie = df_vol.head(top_pie).copy()
+        if len(df_vol) > top_pie:
+            autres_nb = df_vol.iloc[top_pie:]['nb'].sum()
+            df_pie = pd.concat([df_pie, pd.DataFrame([{'quartier': 'Autres', 'nb': autres_nb}])], ignore_index=True)
 
         col1, col2 = st.columns([3, 2])
 
@@ -779,11 +793,21 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             st.plotly_chart(styled_chart(fig, height=460), use_container_width=True)
 
         with col2:
-            section_title("Part de marché")
-            fig = px.pie(df_pie, values='nb', names='quartier', hole=0.45,
+            section_title("Part de marché — Top 8 quartiers")
+            fig = px.pie(df_pie, values='nb', names='quartier', hole=0.5,
                          color_discrete_sequence=CHART_COLORS)
-            fig.update_traces(textposition='outside', textinfo='percent+label',
-                              marker=dict(line=dict(color='white', width=2)))
+            fig.update_traces(
+                textposition='inside',
+                textinfo='percent',
+                insidetextfont=dict(size=12, color='white'),
+                marker=dict(line=dict(color='white', width=2)),
+                hovertemplate='<b>%{label}</b><br>%{value} annonces<br>%{percent}<extra></extra>',
+            )
+            fig.update_layout(legend=dict(
+                orientation='v', x=1.0, y=0.5,
+                font=dict(size=11, color='#111827'),
+                bgcolor='rgba(0,0,0,0)',
+            ))
             st.plotly_chart(styled_chart(fig, height=460), use_container_width=True)
 
     # ── Tab 3 : Adresses (DVF) ou Annonces ──
