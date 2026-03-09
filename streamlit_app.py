@@ -226,17 +226,17 @@ PLOTLY_LAYOUT = dict(
         gridcolor="#E5E7EB",
         linecolor="#D1D5DB",
         tickfont=dict(color="#111827", size=11),
-        titlefont=dict(color="#111827", size=12),
+        title=dict(font=dict(color="#111827", size=12)),
     ),
     yaxis=dict(
         gridcolor="#E5E7EB",
         linecolor="#D1D5DB",
         tickfont=dict(color="#111827", size=11),
-        titlefont=dict(color="#111827", size=12),
+        title=dict(font=dict(color="#111827", size=12)),
     ),
     coloraxis_colorbar=dict(
         tickfont=dict(size=11, color="#111827"),
-        titlefont=dict(size=12, color="#111827"),
+        title=dict(font=dict(size=12, color="#111827")),
     ),
 )
 
