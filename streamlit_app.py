@@ -95,15 +95,20 @@ def apply_css():
         margin-top: 4px;
     }}
 
+    /* ── Main content text ── */
+    .stMarkdown p, .stMarkdown li, .stText {{ color: #111827 !important; }}
+    h1, h2, h3, h4 {{ color: {NAVY} !important; }}
+
     /* ── Section headers ── */
     .section-title {{
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.05rem;
+        font-weight: 700;
         color: {NAVY};
-        margin: 0 0 16px 0;
+        margin: 8px 0 14px 0;
         padding-bottom: 8px;
         border-bottom: 2px solid {GOLD};
         display: inline-block;
+        letter-spacing: -0.01em;
     }}
 
     /* ── Chart cards ── */
@@ -212,18 +217,38 @@ apply_css()
 # PLOTLY THEME
 # ─────────────────────────────────────────────
 PLOTLY_LAYOUT = dict(
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(family="Inter", color="#374151"),
-    margin=dict(l=0, r=0, t=32, b=0),
-    legend=dict(bgcolor="rgba(0,0,0,0)", font=dict(size=11)),
-    xaxis=dict(gridcolor="#F1F5F9", linecolor="#E2E8F0"),
-    yaxis=dict(gridcolor="#F1F5F9", linecolor="#E2E8F0"),
-    coloraxis_colorbar=dict(tickfont=dict(size=10)),
+    paper_bgcolor=WHITE,
+    plot_bgcolor=WHITE,
+    font=dict(family="Inter", color="#111827", size=12),
+    margin=dict(l=8, r=8, t=36, b=8),
+    legend=dict(bgcolor=WHITE, font=dict(size=12, color="#111827")),
+    xaxis=dict(
+        gridcolor="#E5E7EB",
+        linecolor="#D1D5DB",
+        tickfont=dict(color="#111827", size=11),
+        titlefont=dict(color="#111827", size=12),
+    ),
+    yaxis=dict(
+        gridcolor="#E5E7EB",
+        linecolor="#D1D5DB",
+        tickfont=dict(color="#111827", size=11),
+        titlefont=dict(color="#111827", size=12),
+    ),
+    coloraxis_colorbar=dict(
+        tickfont=dict(size=11, color="#111827"),
+        titlefont=dict(size=12, color="#111827"),
+    ),
 )
 
 def styled_chart(fig, height=360):
     fig.update_layout(**PLOTLY_LAYOUT, height=height)
+    # Force dark text on all annotations and hover
+    fig.update_traces(
+        hoverlabel=dict(bgcolor=WHITE, font_color="#111827", font_size=12),
+    )
+    # Fix pie/donut label color
+    if fig.data and fig.data[0].type in ('pie', 'sunburst', 'treemap'):
+        fig.update_traces(textfont=dict(color="#111827", size=12))
     return fig
 
 def kpi(label, value, color="", sub=""):
