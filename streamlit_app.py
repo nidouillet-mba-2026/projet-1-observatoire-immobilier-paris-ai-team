@@ -19,15 +19,6 @@ def format_price(price):
     except (ValueError, TypeError):
         return str(price)
 
-def format_date_fr(date):
-    """Format date to French format (jour-mois-année)"""
-    try:
-        if pd.isnull(date) or date is None or (isinstance(date, str) and date == ""):
-            return ""
-        return pd.to_datetime(date).strftime("%d-%m-%Y")
-    except (ValueError, TypeError):
-        return str(date)
-
 st.set_page_config(
     page_title="Observatoire Immobilier Toulon",
     page_icon="🏙️",
@@ -734,7 +725,21 @@ if mode_key == "Acheteurs":
             cols_display = [c for c in ['source', 'date_annonce', 'type_bien', 'type_achat',
                                          'budget_max', 'surface_min', 'nb_pieces',
                                          'quartier_souhaite', 'criteres', 'titre', 'url'] if c in dfa.columns]
-            st.dataframe(dfa[cols_display], use_container_width=True, hide_index=True)
+            df_a4_display = dfa[cols_display].copy()
+            # Convertir en datetime pour le tri
+            if 'date_annonce' in df_a4_display.columns:
+                df_a4_display['date_annonce'] = pd.to_datetime(df_a4_display['date_annonce'])
+            # Utiliser column_config pour afficher sans heures et URLs cliquables
+            column_config = {}
+            if 'date_annonce' in df_a4_display.columns:
+                column_config['date_annonce'] = st.column_config.DateColumn(
+                    "date_annonce",
+                    format="DD/MM/YYYY"
+                )
+            if 'url' in df_a4_display.columns:
+                column_config['url'] = st.column_config.LinkColumn("url")
+            st.dataframe(df_a4_display, use_container_width=True, hide_index=True,
+                        column_config=column_config if column_config else None)
             st.download_button(
                 "Télécharger CSV",
                 dfa.to_csv(index=False, encoding='utf-8-sig'),
@@ -915,11 +920,24 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             # Format columns
             if 'budget' in df_display_dvf.columns:
                 df_display_dvf['budget'] = df_display_dvf['budget'].apply(format_price)
+            # Sélectionner seulement les colonnes pertinentes
+            cols_to_display = [c for c in df_display_dvf.columns if c in 
+                              ['date_publication', 'budget', 'prix_m2', 'surface', 'quartier', 'adresse', 'type_local']]
+            df_display_dvf = df_display_dvf[cols_to_display]
+            # Convertir en datetime pour le tri
             if 'date_publication' in df_display_dvf.columns:
-                df_display_dvf['date_publication'] = df_display_dvf['date_publication'].apply(format_date_fr)
+                df_display_dvf['date_publication'] = pd.to_datetime(df_display_dvf['date_publication'])
+            # Utiliser column_config pour afficher sans heures
+            column_config = {}
+            if 'date_publication' in df_display_dvf.columns:
+                column_config['date_publication'] = st.column_config.DateColumn(
+                    "date_publication",
+                    format="DD/MM/YYYY"
+                )
             st.dataframe(
                 df_display_dvf,
-                use_container_width=True, hide_index=True
+                use_container_width=True, hide_index=True,
+                column_config=column_config if column_config else None
             )
 
     elif mode_key in ("Annonces", "LBC"):
@@ -938,13 +956,30 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             # Format columns
             if 'budget' in df_display_annonces.columns:
                 df_display_annonces['budget'] = df_display_annonces['budget'].apply(format_price)
-            if 'date_publication' in df_display_annonces.columns:
-                df_display_annonces['date_publication'] = df_display_annonces['date_publication'].apply(format_date_fr)
+            
+            # Sélectionner seulement les colonnes pertinentes
+            cols_to_display = [c for c in df_display_annonces.columns if c in 
+                              ['date_publication', 'budget', 'prix_m2', 'surface', 'quartier', 'adresse', 'type_bien', 'titre', 'url']]
+            df_display_annonces = df_display_annonces[cols_to_display]
             
             # Remove any duplicate columns
             df_display_annonces = df_display_annonces.loc[:, ~df_display_annonces.columns.duplicated()]
             
-            st.dataframe(df_display_annonces, use_container_width=True, hide_index=True)
+            # Convertir en datetime pour le tri
+            if 'date_publication' in df_display_annonces.columns:
+                df_display_annonces['date_publication'] = pd.to_datetime(df_display_annonces['date_publication'])
+            
+            # Utiliser column_config pour afficher sans heures et URLs cliquables
+            column_config = {}
+            if 'date_publication' in df_display_annonces.columns:
+                column_config['date_publication'] = st.column_config.DateColumn(
+                    "date_publication",
+                    format="DD/MM/YYYY"
+                )
+            if 'url' in df_display_annonces.columns:
+                column_config['url'] = st.column_config.LinkColumn("url")
+            st.dataframe(df_display_annonces, use_container_width=True, hide_index=True,
+                        column_config=column_config if column_config else None)
 
 elif mode_key != "Acheteurs":
     st.info("Aucune donnée disponible. Vérifiez vos filtres ou lancez le crawler.")
