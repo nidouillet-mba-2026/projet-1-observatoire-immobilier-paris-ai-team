@@ -582,12 +582,14 @@ if mode_key == "Acheteurs":
             st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Filtres</p>', unsafe_allow_html=True)
             sources_dispo = sorted(df_ach['source'].dropna().unique().tolist()) if 'source' in df_ach.columns else []
             # Filtrer la sélection précédente pour ne garder que les sources disponibles
-            sources_sel = st.multiselect("Source", sources_dispo, default=[s for s in st.session_state.selected_sources if s in sources_dispo])
-            st.session_state.selected_sources = sources_sel
+            sources_sel = st.multiselect("Source", sources_dispo, 
+                                         default=[s for s in st.session_state.selected_sources if s in sources_dispo],
+                                         key="selected_sources")
             
             types_bien = sorted(df_ach['type_bien'].dropna().unique().tolist()) if 'type_bien' in df_ach.columns else []
-            types_sel = st.multiselect("Type de bien", types_bien, default=[t for t in st.session_state.selected_types if t in types_bien])
-            st.session_state.selected_types = types_sel
+            types_sel = st.multiselect("Type de bien", types_bien, 
+                                       default=[t for t in st.session_state.selected_types if t in types_bien],
+                                       key="selected_types")
 
         mask_ach = pd.Series([True] * len(df_ach), index=df_ach.index)
         if 'source' in df_ach.columns and sources_sel:
@@ -754,8 +756,8 @@ if mode_key not in ("Acheteurs",) and not df.empty:
         unique_quartiers = sorted([str(q) for q in df['quartier'].unique() if pd.notna(q)])
         # Filtrer la sélection précédente pour ne garder que les quartiers disponibles
         quartiers = st.multiselect("Secteurs / Quartiers", options=unique_quartiers, 
-                                   default=[q for q in st.session_state.selected_quartiers if q in unique_quartiers])
-        st.session_state.selected_quartiers = quartiers
+                                   default=[q for q in st.session_state.selected_quartiers if q in unique_quartiers],
+                                   key="selected_quartiers")
 
         if mode_key == "DVF":
             default_dates = [df['date_mutation'].min().date(), df['date_mutation'].max().date()]
