@@ -110,15 +110,20 @@ def apply_css():
         margin-top: 4px;
     }}
 
+    /* ── Main content text ── */
+    .stMarkdown p, .stMarkdown li, .stText {{ color: #111827 !important; }}
+    h1, h2, h3, h4 {{ color: {NAVY} !important; }}
+
     /* ── Section headers ── */
     .section-title {{
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.05rem;
+        font-weight: 700;
         color: {NAVY};
-        margin: 0 0 16px 0;
+        margin: 8px 0 14px 0;
         padding-bottom: 8px;
         border-bottom: 2px solid {GOLD};
         display: inline-block;
+        letter-spacing: -0.01em;
     }}
 
     /* ── Chart cards ── */
@@ -227,18 +232,38 @@ apply_css()
 # PLOTLY THEME
 # ─────────────────────────────────────────────
 PLOTLY_LAYOUT = dict(
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(family="Inter", color="#374151"),
-    margin=dict(l=0, r=0, t=32, b=0),
-    legend=dict(bgcolor="rgba(0,0,0,0)", font=dict(size=11)),
-    xaxis=dict(gridcolor="#F1F5F9", linecolor="#E2E8F0"),
-    yaxis=dict(gridcolor="#F1F5F9", linecolor="#E2E8F0"),
-    coloraxis_colorbar=dict(tickfont=dict(size=10)),
+    paper_bgcolor=WHITE,
+    plot_bgcolor=WHITE,
+    font=dict(family="Inter", color="#111827", size=12),
+    margin=dict(l=8, r=8, t=36, b=8),
+    legend=dict(bgcolor=WHITE, font=dict(size=12, color="#111827")),
+    xaxis=dict(
+        gridcolor="#E5E7EB",
+        linecolor="#D1D5DB",
+        tickfont=dict(color="#111827", size=11),
+        title=dict(font=dict(color="#111827", size=12)),
+    ),
+    yaxis=dict(
+        gridcolor="#E5E7EB",
+        linecolor="#D1D5DB",
+        tickfont=dict(color="#111827", size=11),
+        title=dict(font=dict(color="#111827", size=12)),
+    ),
+    coloraxis_colorbar=dict(
+        tickfont=dict(size=11, color="#111827"),
+        title=dict(font=dict(size=12, color="#111827")),
+    ),
 )
 
 def styled_chart(fig, height=360):
     fig.update_layout(**PLOTLY_LAYOUT, height=height)
+    # Force dark text on all annotations and hover
+    fig.update_traces(
+        hoverlabel=dict(bgcolor=WHITE, font_color="#111827", font_size=12),
+    )
+    # Fix pie/donut label color
+    if fig.data and fig.data[0].type in ('pie', 'sunburst', 'treemap'):
+        fig.update_traces(textfont=dict(color="#111827", size=12))
     return fig
 
 def kpi(label, value, color="", sub=""):
@@ -251,32 +276,128 @@ def kpi(label, value, color="", sub=""):
 
 def section_title(text):
     st.markdown(f'<p class="section-title">{text}</p>', unsafe_allow_html=True)
-
 st.title("🏙️ Observatoire Immobilier - Toulon (DVF)")
+# ─────────────────────────────────────────────
+# DATA LOADERS
+# ─────────────────────────────────────────────
+import re as _re
+
+def _extract_from_title(df):
+    """Extrait surface et nb_pièces depuis les titres quand les colonnes sont vides."""
+    if 'titre' not in df.columns:
+        return df
+
+    titles = df['titre'].astype(str)
+
+    # Surface : "95 m²", "95 m2", "95 m", "95m²"
+    surf_from_title = titles.str.extract(r'(\d{2,3})\s*m[²2]?\b', expand=False)
+    surf_from_title = pd.to_numeric(surf_from_title, errors='coerce')
+    # Filtre valeurs aberrantes
+    surf_from_title = surf_from_title.where(surf_from_title.between(10, 500))
+
+    # Pièces : "4 pièces", "4 pieces", "4 p ", "T4", "F4"
+    pieces_from_title = titles.str.extract(
+        r'(\d)\s*(?:pi[eè]ces?|p\b)|(?:[tTfF])(\d)\b', expand=True
+    ).bfill(axis=1).iloc[:, 0]
+    pieces_from_title = pd.to_numeric(pieces_from_title, errors='coerce')
+    pieces_from_title = pieces_from_title.where(pieces_from_title.between(1, 10))
+
+    # Colonnes cibles selon le fichier (acheteurs = surface_min, marché = surface_m2/surface)
+    for surf_col in ['surface_min', 'surface_m2', 'surface']:
+        if surf_col in df.columns:
+            df[surf_col] = pd.to_numeric(df[surf_col], errors='coerce')
+            df[surf_col] = df[surf_col].fillna(surf_from_title)
+            break
+    else:
+        df['surface_min'] = surf_from_title
+
+    for pieces_col in ['nb_pieces']:
+        if pieces_col in df.columns:
+            df[pieces_col] = pd.to_numeric(df[pieces_col], errors='coerce')
+            df[pieces_col] = df[pieces_col].fillna(pieces_from_title)
+        else:
+            df['nb_pieces'] = pieces_from_title
+
+    return df
+
+@st.cache_data
+def load_acheteurs():
+    dfs = []
+    files = {
+        "acheteur/data/acheteurs_annonces.csv":       "Annonces (PAP/Logic-Immo)",
+        "acheteur/data/acheteurs_leboncoin.csv":       "LeBonCoin (acheteurs)",
+        "acheteur/data/marche_leboncoin_clean.csv":    "Marché LeBonCoin",
+        "acheteur/data/marche_leboncoin.csv":          "Marché LeBonCoin",   # fallback
+        "acheteur/data/facebook_manuel.csv":           "Facebook (manuel)",
+    }
+    seen_paths = set()
+    for path, label in files.items():
+        if path in seen_paths or not os.path.exists(path):
+            continue
+        seen_paths.add(path)
+        try:
+            df = pd.read_csv(path, encoding='utf-8-sig')
+            df = _extract_from_title(df)   # enrichit surface/pièces depuis les titres
+            df['_source_file'] = label
+            dfs.append(df)
+        except Exception:
+            pass
+    if not dfs:
+        return pd.DataFrame()
+    df = pd.concat(dfs, ignore_index=True)
+    # Normalise : surface_m2 / surface → surface_min (colonne unique pour l'onglet acheteurs)
+    for alt in ['surface_m2', 'surface']:
+        if alt in df.columns and 'surface_min' not in df.columns:
+            df['surface_min'] = df[alt]
+        elif alt in df.columns:
+            df['surface_min'] = df['surface_min'].fillna(df[alt])
+    # Prix marché → budget_max si manquant
+    for alt in ['prix']:
+        if alt in df.columns and 'budget_max' not in df.columns:
+            df['budget_max'] = df[alt]
+        elif alt in df.columns:
+            df['budget_max'] = df['budget_max'].fillna(df[alt]) if 'budget_max' in df.columns else df[alt]
+    for col in ['budget_max', 'surface_min', 'nb_pieces', 'prix', 'surface', 'prix_m2']:
+        if col in df.columns:
+            df[col] = df[col].astype(str).str.extract(r'(\d[\d\s]*)')[0]
+            df[col] = df[col].str.replace(r'\s', '', regex=True)
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+    return df
 
 @st.cache_data
 def load_data(data_type="DVF"):
     if data_type == "DVF":
-        file_path = "data/dvf_toulon_2020_now.csv"
+        # Utilise le fichier nettoyé si disponible
+        file_path = "data/dvf_clean.csv" if os.path.exists("data/dvf_clean.csv") else "data/dvf_toulon_2020_now.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, encoding='utf-8-sig')
         df['date_mutation'] = pd.to_datetime(df['date_mutation'])
-        df['prix_m2'] = df['budget'] / df['surface']
-        df.loc[df['surface'] <= 0, 'prix_m2'] = None
+        # Colonnes normalisées
+        if 'prix_vente' in df.columns:
+            df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
+        else:
+            df['prix_m2'] = df['budget'] / df['surface']
+            df.loc[df['surface'] <= 0, 'prix_m2'] = None
     else:
-        file_path = "data/annonces_toulon_clean.csv"
+        # Utilise le fichier nettoyé si disponible
+        file_path = "data/annonces_clean.csv" if os.path.exists("data/annonces_clean.csv") else "data/annonces_toulon_clean.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()
-        df = pd.read_csv(file_path)
-        df = df.rename(columns={
-            'Prix_total_net': 'budget',
-            'Surface_m2': 'surface',
-            'Quartier': 'quartier',
-            'Prix_m2_calculé': 'prix_m2'
-        })
+        df = pd.read_csv(file_path, encoding='utf-8-sig')
+        # Colonnes normalisées
+        if 'prix_vente' in df.columns:
+            df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
+        else:
+            df = df.rename(columns={
+                'Prix_total_net': 'budget', 'Surface_m2': 'surface',
+                'Quartier': 'quartier',
+            })
+            pm2 = [c for c in df.columns if 'm2' in c.lower() and c != 'surface']
+            if pm2:
+                df = df.rename(columns={pm2[0]: 'prix_m2'})
         df['date_mutation'] = pd.Timestamp.now()
     return df
 
@@ -598,15 +719,15 @@ if mode_key != "Acheteurs" and not df.empty:
     if mode_key == "DVF" and t4:
         with t3:
             section_title("Volume de ventes par rue et quartier")
-            df_tree = df_filtered.groupby(['quartier', 'adresse_nom_voie']).size().reset_index(name='nb_ventes')
-            fig = px.treemap(df_tree, path=['quartier', 'adresse_nom_voie'], values='nb_ventes',
+            df_tree = df_filtered.groupby(['quartier', 'adresse']).size().reset_index(name='nb_ventes')
+            fig = px.treemap(df_tree, path=['quartier', 'adresse'], values='nb_ventes',
                              color='nb_ventes', color_continuous_scale=[[0, '#DBEAFE'], [1, NAVY]])
             st.plotly_chart(styled_chart(fig, height=440), use_container_width=True)
 
             col1, col2 = st.columns(2)
             with col1:
                 section_title("Dynamique moyenne par quartier")
-                df_addr = df_filtered.groupby(['quartier', 'adresse_nom_voie']).size().reset_index(name='nb')
+                df_addr = df_filtered.groupby(['quartier', 'adresse']).size().reset_index(name='nb')
                 df_avg  = df_addr.groupby('quartier')['nb'].mean().sort_values().tail(12).reset_index()
                 fig = px.bar(df_avg, x='nb', y='quartier', orientation='h',
                              color='nb', color_continuous_scale=[[0, BLUE], [1, NAVY]],
@@ -616,11 +737,11 @@ if mode_key != "Acheteurs" and not df.empty:
 
             with col2:
                 section_title("Top 10 adresses actives")
-                df_top = df_filtered.groupby(['adresse_nom_voie', 'quartier']).size().reset_index(name='nb')
+                df_top = df_filtered.groupby(['adresse', 'quartier']).size().reset_index(name='nb')
                 df_top = df_top.sort_values('nb').tail(10)
-                fig = px.bar(df_top, x='nb', y='adresse_nom_voie', orientation='h',
+                fig = px.bar(df_top, x='nb', y='adresse', orientation='h',
                              color='nb', color_continuous_scale=[[0, '#FDE68A'], [1, GOLD]],
-                             labels={'nb': 'Nb ventes', 'adresse_nom_voie': ''})
+                             labels={'nb': 'Nb ventes', 'adresse': ''})
                 fig.update_traces(marker_line_width=0)
                 st.plotly_chart(styled_chart(fig), use_container_width=True)
 
