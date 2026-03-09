@@ -884,8 +884,16 @@ if mode_key not in ("Acheteurs",) and not df.empty:
 
         with t4:
             section_title("Dernières transactions DVF")
+            df_display_dvf = df_filtered.sort_values('date_mutation', ascending=False).head(200).copy()
+            # Rename columns
+            df_display_dvf = df_display_dvf.rename(columns={'date_mutation': 'date_publication'})
+            # Format columns
+            if 'budget' in df_display_dvf.columns:
+                df_display_dvf['budget'] = df_display_dvf['budget'].apply(format_price)
+            if 'date_publication' in df_display_dvf.columns:
+                df_display_dvf['date_publication'] = df_display_dvf['date_publication'].apply(format_date_fr)
             st.dataframe(
-                df_filtered.sort_values('date_mutation', ascending=False).head(200),
+                df_display_dvf,
                 use_container_width=True, hide_index=True
             )
 
@@ -893,7 +901,15 @@ if mode_key not in ("Acheteurs",) and not df.empty:
         with t3:
             label = "Bien'Ici" if mode_key == "Annonces" else "LeBonCoin"
             section_title(f"Annonces en cours — {label}")
-            st.dataframe(df_filtered, use_container_width=True, hide_index=True)
+            df_display_annonces = df_filtered.copy()
+            # Rename columns
+            df_display_annonces = df_display_annonces.rename(columns={'date_mutation': 'date_publication'})
+            # Format columns
+            if 'budget' in df_display_annonces.columns:
+                df_display_annonces['budget'] = df_display_annonces['budget'].apply(format_price)
+            if 'date_publication' in df_display_annonces.columns:
+                df_display_annonces['date_publication'] = df_display_annonces['date_publication'].apply(format_date_fr)
+            st.dataframe(df_display_annonces, use_container_width=True, hide_index=True)
 
 elif mode_key != "Acheteurs":
     st.info("Aucune donnée disponible. Vérifiez vos filtres ou lancez le crawler.")
