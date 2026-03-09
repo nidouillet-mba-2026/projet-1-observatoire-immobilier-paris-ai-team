@@ -111,8 +111,6 @@ def apply_css():
     }}
 
     /* ── Main content text ── */
-    .stMarkdown p, .stMarkdown li, .stText {{ color: #111827 !important; }}
-    h1, h2, h3, h4 {{ color: {NAVY} !important; }}
 
     /* ── Section headers ── */
     .section-title {{
