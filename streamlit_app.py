@@ -265,6 +265,46 @@ def section_title(text):
 # ─────────────────────────────────────────────
 # DATA LOADERS
 # ─────────────────────────────────────────────
+import re as _re
+
+def _extract_from_title(df):
+    """Extrait surface et nb_pièces depuis les titres quand les colonnes sont vides."""
+    if 'titre' not in df.columns:
+        return df
+
+    titles = df['titre'].astype(str)
+
+    # Surface : "95 m²", "95 m2", "95 m", "95m²"
+    surf_from_title = titles.str.extract(r'(\d{2,3})\s*m[²2]?\b', expand=False)
+    surf_from_title = pd.to_numeric(surf_from_title, errors='coerce')
+    # Filtre valeurs aberrantes
+    surf_from_title = surf_from_title.where(surf_from_title.between(10, 500))
+
+    # Pièces : "4 pièces", "4 pieces", "4 p ", "T4", "F4"
+    pieces_from_title = titles.str.extract(
+        r'(\d)\s*(?:pi[eè]ces?|p\b)|(?:[tTfF])(\d)\b', expand=True
+    ).bfill(axis=1).iloc[:, 0]
+    pieces_from_title = pd.to_numeric(pieces_from_title, errors='coerce')
+    pieces_from_title = pieces_from_title.where(pieces_from_title.between(1, 10))
+
+    # Colonnes cibles selon le fichier (acheteurs = surface_min, marché = surface_m2/surface)
+    for surf_col in ['surface_min', 'surface_m2', 'surface']:
+        if surf_col in df.columns:
+            df[surf_col] = pd.to_numeric(df[surf_col], errors='coerce')
+            df[surf_col] = df[surf_col].fillna(surf_from_title)
+            break
+    else:
+        df['surface_min'] = surf_from_title
+
+    for pieces_col in ['nb_pieces']:
+        if pieces_col in df.columns:
+            df[pieces_col] = pd.to_numeric(df[pieces_col], errors='coerce')
+            df[pieces_col] = df[pieces_col].fillna(pieces_from_title)
+        else:
+            df['nb_pieces'] = pieces_from_title
+
+    return df
+
 @st.cache_data
 def load_acheteurs():
     dfs = []
@@ -275,17 +315,33 @@ def load_acheteurs():
         "acheteur/data/marche_leboncoin.csv":          "Marché LeBonCoin",   # fallback
         "acheteur/data/facebook_manuel.csv":           "Facebook (manuel)",
     }
+    seen_paths = set()
     for path, label in files.items():
-        if os.path.exists(path):
-            try:
-                df = pd.read_csv(path, encoding='utf-8-sig')
-                df['_source_file'] = label
-                dfs.append(df)
-            except Exception:
-                pass
+        if path in seen_paths or not os.path.exists(path):
+            continue
+        seen_paths.add(path)
+        try:
+            df = pd.read_csv(path, encoding='utf-8-sig')
+            df = _extract_from_title(df)   # enrichit surface/pièces depuis les titres
+            df['_source_file'] = label
+            dfs.append(df)
+        except Exception:
+            pass
     if not dfs:
         return pd.DataFrame()
     df = pd.concat(dfs, ignore_index=True)
+    # Normalise : surface_m2 / surface → surface_min (colonne unique pour l'onglet acheteurs)
+    for alt in ['surface_m2', 'surface']:
+        if alt in df.columns and 'surface_min' not in df.columns:
+            df['surface_min'] = df[alt]
+        elif alt in df.columns:
+            df['surface_min'] = df['surface_min'].fillna(df[alt])
+    # Prix marché → budget_max si manquant
+    for alt in ['prix']:
+        if alt in df.columns and 'budget_max' not in df.columns:
+            df['budget_max'] = df[alt]
+        elif alt in df.columns:
+            df['budget_max'] = df['budget_max'].fillna(df[alt]) if 'budget_max' in df.columns else df[alt]
     for col in ['budget_max', 'surface_min', 'nb_pieces', 'prix', 'surface', 'prix_m2']:
         if col in df.columns:
             df[col] = df[col].astype(str).str.extract(r'(\d[\d\s]*)')[0]
