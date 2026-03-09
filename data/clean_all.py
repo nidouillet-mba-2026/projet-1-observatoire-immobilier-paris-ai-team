@@ -207,8 +207,8 @@ def clean_leboncoin(src="acheteur/data/marche_leboncoin.csv", dst="acheteur/data
     # Quartier : remplacer "Non precise" par NaN → plus honnête
     df['quartier'] = df['quartier'].replace({'Non precise': None, 'Non précisé': None})
 
-    # Colonnes finales
-    cols = ['source', 'date_crawl', 'type_bien', 'nb_pieces', 'surface_m2',
+    # Colonnes finales (date_publication prioritaire sur date_crawl)
+    cols = ['source', 'date_publication', 'date_crawl', 'type_bien', 'nb_pieces', 'surface_m2',
             'prix', 'prix_m2', 'quartier', 'criteres', 'titre', 'url']
     df = df[[c for c in cols if c in df.columns]]
 

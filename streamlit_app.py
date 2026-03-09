@@ -424,7 +424,12 @@ def load_data(data_type="DVF"):
         if 'quartier' in df.columns:
             df['quartier'] = df['quartier'].replace({'Non precise': None, 'Non précisé': None})
             df['quartier'] = df['quartier'].fillna("Quartier non renseigné")
-        df['date_mutation'] = pd.Timestamp.now()
+        # Date de publication réelle de l'annonce
+        date_col = next((c for c in ['date_publication', 'date_crawl'] if c in df.columns), None)
+        if date_col:
+            df['date_mutation'] = pd.to_datetime(df[date_col], errors='coerce').fillna(pd.Timestamp.now())
+        else:
+            df['date_mutation'] = pd.Timestamp.now()
 
     else:  # Annonces Bien'Ici
         # Priorité : fichier le plus récent de la branche data

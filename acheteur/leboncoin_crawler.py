@@ -187,9 +187,19 @@ def crawl_leboncoin(max_pages=3, output_file="acheteur/data/marche_leboncoin.csv
                     except Exception:
                         pass
 
+                # Date de publication de l'annonce
+                pub_date_raw = ad.get('first_publication_date') or ad.get('index_date') or ''
+                if pub_date_raw:
+                    try:
+                        pub_date = datetime.fromisoformat(pub_date_raw[:10]).strftime('%Y-%m-%d')
+                    except Exception:
+                        pub_date = datetime.now().strftime('%Y-%m-%d')
+                else:
+                    pub_date = datetime.now().strftime('%Y-%m-%d')
+
                 listing = {
                     'source': 'LeBonCoin',
-                    'date_crawl': datetime.now().strftime('%Y-%m-%d'),
+                    'date_publication': pub_date,
                     'titre': title,
                     'type_bien': attrs.get('real_estate_type') or extract_type_bien(full_text),
                     'prix': price_val,
