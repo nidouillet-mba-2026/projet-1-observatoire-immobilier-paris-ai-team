@@ -648,15 +648,15 @@ if mode_key != "Acheteurs" and not df.empty:
     if mode_key == "DVF" and t4:
         with t3:
             section_title("Volume de ventes par rue et quartier")
-            df_tree = df_filtered.groupby(['quartier', 'adresse_nom_voie']).size().reset_index(name='nb_ventes')
-            fig = px.treemap(df_tree, path=['quartier', 'adresse_nom_voie'], values='nb_ventes',
+            df_tree = df_filtered.groupby(['quartier', 'adresse']).size().reset_index(name='nb_ventes')
+            fig = px.treemap(df_tree, path=['quartier', 'adresse'], values='nb_ventes',
                              color='nb_ventes', color_continuous_scale=[[0, '#DBEAFE'], [1, NAVY]])
             st.plotly_chart(styled_chart(fig, height=440), use_container_width=True)
 
             col1, col2 = st.columns(2)
             with col1:
                 section_title("Dynamique moyenne par quartier")
-                df_addr = df_filtered.groupby(['quartier', 'adresse_nom_voie']).size().reset_index(name='nb')
+                df_addr = df_filtered.groupby(['quartier', 'adresse']).size().reset_index(name='nb')
                 df_avg  = df_addr.groupby('quartier')['nb'].mean().sort_values().tail(12).reset_index()
                 fig = px.bar(df_avg, x='nb', y='quartier', orientation='h',
                              color='nb', color_continuous_scale=[[0, BLUE], [1, NAVY]],
@@ -666,11 +666,11 @@ if mode_key != "Acheteurs" and not df.empty:
 
             with col2:
                 section_title("Top 10 adresses actives")
-                df_top = df_filtered.groupby(['adresse_nom_voie', 'quartier']).size().reset_index(name='nb')
+                df_top = df_filtered.groupby(['adresse', 'quartier']).size().reset_index(name='nb')
                 df_top = df_top.sort_values('nb').tail(10)
-                fig = px.bar(df_top, x='nb', y='adresse_nom_voie', orientation='h',
+                fig = px.bar(df_top, x='nb', y='adresse', orientation='h',
                              color='nb', color_continuous_scale=[[0, '#FDE68A'], [1, GOLD]],
-                             labels={'nb': 'Nb ventes', 'adresse_nom_voie': ''})
+                             labels={'nb': 'Nb ventes', 'adresse': ''})
                 fig.update_traces(marker_line_width=0)
                 st.plotly_chart(styled_chart(fig), use_container_width=True)
 
