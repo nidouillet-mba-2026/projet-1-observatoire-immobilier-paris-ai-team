@@ -30,6 +30,35 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
+# SIDEBAR VISIBILITY MANAGEMENT
+# ─────────────────────────────────────────────
+st.markdown("""
+<style>
+    /* Keep sidebar toggle button always visible */
+    [data-testid="stSidebarCollapseButton"] {
+        display: block !important;
+        visibility: visible !important;
+        z-index: 999 !important;
+    }
+    
+    /* Keep header minimal but with toggle button visible */
+    header {
+        display: flex !important;
+        align-items: center !important;
+        min-height: 60px !important;
+        background: transparent !important;
+        border: none !important;
+    }
+    
+    /* Ensure toggle button is always clickable */
+    header button {
+        visibility: visible !important;
+        display: inline-flex !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# ─────────────────────────────────────────────
 # THEME & CSS
 # ─────────────────────────────────────────────
 NAVY   = "#1B3A5C"
@@ -69,10 +98,21 @@ def apply_css():
     [data-testid="stSidebar"] label {{ color: #CBD5E1 !important; font-size: 0.82rem; }}
     [data-testid="stSidebar"] .stRadio > label {{ color: {GOLD} !important; font-weight: 600; font-size: 0.9rem; }}
 
-    /* ── Hide default streamlit header ── */
+    /* ── Hide default streamlit elements but keep toggle button ── */
     #MainMenu {{ visibility: hidden; }}
     footer {{ visibility: hidden; }}
-    header {{ visibility: hidden; }}
+    
+    /* Hide header content except buttons */
+    header > * {{
+        visibility: hidden;
+        display: none;
+    }}
+    
+    /* Make toggle button visible again */
+    header button {{
+        visibility: visible !important;
+        display: inline-block !important;
+    }}
 
     /* ── Metric cards ── */
     .kpi-card {{
