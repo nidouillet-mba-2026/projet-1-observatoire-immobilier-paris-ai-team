@@ -6,21 +6,27 @@ import os
 
 def format_price(price):
     """Format price to short notation (ex: 205k, 1.2M)"""
-    if pd.isna(price):
-        return ""
-    price = float(price)
-    if price >= 1_000_000:
-        return f"{price / 1_000_000:.1f}M"
-    elif price >= 1_000:
-        return f"{price / 1_000:.0f}k"
-    else:
-        return f"{price:.0f}"
+    try:
+        if pd.isnull(price) or price is None or (isinstance(price, str) and price == ""):
+            return ""
+        price = float(price)
+        if price >= 1_000_000:
+            return f"{price / 1_000_000:.1f}M"
+        elif price >= 1_000:
+            return f"{price / 1_000:.0f}k"
+        else:
+            return f"{price:.0f}"
+    except (ValueError, TypeError):
+        return str(price)
 
 def format_date_fr(date):
     """Format date to French format (jour-mois-année)"""
-    if pd.isna(date):
-        return ""
-    return pd.to_datetime(date).strftime("%d-%m-%Y")
+    try:
+        if pd.isnull(date) or date is None or (isinstance(date, str) and date == ""):
+            return ""
+        return pd.to_datetime(date).strftime("%d-%m-%Y")
+    except (ValueError, TypeError):
+        return str(date)
 
 st.set_page_config(
     page_title="Observatoire Immobilier Toulon",
@@ -902,13 +908,23 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             label = "Bien'Ici" if mode_key == "Annonces" else "LeBonCoin"
             section_title(f"Annonces en cours — {label}")
             df_display_annonces = df_filtered.copy()
-            # Rename columns
-            df_display_annonces = df_display_annonces.rename(columns={'date_mutation': 'date_publication'})
+            
+            # Handle date column - rename date_mutation to date_publication if needed
+            if 'date_mutation' in df_display_annonces.columns and 'date_publication' not in df_display_annonces.columns:
+                df_display_annonces = df_display_annonces.rename(columns={'date_mutation': 'date_publication'})
+            elif 'date_mutation' in df_display_annonces.columns and 'date_publication' in df_display_annonces.columns:
+                # Drop date_mutation if date_publication already exists
+                df_display_annonces = df_display_annonces.drop(columns=['date_mutation'])
+            
             # Format columns
             if 'budget' in df_display_annonces.columns:
                 df_display_annonces['budget'] = df_display_annonces['budget'].apply(format_price)
             if 'date_publication' in df_display_annonces.columns:
                 df_display_annonces['date_publication'] = df_display_annonces['date_publication'].apply(format_date_fr)
+            
+            # Remove any duplicate columns
+            df_display_annonces = df_display_annonces.loc[:, ~df_display_annonces.columns.duplicated()]
+            
             st.dataframe(df_display_annonces, use_container_width=True, hide_index=True)
 
 elif mode_key != "Acheteurs":
