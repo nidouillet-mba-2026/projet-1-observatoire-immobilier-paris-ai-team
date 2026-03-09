@@ -3,6 +3,24 @@ import pandas as pd
 import plotly.express as px
 import os
 
+def format_price(price):
+    """Format price to short notation (ex: 205k, 1.2M)"""
+    if pd.isna(price):
+        return ""
+    price = float(price)
+    if price >= 1_000_000:
+        return f"{price / 1_000_000:.1f}M"
+    elif price >= 1_000:
+        return f"{price / 1_000:.0f}k"
+    else:
+        return f"{price:.0f}"
+
+def format_date_fr(date):
+    """Format date to French format (jour-mois-année)"""
+    if pd.isna(date):
+        return ""
+    return pd.to_datetime(date).strftime("%d-%m-%Y")
+
 st.set_page_config(page_title="Observatoire Immobilier Toulon", layout="wide")
 
 st.title("🏙️ Observatoire Immobilier - Toulon (DVF)")
@@ -169,13 +187,19 @@ if not df.empty:
 
         with t4:
             st.header("Liste des dernières transactions (DVF)")
-            st.dataframe(df_filtered.sort_values('date_mutation', ascending=False).head(200), use_container_width=True)
+            df_display_dvf = df_filtered.sort_values('date_mutation', ascending=False).head(200).copy()
+            df_display_dvf['date_mutation'] = df_display_dvf['date_mutation'].apply(format_date_fr)
+            st.dataframe(df_display_dvf, use_container_width=True)
     
     elif mode_key == "Annonces":
         with t3:
             st.header("Liste des Annonces en cours")
             st.write("Source : Bien'Ici")
-            st.dataframe(df_filtered, use_container_width=True)
+            # Format the budget and date columns for better readability
+            df_display = df_filtered.copy()
+            df_display['budget'] = df_display['budget'].apply(format_price)
+            df_display['date_mutation'] = df_display['date_mutation'].apply(format_date_fr)
+            st.dataframe(df_display, use_container_width=True)
 
 else:
     st.info("⚠️ Aucune donnée disponible. Vérifiez vos filtres ou lancez le crawler.")
