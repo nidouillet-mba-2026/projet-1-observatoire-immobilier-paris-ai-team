@@ -1,398 +1,397 @@
-﻿source,date_crawl,titre,type_bien,prix,surface,prix_m2,nb_pieces,quartier,criteres,url
-LeBonCoin,2026-03-09,Appartement 3 pièces 49 m²,Appartement,87000,49 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3082005271
-LeBonCoin,2026-03-09,Appartement en viager 2 pièces 69 m²,Appartement,74300,69 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2848205409
-LeBonCoin,2026-03-09,Villa 7 pièces 166 m²,Maison,660000,166 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155076959
-LeBonCoin,2026-03-09,Appartement 3 pièces 67 m²,Appartement,536000,67 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123805406
-LeBonCoin,2026-03-09,Loft 6 pièces 260 m²,Appartement,450000,260 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2980531550
+﻿source,date_publication,titre,type_bien,prix,surface,prix_m2,nb_pieces,quartier,criteres,url
+LeBonCoin,2026-01-20,Maison 4 pièces 70 m²,Maison,310000,70 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130810337
+LeBonCoin,2026-01-21,Appartement 4 pièces 130 m²,Appartement,500000,130 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3067791058
+LeBonCoin,2025-07-07,Studio 1 pièce 20 m²,Appartement,82500,20 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3019180419
+LeBonCoin,2026-02-15,Appartement 3 pièces 49 m²,Appartement,87000,49 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3082005271
+LeBonCoin,2024-09-17,Appartement en viager 2 pièces 69 m²,Appartement,74300,69 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2848205409
+LeBonCoin,2026-03-04,Villa 7 pièces 166 m²,Maison,660000,166 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155076959
+LeBonCoin,2026-03-04,Appartement 3 pièces 67 m²,Appartement,536000,67 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123805406
+LeBonCoin,2025-04-29,Loft 6 pièces 260 m²,Appartement,450000,260 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2980531550
 LeBonCoin,2026-03-09,Appartement 2/3 chambres - ascenseur - balcon - stationnement,Appartement,166000,67 m²,,3,Non precise,"jardin/terrasse, ascenseur",https://www.leboncoin.fr/ad/ventes_immobilieres/3158664170
-LeBonCoin,2026-03-09,Appartement 4 pièces 80 m²,Appartement,199000,80 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138370471
-LeBonCoin,2026-03-09,Appartement 5 pièces 88 m²,Appartement,320000,88 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127054509
-LeBonCoin,2026-03-09,Appartement 3 pièces 59 m²,Appartement,217000,59 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3102310861
-LeBonCoin,2026-03-09,Appartement 4 pièces 82 m²,Appartement,285000,82 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3097402627
-LeBonCoin,2026-03-09,Appartement 2 pièces 36 m²,Appartement,117000,36 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2977220770
+LeBonCoin,2026-02-02,Appartement 4 pièces 80 m²,Appartement,199000,80 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138370471
+LeBonCoin,2026-01-13,Appartement 5 pièces 88 m²,Appartement,320000,88 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127054509
+LeBonCoin,2026-01-23,Appartement 3 pièces 59 m²,Appartement,217000,59 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3102310861
+LeBonCoin,2026-01-14,Appartement 4 pièces 82 m²,Appartement,285000,82 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3097402627
+LeBonCoin,2025-04-23,Appartement 2 pièces 36 m²,Appartement,117000,36 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2977220770
 LeBonCoin,2026-03-09,Appartement 2 pièces 48 m²,Appartement,130000,48 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158659511
-LeBonCoin,2026-03-09,Appartement en viager 2 pièces 47 m²,Appartement,48600,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3041393577
-LeBonCoin,2026-03-09,Appartement 4 pièces 112 m²,Appartement,648000,112 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146661969
-LeBonCoin,2026-03-09,Appartement en Viager 3 pièces 55 m²,Appartement,135000,55 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2989313551
-LeBonCoin,2026-03-09,Appartement 3 pièces 70 m²,Appartement,295000,70 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059596868
-LeBonCoin,2026-03-09,Toulon – Place de l’Opéra Superbe Appartement Haussmannien de 112 m² avec balcon et grands volumes,Appartement,499000,112 m²,,4,Non precise,jardin/terrasse,https://www.leboncoin.fr/ad/ventes_immobilieres/3135408632
+LeBonCoin,2025-08-18,Appartement en viager 2 pièces 47 m²,Appartement,48600,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3041393577
+LeBonCoin,2026-02-17,Appartement 4 pièces 112 m²,Appartement,648000,112 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146661969
+LeBonCoin,2025-05-13,Appartement en Viager 3 pièces 55 m²,Appartement,135000,55 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2989313551
+LeBonCoin,2025-09-17,Appartement 3 pièces 70 m²,Appartement,295000,70 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059596868
+LeBonCoin,2025-12-12,Toulon – Place de l’Opéra Superbe Appartement Haussmannien de 112 m² avec balcon et grands volumes,Appartement,499000,112 m²,,4,Non precise,jardin/terrasse,https://www.leboncoin.fr/ad/ventes_immobilieres/3135408632
 LeBonCoin,2026-03-09,Appartement 2 pièces 53 m²,Appartement,295000,53 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158609684
 LeBonCoin,2026-03-09,Studio 1 pièce 25 m²,Appartement,82000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158603084
 LeBonCoin,2026-03-09,Appartement 4 pièces 73 m²,Appartement,232000,73 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095908157
-LeBonCoin,2026-03-09,Appartement - 4 pièces - LA CLOSERAIE TOULON,Appartement,582000,94 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3060351454
+LeBonCoin,2025-09-17,Appartement - 4 pièces - LA CLOSERAIE TOULON,Appartement,582000,94 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3060351454
 LeBonCoin,2026-03-09,Appartement 4 pièces 75 m²,Appartement,178000,75 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158599284
 LeBonCoin,2026-03-09,Appartement 2 pièces 47 m²,Appartement,167000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3062616967
-LeBonCoin,2026-03-09,Appartement 3 pièces 82 m²,Appartement,328000,82 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158564844
-LeBonCoin,2026-03-09,Appartement 3 pièces 69 m²,Appartement,169000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095911663
-LeBonCoin,2026-03-09,Appartement 5 pièces 92 m²,Appartement,415000,92 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148415644
-LeBonCoin,2026-03-09,Maison de ville 5 pièces 135 m²,Maison,750000,135 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124230408
-LeBonCoin,2026-03-09,Loft 2 pièces 37 m²,Appartement,139000,37 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3110732847
-LeBonCoin,2026-03-09,Appartement 3 pièces 53 m²,Appartement,165000,53 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3152021914
-LeBonCoin,2026-03-09,Appartement 1 pièce 37 m²,Appartement,159000,37 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3098179902
-LeBonCoin,2026-03-09,Appartement 3 pièces 51 m²,Appartement,128000,51 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124685194
-LeBonCoin,2026-03-09,Appartement 2 pièces 30 m²,Appartement,119000,30 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3075090103
-LeBonCoin,2026-03-09,Appartement 1 pièce 17 m²,Appartement,83000,17 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2349117437
-LeBonCoin,2026-03-09,Appartement 3 pièces 71 m²,Appartement,434000,71 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135876028
-LeBonCoin,2026-03-09,Immeuble 65 m² Toulon,Autre,250000,65 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095762558
-LeBonCoin,2026-03-09,Studio 4 pièces 87 m²,Appartement,189000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3122805462
-LeBonCoin,2026-03-09,Appartement 4 pièces 79 m²,Appartement,225000,79 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151670047
-LeBonCoin,2026-03-09,Appartement 2 pièces 42 m²,Appartement,189000,42 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055655258
-LeBonCoin,2026-03-09,Appartement 3 pièces 71 m²,Appartement,405000,71 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2882383178
-LeBonCoin,2026-03-09,Appartement 2 pièces 48 m²,Appartement,164000,48 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158397380
-LeBonCoin,2026-03-09,Appartement 2 pièces 52 m²,Appartement,121800,52 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113747323
-LeBonCoin,2026-03-09,Appartement 2 pièces 49 m²,Appartement,234300,49 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3099860619
-LeBonCoin,2026-03-09,Appartement 3 pièces 59 m²,Appartement,249000,59 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3016412637
-LeBonCoin,2026-03-09,Appartement 5 pièces 82 m²,Appartement,193000,82 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2956990584
-LeBonCoin,2026-03-09,Appartement 2 pièces 37 m²,Appartement,180000,37 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148526109
-LeBonCoin,2026-03-09,Studio 1 pièce 21 m²,Appartement,155000,21 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3145870417
-LeBonCoin,2026-03-09,Appartement 5 pièces 98 m²,Appartement,282000,98 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3100080839
-LeBonCoin,2026-03-09,Appartement 3 pièces 84 m²,Appartement,289000,84 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079250269
-LeBonCoin,2026-03-09,Appartement 4 pièces 95 m²,Appartement,599000,95 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3145977768
-LeBonCoin,2026-03-09,Toulon Port Marchand T3 66m2 avec Balcon vue mer et cave,Appartement,205000,66 m²,,3,Non precise,"jardin/terrasse, vue mer, cave",https://www.leboncoin.fr/ad/ventes_immobilieres/3135397628
-LeBonCoin,2026-03-09,Appartement 2 pièces 47 m²,Appartement,185000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2972662479
-LeBonCoin,2026-03-09,Appartement 3 pièces 74 m²,Appartement,143000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138858798
-LeBonCoin,2026-03-09,Appartement en Viager 3 pièces 70 m²,Appartement,109900,70 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136744296
-LeBonCoin,2026-03-09,Loft 3 pièces 86 m²,Appartement,370000,86 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132609888
-LeBonCoin,2026-03-09,Maison 11 pièces 201 m²,Maison,949000,201 m²,,11,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3066145810
-LeBonCoin,2026-03-09,Appartement 3 pièces 63 m²,Appartement,423000,63 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148494418
-LeBonCoin,2026-03-09,Toulon la loubiere dans residence de 2014 - t2 avec parking sous sol,Appartement,138000,38 m²,,2,Non precise,parking/garage,https://www.leboncoin.fr/ad/ventes_immobilieres/3143222175
-LeBonCoin,2026-03-09,Appartement 2 pièces 45 m²,Appartement,97470,45 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136601556
-LeBonCoin,2026-03-09,Appartement 4 pièces 96 m²,Appartement,345000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3087840194
-LeBonCoin,2026-03-09,Appartement 4 pièces 66 m²,Appartement,230000,66 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3043125115
-LeBonCoin,2026-03-09,Appartement 3 pièces 64 m²,Appartement,299000,64 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3085246618
-LeBonCoin,2026-03-09,Appartement 6 pièces 90 m²,Appartement,299000,90 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106327639
-LeBonCoin,2026-03-09,Appartement 5 pièces 72 m²,Appartement,314000,72 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095696264
-LeBonCoin,2026-03-09,Appartement 3 pièces 74 m²,Appartement,290000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154588943
-LeBonCoin,2026-03-09,Appartement 2 pièces 39 m²,Appartement,144000,39 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123200218
-LeBonCoin,2026-03-09,Appartement 3 pièces 56 m²,Appartement,315000,56 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3115895521
-LeBonCoin,2026-03-09,Studio 3 pièces 35 m²,Appartement,119000,35 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3090719082
-LeBonCoin,2026-03-09,Appartement 2 pièces 44 m²,Appartement,137000,44 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3077939746
-LeBonCoin,2026-03-09,Appartement 3 pièces 68 m²,Appartement,278800,68 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3072310866
-LeBonCoin,2026-03-09,Appartement 4 pièces 78 m²,Appartement,369000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3003385786
-LeBonCoin,2026-03-09,T5 - TOULON secteur claret,Appartement,217000,79 m²,,5,claret,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146041095
-LeBonCoin,2026-03-09,Appartement 4 pièces 87 m²,Appartement,226000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3028399150
-LeBonCoin,2026-03-09,Appartement 5 pièces 113 m²,Appartement,279900,113 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3025323933
-LeBonCoin,2026-03-09,Appartement 3 pièces 60 m²,Appartement,345000,60 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3012087094
-LeBonCoin,2026-03-09,Appartement 3 pièces 55 m²,Appartement,238500,55 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2980002081
-LeBonCoin,2026-03-09,Appartement 2 pièces 48 m²,Appartement,102000,48 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2940804641
-LeBonCoin,2026-03-09,Appartement 3 pièces 69 m²,Appartement,290000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2895227377
-LeBonCoin,2026-03-09,Appartement 3 pièces 62 m²,Appartement,413000,62 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2868523297
-LeBonCoin,2026-03-09,Appartement 4 pièces 85 m²,Appartement,345000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095760017
-LeBonCoin,2026-03-09,Appartement 3 pièces 69 m²,Appartement,237000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154815065
-LeBonCoin,2026-03-09,Appartement 5 pièces 120 m²,Appartement,425000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143083743
-LeBonCoin,2026-03-09,Appartement en Viager 4 pièces 142 m²,Appartement,693600,142 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3068068443
-LeBonCoin,2026-03-09,Appartement 4 pièces 96 m²,Appartement,198000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154640319
-LeBonCoin,2026-03-09,Appartement 3 pièces 63 m²,Appartement,150000,63 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151751537
-LeBonCoin,2026-03-09,Appartement 3 pièces 57 m²,Appartement,370000,57 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146161105
-LeBonCoin,2026-03-09,Appartement 2 pièces 56 m²,Appartement,120000,56 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130668385
-LeBonCoin,2026-03-09,Appartement 4 pièces 67 m²,Appartement,295000,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128532673
-LeBonCoin,2026-03-09,Appartement 4 pièces 76 m²,Appartement,244000,76 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3107848057
-LeBonCoin,2026-03-09,Appartement 5 pièces 126 m²,Appartement,259000,126 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091038927
-LeBonCoin,2026-03-09,Appartement 3 pièces 51 m²,Appartement,128000,51 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3088151403
-LeBonCoin,2026-03-09,Appartement 2 pièces 52 m²,Appartement,110000,52 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2738636776
-LeBonCoin,2026-03-09,Studio 1 pièce 17 m²,Appartement,82000,17 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2410365222
-LeBonCoin,2026-03-09,Appartement 4 pièces 85 m²,Appartement,350000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3031435334
-LeBonCoin,2026-03-09,Appartement 5 pièces 100 m²,Appartement,315000,100 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154381295
-LeBonCoin,2026-03-09,Appartement 2 pièces 37 m²,Appartement,139500,37 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151650705
-LeBonCoin,2026-03-09,Appartement 3 pièces 57 m²,Appartement,369000,57 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143412450
-LeBonCoin,2026-03-09,Appartement 4 pièces 70 m²,Appartement,187000,70 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131288168
-LeBonCoin,2026-03-09,Appartement 4 pièces 67 m²,Appartement,154900,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127754586
-LeBonCoin,2026-03-09,Appartement 4 pièces 81 m²,Appartement,185500,81 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038640342
-LeBonCoin,2026-03-09,Appartement 4 pièces 78 m²,Appartement,290000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2970181275
-LeBonCoin,2026-03-09,Appartement 2 pièces 36 m²,Appartement,125000,36 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123200978
-LeBonCoin,2026-03-09,Appartement 2 pièces 63 m²,Appartement,145000,63 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3117031561
-LeBonCoin,2026-03-09,Appartement 2 pièces 55 m²,Appartement,117000,55 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146162240
-LeBonCoin,2026-03-09,Appartement 3 pièces 86 m²,Appartement,218000,86 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146006585
-LeBonCoin,2026-03-09,Appartement 2 pièces 40 m²,Appartement,102800,40 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136601559
-LeBonCoin,2026-03-09,Appartement 9 pièces 211 m²,Appartement,684000,211 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3077918372
-LeBonCoin,2026-03-09,Appartement 1 pièce 26 m²,Appartement,90000,26 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3058945348
-LeBonCoin,2026-03-09,Appartement 3 pièces 54 m²,Appartement,209000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2892608444
-LeBonCoin,2026-03-09,Immeuble 9 pièces 150 m²,Autre,550000,150 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126521104
-LeBonCoin,2026-03-09,Appartement 2 pièces 46 m²,Appartement,128000,46 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3031371301
-LeBonCoin,2026-03-09,Appartement 2 pièces 39 m²,Appartement,272000,39 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2860554361
-LeBonCoin,2026-03-09,Appartement 2 pièces 45 m²,Appartement,147500,45 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148680332
-LeBonCoin,2026-03-09,Appartement 4 pièces 67 m²,Appartement,109000,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2997874865
-LeBonCoin,2026-03-09,Appartement 1 pièce 31 m²,Appartement,140000,31 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2965856439
-LeBonCoin,2026-03-09,Appartement 3 pièces 69 m²,Appartement,308000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154751007
-LeBonCoin,2026-03-09,Appartement 4 pièces 82 m²,Appartement,432000,82 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148616221
-LeBonCoin,2026-03-09,Appartement 3 pièces 61 m²,Appartement,145000,61 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146007033
-LeBonCoin,2026-03-09,Appartement 3 pièces 56 m²,Appartement,112000,56 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3098395223
-LeBonCoin,2026-03-09,Appartement 2 pièces 77 m²,Appartement,201680,77 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123249382
-LeBonCoin,2026-03-09,Appartement 4 pièces 65 m²,Appartement,160000,65 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128961169
-LeBonCoin,2026-03-09,Appartement 3 pièces 67 m²,Appartement,145000,67 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134223240
-LeBonCoin,2026-03-09,Appartement 6 pièces 129 m²,Appartement,436000,129 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104402869
-LeBonCoin,2026-03-09,Appartement 2 pièces 34 m²,Appartement,78000,34 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079064870
-LeBonCoin,2026-03-09,Appartement 3 pièces 54 m²,Appartement,169000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506527
-LeBonCoin,2026-03-09,Appartement 3 pièces 73 m²,Appartement,243000,73 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104474182
-LeBonCoin,2026-03-09,Appartement 5 pièces 116 m²,Appartement,285000,116 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3064427618
-LeBonCoin,2026-03-09,Appartement 6 pièces 158 m²,Appartement,575000,158 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150689128
-LeBonCoin,2026-03-09,Immeuble 8 pièces 256 m²,Autre,649000,256 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135086556
-LeBonCoin,2026-03-09,Appartement 4 pièces 86 m²,Appartement,193000,86 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132497447
-LeBonCoin,2026-03-09,Appartement 3 pièces 52 m²,Appartement,103200,52 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3110982862
-LeBonCoin,2026-03-09,Appartement 4 pièces 66 m²,Appartement,124000,66 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2997874864
-LeBonCoin,2026-03-09,Appartement - 1 pièce - VAL D'ORIA,Appartement,230000,45 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136052811
-LeBonCoin,2026-03-09,Appartement 1 pièce 18 m²,Appartement,42000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135678523
-LeBonCoin,2026-03-09,Propriété 6 pièces 180 m²,Maison,879000,180 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506549
-LeBonCoin,2026-03-09,Appartement 4 pièces 75 m²,Appartement,180000,75 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506533
-LeBonCoin,2026-03-09,Appartement 2 pièces 47 m²,Appartement,159000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123577067
-LeBonCoin,2026-03-09,Appartement 5 pièces 126 m²,Appartement,258000,126 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079247015
-LeBonCoin,2026-03-09,Appartement 2 pièces 25 m²,Appartement,82000,25 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148501968
-LeBonCoin,2026-03-09,Appartement 1 pièce 18 m²,Appartement,76036,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146161855
-LeBonCoin,2026-03-09,Appartement 4 pièces 85 m²,Appartement,267000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138362913
-LeBonCoin,2026-03-09,Appartement 4 pièces 74 m²,Appartement,235000,74 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140610555
-LeBonCoin,2026-03-09,Appartement 2 pièces 28 m²,Appartement,92000,28 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130835913
-LeBonCoin,2026-03-09,Appartement 4 pièces 89 m²,Appartement,285000,89 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3114549802
-LeBonCoin,2026-03-09,Appartement 3 pièces 57 m²,Appartement,134000,57 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3024625990
-LeBonCoin,2026-03-09,Appartement 3 pièces 81 m²,Appartement,189000,81 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506522
-LeBonCoin,2026-03-09,Immeuble 207 m² Toulon,Autre,498000,207 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113600429
-LeBonCoin,2026-03-09,Maison 6 pièces 240 m²,Maison,1190000,240 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2982482239
-LeBonCoin,2026-03-09,Appartement 2 pièces 54 m²,Appartement,199000,54 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3084726123
-LeBonCoin,2026-03-09,Appartement 4 pièces 78 m²,Appartement,220000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3042420851
-LeBonCoin,2026-03-09,T1 au cœur du Mourillon aucun travaux à prévoir,Appartement,109500,24 m²,,1,mourillon,travaux,https://www.leboncoin.fr/ad/ventes_immobilieres/3157801299
-LeBonCoin,2026-03-09,Appartement 1 pièce 34 m²,Appartement,95000,34 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3085302981
-LeBonCoin,2026-03-09,Appartement 5 pièces 104 m²,Appartement,300000,104 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132876990
-LeBonCoin,2026-03-09,Appartement - 2 pièces - VAL D'ORIA,Appartement,178000,43 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3058829293
-LeBonCoin,2026-03-09,Maison 5 pièces 122 m²,Maison,555000,122 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130524701
-LeBonCoin,2026-03-09,Appartement 3 pièces 67 m²,Appartement,178000,67 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138884273
-LeBonCoin,2026-03-09,Appartement 3 pièces 74 m²,Appartement,316000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3063325280
-LeBonCoin,2026-03-09,Appartement 2 pièces 52 m²,Appartement,161200,52 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3074408142
-LeBonCoin,2026-03-09,Immeuble 40 pièces 2542 m²,Autre,3500000,2542 m²,,40,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3080152241
-LeBonCoin,2026-03-09,Villa 9 pièces 223 m²,Maison,900000,223 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154645244
-LeBonCoin,2026-03-09,Appartement - 3 pièces - VAL D'ORIA,Appartement,254000,61 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055609742
-LeBonCoin,2026-03-09,Maison - 6 pièces - LA CLOSERAIE TOULON,Maison,850000,180 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055567012
-LeBonCoin,2026-03-09,Appartement - 4 pièces - VAL D'ORIA,Appartement,334000,82 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3058829295
-LeBonCoin,2026-03-09,Appartement 4 pièces 76 m²,Appartement,224000,76 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3157577127
-LeBonCoin,2026-03-09,Appartement 2 pièces 40 m²,Appartement,102700,40 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3063752592
-LeBonCoin,2026-03-09,Studio 1 pièce 30 m²,Appartement,131000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055044007
-LeBonCoin,2026-03-09,Appartement 1 pièce 39 m²,Appartement,139000,39 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131560542
-LeBonCoin,2026-03-09,Appartement 2 pièces 42 m²,Appartement,126000,42 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130835915
-LeBonCoin,2026-03-09,Appartement 3 pièces 58 m²,Appartement,130000,58 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2910821915
-LeBonCoin,2026-03-09,Appartement 2 pièces 51 m²,Appartement,161200,51 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3074408141
-LeBonCoin,2026-03-09,Maison en viager 4 pièces 131 m²,Maison,220000,131 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2767259446
-LeBonCoin,2026-03-09,Appartement 4 pièces 96 m²,Appartement,270000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038639064
-LeBonCoin,2026-03-09,Appartement 4 pièces 76 m²,Appartement,203000,76 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3100080501
-LeBonCoin,2026-03-09,Appartement 4 pièces 103 m²,Appartement,285000,103 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2450014264
-LeBonCoin,2026-03-09,Appartement 4 pièces 132 m²,Appartement,429000,132 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3125661833
-LeBonCoin,2026-03-09,Appartement 2 pièces 49 m²,Appartement,149000,49 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151003103
-LeBonCoin,2026-03-09,Maison de ville 4 pièces 60 m²,Maison,336000,60 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138209716
+LeBonCoin,2026-03-08,Appartement 3 pièces 82 m²,Appartement,328000,82 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158564844
+LeBonCoin,2026-03-08,Appartement 3 pièces 69 m²,Appartement,169000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095911663
+LeBonCoin,2026-02-20,Appartement 5 pièces 92 m²,Appartement,415000,92 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148415644
+LeBonCoin,2026-03-05,Maison de ville 5 pièces 135 m²,Maison,750000,135 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124230408
+LeBonCoin,2026-02-05,Loft 2 pièces 37 m²,Appartement,139000,37 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3110732847
+LeBonCoin,2026-02-27,Appartement 3 pièces 53 m²,Appartement,165000,53 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3152021914
+LeBonCoin,2026-01-16,Appartement 1 pièce 37 m²,Appartement,159000,37 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3098179902
+LeBonCoin,2026-03-06,Appartement 3 pièces 51 m²,Appartement,128000,51 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124685194
+LeBonCoin,2026-02-04,Appartement 2 pièces 30 m²,Appartement,119000,30 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3075090103
+LeBonCoin,2023-05-15,Appartement 1 pièce 17 m²,Appartement,83000,17 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2349117437
+LeBonCoin,2026-01-29,Appartement 3 pièces 71 m²,Appartement,434000,71 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135876028
+LeBonCoin,2026-03-08,Immeuble 65 m² Toulon,Autre,250000,65 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095762558
+LeBonCoin,2026-03-02,Studio 4 pièces 87 m²,Appartement,189000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3122805462
+LeBonCoin,2026-02-26,Appartement 4 pièces 79 m²,Appartement,225000,79 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151670047
+LeBonCoin,2025-09-11,Appartement 2 pièces 42 m²,Appartement,189000,42 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055655258
+LeBonCoin,2024-11-13,Appartement 3 pièces 71 m²,Appartement,405000,71 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2882383178
+LeBonCoin,2026-03-08,Appartement 2 pièces 48 m²,Appartement,164000,48 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158397380
+LeBonCoin,2026-02-10,Appartement 2 pièces 52 m²,Appartement,121800,52 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113747323
+LeBonCoin,2026-01-18,Appartement 2 pièces 49 m²,Appartement,234300,49 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3099860619
+LeBonCoin,2025-07-01,Appartement 3 pièces 59 m²,Appartement,249000,59 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3016412637
+LeBonCoin,2025-03-21,Appartement 5 pièces 82 m²,Appartement,193000,82 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2956990584
+LeBonCoin,2026-02-21,Appartement 2 pièces 37 m²,Appartement,180000,37 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148526109
+LeBonCoin,2026-02-16,Studio 1 pièce 21 m²,Appartement,155000,21 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3145870417
+LeBonCoin,2025-10-17,Appartement 5 pièces 98 m²,Appartement,282000,98 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3100080839
+LeBonCoin,2026-02-11,Appartement 3 pièces 84 m²,Appartement,289000,84 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079250269
+LeBonCoin,2026-02-16,Appartement 4 pièces 95 m²,Appartement,599000,95 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3145977768
+LeBonCoin,2025-12-12,Toulon Port Marchand T3 66m2 avec Balcon vue mer et cave,Appartement,205000,66 m²,,3,Non precise,"jardin/terrasse, vue mer, cave",https://www.leboncoin.fr/ad/ventes_immobilieres/3135397628
+LeBonCoin,2025-04-15,Appartement 2 pièces 47 m²,Appartement,185000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2972662479
+LeBonCoin,2026-02-03,Appartement 3 pièces 74 m²,Appartement,143000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138858798
+LeBonCoin,2026-01-31,Appartement en Viager 3 pièces 70 m²,Appartement,109900,70 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136744296
+LeBonCoin,2026-01-23,Loft 3 pièces 86 m²,Appartement,370000,86 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132609888
+LeBonCoin,2026-01-18,Maison 11 pièces 201 m²,Maison,949000,201 m²,,11,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3066145810
+LeBonCoin,2026-02-06,Appartement 3 pièces 63 m²,Appartement,423000,63 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148494418
+LeBonCoin,2026-02-11,Toulon la loubiere dans residence de 2014 - t2 avec parking sous sol,Appartement,138000,38 m²,,2,Non precise,parking/garage,https://www.leboncoin.fr/ad/ventes_immobilieres/3143222175
+LeBonCoin,2026-01-30,Appartement 2 pièces 45 m²,Appartement,97470,45 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136601556
+LeBonCoin,2026-02-25,Appartement 4 pièces 96 m²,Appartement,345000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3087840194
+LeBonCoin,2025-08-21,Appartement 4 pièces 66 m²,Appartement,230000,66 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3043125115
+LeBonCoin,2026-02-21,Appartement 3 pièces 64 m²,Appartement,299000,64 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3085246618
+LeBonCoin,2026-01-30,Appartement 6 pièces 90 m²,Appartement,299000,90 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106327639
+LeBonCoin,2026-03-08,Appartement 5 pièces 72 m²,Appartement,314000,72 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095696264
+LeBonCoin,2026-03-03,Appartement 3 pièces 74 m²,Appartement,290000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154588943
+LeBonCoin,2026-03-03,Appartement 2 pièces 39 m²,Appartement,144000,39 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123200218
+LeBonCoin,2026-02-15,Appartement 3 pièces 56 m²,Appartement,315000,56 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3115895521
+LeBonCoin,2025-09-23,Appartement 2 pièces 44 m²,Appartement,137000,44 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3077939746
+LeBonCoin,2026-01-30,Appartement 3 pièces 68 m²,Appartement,278800,68 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3072310866
+LeBonCoin,2025-06-07,Appartement 4 pièces 78 m²,Appartement,369000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3003385786
+LeBonCoin,2026-02-16,T5 - TOULON secteur claret,Appartement,217000,79 m²,,5,claret,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146041095
+LeBonCoin,2025-07-23,Appartement 4 pièces 87 m²,Appartement,226000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3028399150
+LeBonCoin,2025-07-18,Appartement 5 pièces 113 m²,Appartement,279900,113 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3025323933
+LeBonCoin,2025-06-23,Appartement 3 pièces 60 m²,Appartement,345000,60 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3012087094
+LeBonCoin,2025-04-28,Appartement 3 pièces 55 m²,Appartement,238500,55 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2980002081
+LeBonCoin,2025-02-21,Appartement 2 pièces 48 m²,Appartement,102000,48 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2940804641
+LeBonCoin,2024-12-02,Appartement 3 pièces 69 m²,Appartement,290000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2895227377
+LeBonCoin,2025-06-24,Appartement 3 pièces 62 m²,Appartement,413000,62 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2868523297
+LeBonCoin,2026-03-08,Appartement 4 pièces 85 m²,Appartement,345000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095760017
+LeBonCoin,2026-03-03,Appartement 3 pièces 69 m²,Appartement,237000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154815065
+LeBonCoin,2026-02-11,Appartement 5 pièces 120 m²,Appartement,425000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143083743
+LeBonCoin,2026-01-26,Appartement en Viager 4 pièces 142 m²,Appartement,693600,142 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3068068443
+LeBonCoin,2026-03-03,Appartement 4 pièces 96 m²,Appartement,198000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154640319
+LeBonCoin,2026-02-26,Appartement 3 pièces 63 m²,Appartement,150000,63 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151751537
+LeBonCoin,2026-02-16,Appartement 3 pièces 57 m²,Appartement,370000,57 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146161105
+LeBonCoin,2026-01-19,Appartement 2 pièces 56 m²,Appartement,120000,56 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130668385
+LeBonCoin,2026-01-16,Appartement 4 pièces 67 m²,Appartement,295000,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128532673
+LeBonCoin,2026-01-31,Appartement 4 pièces 76 m²,Appartement,244000,76 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3107848057
+LeBonCoin,2026-03-03,Appartement 5 pièces 126 m²,Appartement,259000,126 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091038927
+LeBonCoin,2026-02-26,Appartement 3 pièces 51 m²,Appartement,128000,51 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3088151403
+LeBonCoin,2024-06-11,Appartement 2 pièces 52 m²,Appartement,110000,52 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2738636776
+LeBonCoin,2023-09-13,Studio 1 pièce 17 m²,Appartement,82000,17 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2410365222
+LeBonCoin,2025-07-28,Appartement 4 pièces 85 m²,Appartement,350000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3031435334
+LeBonCoin,2026-03-03,Appartement 5 pièces 100 m²,Appartement,315000,100 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154381295
+LeBonCoin,2026-02-26,Appartement 2 pièces 37 m²,Appartement,139500,37 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151650705
+LeBonCoin,2026-02-11,Appartement 3 pièces 57 m²,Appartement,369000,57 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143412450
+LeBonCoin,2026-01-21,Appartement 4 pièces 70 m²,Appartement,187000,70 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131288168
+LeBonCoin,2026-01-14,Appartement 4 pièces 67 m²,Appartement,154900,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127754586
+LeBonCoin,2025-08-12,Appartement 4 pièces 81 m²,Appartement,185500,81 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038640342
+LeBonCoin,2025-04-11,Appartement 4 pièces 78 m²,Appartement,290000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2970181275
+LeBonCoin,2026-03-03,Appartement 2 pièces 36 m²,Appartement,125000,36 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123200978
+LeBonCoin,2026-02-18,Appartement 2 pièces 63 m²,Appartement,145000,63 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3117031561
+LeBonCoin,2026-02-16,Appartement 2 pièces 55 m²,Appartement,117000,55 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146162240
+LeBonCoin,2026-02-16,Appartement 3 pièces 86 m²,Appartement,218000,86 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146006585
+LeBonCoin,2026-01-30,Appartement 2 pièces 40 m²,Appartement,102800,40 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136601559
+LeBonCoin,2026-02-08,Appartement 9 pièces 211 m²,Appartement,684000,211 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3077918372
+LeBonCoin,2026-03-02,Appartement 1 pièce 26 m²,Appartement,90000,26 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3058945348
+LeBonCoin,2024-11-28,Appartement 3 pièces 54 m²,Appartement,209000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2892608444
+LeBonCoin,2026-01-12,Immeuble 9 pièces 150 m²,Autre,550000,150 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126521104
+LeBonCoin,2025-07-28,Appartement 2 pièces 46 m²,Appartement,128000,46 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3031371301
+LeBonCoin,2024-10-07,Appartement 2 pièces 39 m²,Appartement,272000,39 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2860554361
+LeBonCoin,2026-02-21,Appartement 2 pièces 45 m²,Appartement,147500,45 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148680332
+LeBonCoin,2025-05-28,Appartement 4 pièces 67 m²,Appartement,109000,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2997874865
+LeBonCoin,2025-04-04,Appartement 1 pièce 31 m²,Appartement,140000,31 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2965856439
+LeBonCoin,2026-03-03,Appartement 3 pièces 69 m²,Appartement,308000,69 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154751007
+LeBonCoin,2026-02-21,Appartement 4 pièces 82 m²,Appartement,432000,82 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148616221
+LeBonCoin,2026-02-16,Appartement 3 pièces 61 m²,Appartement,145000,61 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146007033
+LeBonCoin,2026-01-16,Appartement 3 pièces 56 m²,Appartement,112000,56 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3098395223
+LeBonCoin,2026-03-02,Appartement 2 pièces 77 m²,Appartement,201680,77 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123249382
+LeBonCoin,2026-01-17,Appartement 4 pièces 65 m²,Appartement,160000,65 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128961169
+LeBonCoin,2026-01-26,Appartement 3 pièces 67 m²,Appartement,145000,67 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134223240
+LeBonCoin,2026-01-26,Appartement 6 pièces 129 m²,Appartement,436000,129 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104402869
+LeBonCoin,2026-02-11,Appartement 2 pièces 34 m²,Appartement,78000,34 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079064870
+LeBonCoin,2026-03-03,Appartement 3 pièces 54 m²,Appartement,169000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506527
+LeBonCoin,2026-01-26,Appartement 3 pièces 73 m²,Appartement,243000,73 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104474182
+LeBonCoin,2026-01-16,Appartement 5 pièces 116 m²,Appartement,285000,116 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3064427618
+LeBonCoin,2026-02-12,Appartement 6 pièces 158 m²,Appartement,575000,158 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150689128
+LeBonCoin,2026-01-27,Immeuble 8 pièces 256 m²,Autre,649000,256 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135086556
+LeBonCoin,2026-01-23,Appartement 4 pièces 86 m²,Appartement,193000,86 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132497447
+LeBonCoin,2026-02-05,Appartement 3 pièces 52 m²,Appartement,103200,52 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3110982862
+LeBonCoin,2025-05-28,Appartement 4 pièces 66 m²,Appartement,124000,66 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2997874864
+LeBonCoin,2026-03-08,Appartement - 1 pièce - VAL D'ORIA,Appartement,230000,45 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136052811
+LeBonCoin,2026-01-28,Appartement 1 pièce 18 m²,Appartement,42000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135678523
+LeBonCoin,2026-03-03,Propriété 6 pièces 180 m²,Maison,879000,180 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506549
+LeBonCoin,2026-03-03,Appartement 4 pièces 75 m²,Appartement,180000,75 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506533
+LeBonCoin,2026-03-03,Appartement 2 pièces 47 m²,Appartement,159000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3123577067
+LeBonCoin,2026-02-11,Appartement 5 pièces 126 m²,Appartement,258000,126 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079247015
+LeBonCoin,2026-02-20,Appartement 2 pièces 25 m²,Appartement,82000,25 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148501968
+LeBonCoin,2026-02-16,Appartement 1 pièce 18 m²,Appartement,76036,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146161855
+LeBonCoin,2026-02-02,Appartement 4 pièces 85 m²,Appartement,267000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138362913
+LeBonCoin,2026-02-06,Appartement 4 pièces 74 m²,Appartement,235000,74 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140610555
+LeBonCoin,2026-01-20,Appartement 2 pièces 28 m²,Appartement,92000,28 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130835913
+LeBonCoin,2026-02-12,Appartement 4 pièces 89 m²,Appartement,285000,89 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3114549802
+LeBonCoin,2025-07-17,Appartement 3 pièces 57 m²,Appartement,134000,57 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3024625990
+LeBonCoin,2026-03-03,Appartement 3 pièces 81 m²,Appartement,189000,81 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154506522
+LeBonCoin,2026-02-10,Immeuble 207 m² Toulon,Autre,498000,207 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113600429
+LeBonCoin,2025-05-02,Maison 6 pièces 240 m²,Maison,1190000,240 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2982482239
+LeBonCoin,2026-02-21,Appartement 2 pièces 54 m²,Appartement,199000,54 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3084726123
+LeBonCoin,2025-08-20,Appartement 4 pièces 78 m²,Appartement,220000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3042420851
+LeBonCoin,2026-03-08,T1 au cœur du Mourillon aucun travaux à prévoir,Appartement,109500,24 m²,,1,mourillon,travaux,https://www.leboncoin.fr/ad/ventes_immobilieres/3157801299
+LeBonCoin,2026-02-21,Appartement 1 pièce 34 m²,Appartement,95000,34 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3085302981
+LeBonCoin,2026-01-24,Appartement 5 pièces 104 m²,Appartement,300000,104 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132876990
+LeBonCoin,2026-03-08,Appartement - 2 pièces - VAL D'ORIA,Appartement,178000,43 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3058829293
+LeBonCoin,2026-01-19,Maison 5 pièces 122 m²,Maison,555000,122 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130524701
+LeBonCoin,2026-02-03,Appartement 3 pièces 67 m²,Appartement,178000,67 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138884273
+LeBonCoin,2025-09-24,Appartement 3 pièces 74 m²,Appartement,316000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3063325280
+LeBonCoin,2026-02-02,Appartement 2 pièces 52 m²,Appartement,161200,52 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3074408142
+LeBonCoin,2026-02-12,Immeuble 40 pièces 2542 m²,Autre,3500000,2542 m²,,40,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3080152241
+LeBonCoin,2026-03-03,Villa 9 pièces 223 m²,Maison,900000,223 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154645244
+LeBonCoin,2026-03-08,Appartement - 3 pièces - VAL D'ORIA,Appartement,254000,61 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055609742
+LeBonCoin,2025-09-08,Maison - 6 pièces - LA CLOSERAIE TOULON,Maison,850000,180 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055567012
+LeBonCoin,2026-03-08,Appartement - 4 pièces - VAL D'ORIA,Appartement,334000,82 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3058829295
+LeBonCoin,2026-03-07,Appartement 4 pièces 76 m²,Appartement,224000,76 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3157577127
+LeBonCoin,2025-09-24,Appartement 2 pièces 40 m²,Appartement,102700,40 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3063752592
+LeBonCoin,2025-09-10,Studio 1 pièce 30 m²,Appartement,131000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3055044007
+LeBonCoin,2026-01-21,Appartement 1 pièce 39 m²,Appartement,139000,39 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131560542
+LeBonCoin,2026-01-20,Appartement 2 pièces 42 m²,Appartement,126000,42 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130835915
+LeBonCoin,2024-12-30,Appartement 3 pièces 58 m²,Appartement,130000,58 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2910821915
+LeBonCoin,2025-09-21,Appartement 2 pièces 51 m²,Appartement,161200,51 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3074408141
+LeBonCoin,2024-07-03,Maison en viager 4 pièces 131 m²,Maison,220000,131 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2767259446
+LeBonCoin,2025-08-12,Appartement 4 pièces 96 m²,Appartement,270000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038639064
+LeBonCoin,2026-01-19,Appartement 4 pièces 76 m²,Appartement,203000,76 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3100080501
+LeBonCoin,2023-11-22,Appartement 4 pièces 103 m²,Appartement,285000,103 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2450014264
+LeBonCoin,2026-01-16,Maison 4 pièces 140 m²,Maison,745000,140 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128788920
+LeBonCoin,2026-03-03,Maison 5 pièces 93 m²,Maison,385000,93 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154675711
+LeBonCoin,2026-03-02,Maison 9 pièces 220 m²,Maison,1290000,220 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154086649
+LeBonCoin,2026-02-02,Maison de ville 4 pièces 60 m²,Maison,336000,60 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138209716
 LeBonCoin,2026-03-09,Propriété 6 pièces 165 m²,Maison,920000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3158678683
-LeBonCoin,2026-03-09,Maison 8 pièces 280 m²,Maison,1680000,280 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092093021
-LeBonCoin,2026-03-09,Propriété 9 pièces 220 m²,Maison,1290000,220 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153643055
-LeBonCoin,2026-03-09,Villa 7 pièces 220 m²,Maison,1199000,220 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132685640
-LeBonCoin,2026-03-09,Maison 2 pièces 55 m²,Maison,308000,55 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126431367
-LeBonCoin,2026-03-09,Propriété 6 pièces 175 m²,Maison,815000,175 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3101469949
-LeBonCoin,2026-03-09,Villa 4 pièces 89 m²,Maison,495000,89 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146004911
-LeBonCoin,2026-03-09,Maison 8 pièces 219 m²,Maison,1095000,219 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154380020
-LeBonCoin,2026-03-09,Propriété 5 pièces 142 m²,Maison,970000,142 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104102455
-LeBonCoin,2026-03-09,Maison 6 pièces 170 m²,Maison,950000,170 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154580881
-LeBonCoin,2026-03-09,Maison en Viager 5 pièces 105 m²,Maison,151500,105 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139645269
-LeBonCoin,2026-03-09,Maison 5 pièces 120 m²,Maison,570000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3043646583
-LeBonCoin,2026-03-09,Propriété 8 pièces 240 m²,Maison,1380000,240 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038377513
-LeBonCoin,2026-03-09,Propriété 10 pièces 265 m²,Maison,1340000,265 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128049678
-LeBonCoin,2026-03-09,Maison 7 pièces 280 m²,Maison,1680000,280 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3019493746
-LeBonCoin,2026-03-09,Maison 2 pièces 70 m²,Maison,280000,70 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3024751369
-LeBonCoin,2026-03-09,Maison 4 pièces 95 m²,Maison,247000,95 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106980419
-LeBonCoin,2026-03-09,"Maison T7 223 m² avec piscine, T2 indépendant, garage et grand terrain La Serinette Toulon",Maison,939000,223 m²,,8,Non precise,parking/garage,https://www.leboncoin.fr/ad/ventes_immobilieres/3135406654
-LeBonCoin,2026-03-09,Maison 4 pièces 61 m²,Maison,680000,61 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2895108694
-LeBonCoin,2026-03-09,Maison 5 pièces 90 m²,Maison,525000,90 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126691259
-LeBonCoin,2026-03-09,Maison 6 pièces 156 m²,Maison,725000,156 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136331611
-LeBonCoin,2026-03-09,Maison 10 pièces 212 m²,Maison,625000,212 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3101694681
-LeBonCoin,2026-03-09,Villa 5 pièces 125 m²,Maison,695000,125 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3086772497
-LeBonCoin,2026-03-09,Maison 6 pièces 159 m²,Maison,522000,159 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3125719684
-LeBonCoin,2026-03-09,Maison de ville 2 pièces 50 m²,Maison,129000,50 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127850558
-LeBonCoin,2026-03-09,Terrain 387 m² Toulon,Terrain,217000,387,561.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3157387001
-LeBonCoin,2026-03-09,Propriété 7 pièces 160 m²,Maison,899900,160 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078937818
-LeBonCoin,2026-03-09,Appartement 3 pièces 113 m²,Appartement,369000,113 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153942501
-LeBonCoin,2026-03-09,Villa 5 pièces 165 m²,Maison,694500,165 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2982602779
-LeBonCoin,2026-03-09,Appartement 4 pièces 87 m²,Appartement,305000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153971571
-LeBonCoin,2026-03-09,Terrain 653 m² Toulon,Terrain,365000,653,559.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2625668827
-LeBonCoin,2026-03-09,Appartement 3 pièces 60 m²,Appartement,239000,60 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134555000
-LeBonCoin,2026-03-09,Terrain Toulon,Terrain,400000,,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412257
-LeBonCoin,2026-03-09,Maison 8 pièces 220 m²,Maison,1290000,220 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153973816
-LeBonCoin,2026-03-09,Maison 6 pièces 165 m²,Maison,830000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150911034
-LeBonCoin,2026-03-09,Appartement 3 pièces 55 m²,Appartement,119000,55 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2940477044
-LeBonCoin,2026-03-09,Maison 5 pièces 145 m²,Maison,925000,145 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139064013
-LeBonCoin,2026-03-09,Maison 3 pièces 74 m²,Maison,480000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139424081
-LeBonCoin,2026-03-09,Maison 6 pièces 131 m²,Maison,598000,131 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078261295
-LeBonCoin,2026-03-09,Appartement 3 pièces 53 m²,Appartement,172000,53 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154121552
-LeBonCoin,2026-03-09,Maison 4 pièces 90 m²,Maison,299000,90 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138367312
-LeBonCoin,2026-03-09,Maison 3 pièces 81 m²,Maison,377000,81 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412258
-LeBonCoin,2026-03-09,Terrain 387 m² Toulon,Terrain,217000,387,561.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3105842859
-LeBonCoin,2026-03-09,Maison 9 pièces 210 m²,Maison,1290000,210 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154258344
-LeBonCoin,2026-03-09,Propriété 11 pièces 292 m²,Maison,2290000,292 m²,,11,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127765279
-LeBonCoin,2026-03-09,Toulon centre / haut de ville - fond de commerce,Autre,290000,100 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135404693
-LeBonCoin,2026-03-09,Maison 8 pièces 138 m²,Maison,750000,138 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3129853033
-LeBonCoin,2026-03-09,Villa 8 pièces 223 m²,Maison,939000,223 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134317017
-LeBonCoin,2026-03-09,Appartement 1 pièce 23 m²,Appartement,96000,23 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412254
-LeBonCoin,2026-03-09,Maison 3 pièces 80 m²,Maison,377000,80 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3001297111
-LeBonCoin,2026-03-09,Maison 5 pièces 152 m²,Maison,1050000,152 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140935966
-LeBonCoin,2026-03-09,Maison 5 pièces 113 m²,Maison,478800,113 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3067987946
-LeBonCoin,2026-03-09,Maison 2 pièces 50 m²,Maison,300000,50 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150850556
-LeBonCoin,2026-03-09,Appartement 1 pièce 16 m²,Appartement,79000,16 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130714850
-LeBonCoin,2026-03-09,Propriété 6 pièces 136 m²,Maison,690000,136 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078844072
-LeBonCoin,2026-03-09,Immeuble 150 m² Toulon,Autre,685000,150 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104132439
-LeBonCoin,2026-03-09,Maison 5 pièces 88 m²,Maison,470000,88 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155223179
-LeBonCoin,2026-03-09,Maison de ville 4 pièces 67 m²,Maison,245000,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3125286447
-LeBonCoin,2026-03-09,Appartement 2 pièces 57 m²,Appartement,120000,57 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142329591
-LeBonCoin,2026-03-09,Maison 5 pièces 152 m²,Maison,545000,152 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412251
-LeBonCoin,2026-03-09,Maison 6 pièces 125 m²,Maison,655000,125 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3152150392
-LeBonCoin,2026-03-09,Maison 9 pièces 220 m²,Maison,1290000,220 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154086649
-LeBonCoin,2026-03-09,Maison 4 pièces 71 m²,Maison,345000,71 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148780339
-LeBonCoin,2026-03-09,Appartement 4 pièces 85 m²,Appartement,445000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3114226461
-LeBonCoin,2026-03-09,Appartement 5 pièces 107 m²,Appartement,310000,107 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412255
-LeBonCoin,2026-03-09,Maison 6 pièces 165 m²,Maison,2484000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3002276494
-LeBonCoin,2026-03-09,Maison de village 9 pièces 200 m²,Maison,525000,200 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144321135
-LeBonCoin,2026-03-09,Appartement 4 pièces 97 m²,Appartement,465000,97 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078612580
-LeBonCoin,2026-03-09,Propriété 5 pièces 170 m²,Maison,890000,170 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3110039326
-LeBonCoin,2026-03-09,Maison 5 pièces 110 m²,Maison,475000,110 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138658516
-LeBonCoin,2026-03-09,Maison 7 pièces 200 m²,Maison,1900000,200 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3075228097
-LeBonCoin,2026-03-09,Maison 4 pièces 96 m²,Maison,247000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138368770
-LeBonCoin,2026-03-09,Maison 4 pièces 70 m²,Maison,310000,70 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130810337
-LeBonCoin,2026-03-09,Duplex 5 pièces 120 m²,Appartement,880000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142335271
-LeBonCoin,2026-03-09,Maison 5 pièces 126 m²,Maison,549000,126 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059481939
-LeBonCoin,2026-03-09,Villa 10 pièces 373 m²,Maison,2495000,373 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128085054
-LeBonCoin,2026-03-09,Villa 7 pièces 160 m²,Maison,765000,160 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3051211154
-LeBonCoin,2026-03-09,Triplex 4 pièces 80 m²,Appartement,344500,80 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131008268
-LeBonCoin,2026-03-09,Appartement 4 pièces 72 m²,Appartement,244000,72 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412248
-LeBonCoin,2026-03-09,Propriété 6 pièces 165 m²,Maison,920000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134947386
-LeBonCoin,2026-03-09,Maison 6 pièces 125 m²,Maison,550000,125 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3032475957
-LeBonCoin,2026-03-09,Propriété 6 pièces 140 m²,Maison,885000,140 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151549913
-LeBonCoin,2026-03-09,Appartement 3 pièces 58 m²,Appartement,215000,58 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142298715
-LeBonCoin,2026-03-09,Propriété 5 pièces 134 m²,Maison,560000,134 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3093228009
-LeBonCoin,2026-03-09,Appartement - 2 pièces - LA CLOSERAIE TOULON,Appartement,219526,45 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3053901190
-LeBonCoin,2026-03-09,Toulon centre - haute ville / claret,Appartement,229500,67 m²,,4,"haute ville, claret",,https://www.leboncoin.fr/ad/ventes_immobilieres/3135403006
-LeBonCoin,2026-03-09,Appartement 2 pièces 39 m²,Appartement,107500,39 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139308727
-LeBonCoin,2026-03-09,Appartement 4 pièces 78 m²,Appartement,345000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153149023
-LeBonCoin,2026-03-09,Appartement 5 pièces 82 m²,Appartement,274000,82 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3119692423
-LeBonCoin,2026-03-09,Maison 4 pièces 100 m²,Maison,320000,100 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144119945
-LeBonCoin,2026-03-09,Maison 9 pièces 185 m²,Maison,960000,185 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134755957
-LeBonCoin,2026-03-09,Maison de ville 6 pièces 153 m²,Maison,522000,153 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3121874427
-LeBonCoin,2026-03-09,Appartement 4 pièces 102 m²,Appartement,560000,102 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147797698
-LeBonCoin,2026-03-09,Appartement 5 pièces 127 m²,Appartement,249000,127 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078673581
-LeBonCoin,2026-03-09,Villa 6 pièces 150 m²,Maison,770000,150 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140519031
-LeBonCoin,2026-03-09,Maison 5 pièces 90 m²,Maison,420000,90 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124757240
-LeBonCoin,2026-03-09,Appartement 6 pièces 154 m²,Appartement,375000,154 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3074127857
-LeBonCoin,2026-03-09,Villa 5 pièces 150 m²,Maison,950000,150 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092909264
-LeBonCoin,2026-03-09,Maison 5 pièces 94 m²,Maison,443000,94 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155904373
-LeBonCoin,2026-03-09,Maison 8 pièces 138 m²,Maison,750000,138 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092788261
-LeBonCoin,2026-03-09,Maison 5 pièces 120 m²,Maison,625000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3152380027
-LeBonCoin,2026-03-09,Maison 8 pièces 270 m²,Maison,1555000,270 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2952380875
-LeBonCoin,2026-03-09,Maison 6 pièces 136 m²,Maison,640000,136 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155869521
-LeBonCoin,2026-03-09,Appartement 4 pièces 78 m²,Appartement,175000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095111828
-LeBonCoin,2026-03-09,Villa 5 pièces 94 m²,Maison,385000,94 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113721615
-LeBonCoin,2026-03-09,Maison 7 pièces 150 m²,Maison,810000,150 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150145648
-LeBonCoin,2026-03-09,Terrain 2 151 m² Toulon,Terrain,370000,151,2450.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126691272
-LeBonCoin,2026-03-09,Appartement 4 pièces 84 m²,Appartement,124000,84 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144160601
-LeBonCoin,2026-03-09,Appartement 4 pièces 87 m²,Appartement,226000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3060674621
-LeBonCoin,2026-03-09,Maison 5 pièces 125 m²,Maison,860000,125 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155743363
-LeBonCoin,2026-03-09,Maison 5 pièces 121 m²,Maison,665000,121 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155743057
-LeBonCoin,2026-03-09,Terrain 511 m² Toulon,Terrain,223000,511 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155734166
-LeBonCoin,2026-03-09,Villa 5 pièces 141 m²,Maison,698000,141 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3072612359
-LeBonCoin,2026-03-09,Appartement 3 pièces 54 m²,Appartement,200000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146994433
-LeBonCoin,2026-03-09,Appartement 4 pièces 77 m²,Appartement,315000,77 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138658346
-LeBonCoin,2026-03-09,Appartement 2 pièces 54 m²,Appartement,230000,54 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130281807
-LeBonCoin,2026-03-09,Appartement 5 pièces 116 m²,Appartement,305000,116 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147096090
-LeBonCoin,2026-03-09,Maison de ville 5 pièces 230 m²,Maison,568000,230 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144040147
-LeBonCoin,2026-03-09,Maison 4 pièces 72 m²,Maison,380000,72 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127189203
-LeBonCoin,2026-03-09,Maison 5 pièces 142 m²,Maison,665000,142 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150061182
-LeBonCoin,2026-03-09,Maison 4 pièces 72 m²,Maison,350000,72 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2944404754
-LeBonCoin,2026-03-09,Studio toulon mourillon,Appartement,160000,24 m²,,1,mourillon,,https://www.leboncoin.fr/ad/ventes_immobilieres/3087291046
-LeBonCoin,2026-03-09,Maison 3 pièces 45 m²,Maison,262000,45 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155598555
-LeBonCoin,2026-03-09,Appartement 3 pièces 71 m²,Appartement,216000,71 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138782895
-LeBonCoin,2026-03-09,Maison 3 pièces 70 m²,Maison,349000,70 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3121043495
-LeBonCoin,2026-03-09,Villa 8 pièces 266 m²,Maison,3900000,266 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3054030336
-LeBonCoin,2026-03-09,Maison en Viager 4 pièces 126 m²,Maison,83750,126 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3028957445
-LeBonCoin,2026-03-09,Maison 6 pièces 240 m²,Maison,1190000,240 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155384706
-LeBonCoin,2026-03-09,Appartement 6 pièces 135 m²,Appartement,420000,135 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092119218
-LeBonCoin,2026-03-09,Maison 5 pièces 132 m²,Maison,560000,132 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142329589
-LeBonCoin,2026-03-09,Maison 4 pièces 200 m²,Maison,1115000,200 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138363688
-LeBonCoin,2026-03-09,Maison 4 pièces 131 m²,Maison,599000,131 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113414821
-LeBonCoin,2026-03-09,Maison 6 pièces 186 m²,Maison,960000,186 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079994298
-LeBonCoin,2026-03-09,Maison 7 pièces 161 m²,Maison,599000,161 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138448134
-LeBonCoin,2026-03-09,Maison 5 pièces 72 m²,Maison,380000,72 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059867717
-LeBonCoin,2026-03-09,Maison 4 pièces 140 m²,Maison,745000,140 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128788920
-LeBonCoin,2026-03-09,Maison 5 pièces 130 m²,Maison,467000,130 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3111641375
-LeBonCoin,2026-03-09,Maison 2 pièces 61 m²,Maison,270000,61 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3037855277
-LeBonCoin,2026-03-09,Maison 4 pièces 105 m²,Maison,419000,105 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151872923
-LeBonCoin,2026-03-09,Appartement 2 pièces 66 m²,Appartement,176000,66 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3105246339
-LeBonCoin,2026-03-09,Maison 6 pièces 150 m²,Maison,695000,150 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106494685
-LeBonCoin,2026-03-09,Villa 7 pièces 223 m²,Maison,939000,223 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135026295
-LeBonCoin,2026-03-09,Appartement 3 pièces 62 m²,Appartement,275000,62 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130281797
-LeBonCoin,2026-03-09,Appartement 2 pièces 46 m²,Appartement,128000,46 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143661276
-LeBonCoin,2026-03-09,Appartement en viager 3 pièces 54 m²,Appartement,116000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131819632
-LeBonCoin,2026-03-09,Propriété en Viager 6 pièces 185 m²,Maison,521880,185 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143603561
-LeBonCoin,2026-03-09,Terrain 543 m² Toulon,Terrain,369000,543 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151689043
-LeBonCoin,2026-03-09,Appartement 2 pièces 41 m²,Appartement,159000,41 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153906297
-LeBonCoin,2026-03-09,Appartement 4 pièces 80 m²,Appartement,315000,80 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3060524040
-LeBonCoin,2026-03-09,Terrain 503 m² Toulon,Terrain,245000,503,487.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135976013
-LeBonCoin,2026-03-09,Maison 6 pièces 156 m²,Maison,595000,156 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3071212528
-LeBonCoin,2026-03-09,Maison 2 pièces 44 m²,Maison,179000,44 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132465430
-LeBonCoin,2026-03-09,Maison 4 pièces 102 m²,Maison,525000,102 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131784598
-LeBonCoin,2026-03-09,Appartement 2 pièces 60 m²,Appartement,265000,60 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3114259553
-LeBonCoin,2026-03-09,Appartement - 3 pièces - LA CLOSERAIE TOULON,Appartement,296872,61 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3050545681
-LeBonCoin,2026-03-09,Villa T4 Toulon Cap brun,Maison,925000,145 m²,,4,cap brun,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151743481
-LeBonCoin,2026-03-09,Appartement 3 pièces 74 m²,Appartement,159000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142329590
-LeBonCoin,2026-03-09,Appartement 2 pièces 47 m²,Appartement,232000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2970471499
-LeBonCoin,2026-03-09,Toulon mourillon appartement T4,Appartement,420000,82 m²,,4,mourillon,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140229521
-LeBonCoin,2026-03-09,Haut de Villa - F2 - 250 mètres des plages,Appartement,249000,38 m²,,2,Non precise,proche mer,https://www.leboncoin.fr/ad/ventes_immobilieres/3133359436
-LeBonCoin,2026-03-09,Studio 1 pièce 18 m²,Appartement,75000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2997340203
-LeBonCoin,2026-03-09,Studio 1 pièce 31 m²,Appartement,169000,31 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3003539448
-LeBonCoin,2026-03-09,Appartement 1 pièce 21 m²,Appartement,78000,21 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153857722
-LeBonCoin,2026-03-09,Studio 1 pièce 25 m²,Appartement,98000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147650633
-LeBonCoin,2026-03-09,Studio 5 pièces 153 m²,Appartement,1490000,153 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3119192195
-LeBonCoin,2026-03-09,Studio 1 pièce 21 m²,Appartement,58200,21 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3133466705
-LeBonCoin,2026-03-09,Immeuble 10 pièces 163 m²,Autre,685000,163 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3109059902
-LeBonCoin,2026-03-09,LMNP Toulon – Résidence étudiante GSA Alfred Nobel – Loyer 3 121 HT/an – 55 000 – Parking,Appartement,55000,18.39 m²,,1,Non precise,parking/garage,https://www.leboncoin.fr/ad/ventes_immobilieres/3156481224
-LeBonCoin,2026-03-09,Studio 1 pièce 19 m²,Appartement,82500,19 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3156478285
-LeBonCoin,2026-03-09,Studio 1 pièce 30 m²,Appartement,110000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3133888360
-LeBonCoin,2026-03-09,Studio 1 pièce 30 m²,Appartement,85000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3089370228
-LeBonCoin,2026-03-09,Studio 1 pièce 25 m²,Appartement,79000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2982602845
-LeBonCoin,2026-03-09,Studio 3 pièces 78 m²,Appartement,320000,78 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106327638
-LeBonCoin,2026-03-09,Studio 4 pièces 113 m²,Appartement,573000,113 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3156031273
-LeBonCoin,2026-03-09,Studio 1 pièce 25 m²,Appartement,89000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3086167833
-LeBonCoin,2026-03-09,Studio 1 pièce 20 m²,Appartement,82500,20 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3026989532
-LeBonCoin,2026-03-09,Studio 1 pièce 24 m²,Appartement,119000,24 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134529149
-LeBonCoin,2026-03-09,Appartement en Viager 3 pièces 138 m²,Appartement,755250,138 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155905777
-LeBonCoin,2026-03-09,Studio 1 pièce 18 m²,Appartement,59000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2809749525
-LeBonCoin,2026-03-09,Studio 1 pièce 22 m²,Appartement,95000,22 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140118397
-LeBonCoin,2026-03-09,Immeuble 11 pièces 223 m²,Autre,499000,223 m²,,11,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3097463711
-LeBonCoin,2026-03-09,Immeuble 340 m² TOULON,Autre,595000,340 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138768097
-LeBonCoin,2026-03-09,Toulon petit bois cap brun studio dernier etage exposé sud,Appartement,135000,29 m²,,1,cap brun,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146997748
-LeBonCoin,2026-03-09,Appartement 5 pièces 153 m²,Appartement,1490000,153 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3116638670
-LeBonCoin,2026-03-09,Studio 1 pièce 20 m²,Appartement,82500,20 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3019180419
-LeBonCoin,2026-03-09,Immeuble 38 pièces 800 m²,Autre,3100000,800 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2974278966
-LeBonCoin,2026-03-09,Studio 1 pièce 22 m²,Appartement,99000,22 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3064174638
-LeBonCoin,2026-03-09,Immeuble 2 pièces 339 m²,Autre,499000,339 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127308707
-LeBonCoin,2026-03-09,Studio 5 pièces 157 m²,Appartement,590000,157 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143628316
-LeBonCoin,2026-03-09,Studio 1 pièce 28 m²,Appartement,109000,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038855241
-LeBonCoin,2026-03-09,Studio 1 pièce 20 m²,Appartement,76990,20 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3111057518
-LeBonCoin,2026-03-09,Appartement 2 pièces 32 m²,Appartement,138000,32 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2688305799
-LeBonCoin,2026-03-09,Studio 1 pièce 32 m²,Appartement,109000,32 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3096505074
-LeBonCoin,2026-03-09,Appartement 1 pièce 32 m²,Appartement,105000,32 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3066194008
-LeBonCoin,2026-03-09,Studio + cellier vue port de toulon,Appartement,120000,27 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154893946
-LeBonCoin,2026-03-09,Immeuble 382 m² Toulon,Autre,750000,382 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091804196
-LeBonCoin,2026-03-09,Immeuble 270 m² Toulon,Autre,1150000,270 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091804194
-LeBonCoin,2026-03-09,Studio 1 pièce 30 m²,Appartement,128000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091669461
-LeBonCoin,2026-03-09,Immeuble 72 m² Toulon,Autre,310000,72 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059176636
-LeBonCoin,2026-03-09,Studio 1 pièce 25 m²,Appartement,114000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104628546
-LeBonCoin,2026-03-09,Appartement 5 pièces 87 m²,Appartement,255000,87 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151399272
-LeBonCoin,2026-03-09,Studio 1 pièce 18 m²,Appartement,60000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2760237151
-LeBonCoin,2026-03-09,Appartement 1 pièce 39 m²,Appartement,114900,39 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3112881020
-LeBonCoin,2026-03-09,Appartement - 2 pièces - Toulon au coeur d'un quartier vivant et commerçant,Appartement,206604,40 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2382750791
-LeBonCoin,2026-03-09,Appartement - 4 pièces - Toulon au coeur d'un quartier vivant et commerçant,Appartement,325292,75 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2382750793
-LeBonCoin,2026-03-09,Studio 1 pièce 17 m²,Appartement,53000,17 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150917652
-LeBonCoin,2026-03-09,Appartement - 3 pièces - Toulon au coeur d'un quartier vivant et commerçant,Appartement,276938,60 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2382750792
-LeBonCoin,2026-03-09,Studio 1 pièce 18 m²,Appartement,88391,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147650741
-LeBonCoin,2026-03-09,Studio 1 pièce 28 m²,Appartement,81990,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3111057510
-LeBonCoin,2026-03-09,Maison 6 pièces 168 m²,Maison,830000,168 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148336591
-LeBonCoin,2026-03-09,Studio 1 pièce 23 m²,Appartement,184000,23 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146972041
-LeBonCoin,2026-03-09,Studio 1 pièce 28 m²,Appartement,130000,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3062865417
-LeBonCoin,2026-03-09,"Studio meublé avec terrasse – zero charges – Centre & gare à pied
+LeBonCoin,2026-03-04,Maison 8 pièces 280 m²,Maison,1680000,280 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092093021
+LeBonCoin,2026-03-01,Propriété 9 pièces 220 m²,Maison,1290000,220 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153643055
+LeBonCoin,2026-01-07,Villa 7 pièces 220 m²,Maison,1199000,220 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132685640
+LeBonCoin,2026-03-08,Maison 2 pièces 55 m²,Maison,308000,55 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126431367
+LeBonCoin,2026-02-06,Propriété 6 pièces 175 m²,Maison,815000,175 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3101469949
+LeBonCoin,2026-02-16,Villa 4 pièces 89 m²,Maison,495000,89 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146004911
+LeBonCoin,2026-03-03,Maison 8 pièces 219 m²,Maison,1095000,219 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154380020
+LeBonCoin,2025-11-11,Propriété 5 pièces 142 m²,Maison,970000,142 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104102455
+LeBonCoin,2026-03-03,Maison 6 pièces 170 m²,Maison,950000,170 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154580881
+LeBonCoin,2026-02-05,Maison en Viager 5 pièces 105 m²,Maison,151500,105 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139645269
+LeBonCoin,2025-08-22,Maison 5 pièces 120 m²,Maison,570000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3043646583
+LeBonCoin,2025-08-11,Propriété 8 pièces 240 m²,Maison,1380000,240 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038377513
+LeBonCoin,2026-01-15,Propriété 10 pièces 265 m²,Maison,1340000,265 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128049678
+LeBonCoin,2025-07-07,Maison 7 pièces 280 m²,Maison,1680000,280 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3019493746
+LeBonCoin,2025-07-17,Maison 2 pièces 70 m²,Maison,280000,70 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3024751369
+LeBonCoin,2026-01-31,Maison 4 pièces 95 m²,Maison,247000,95 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106980419
+LeBonCoin,2026-01-27,"Maison T7 223 m² avec piscine, T2 indépendant, garage et grand terrain La Serinette Toulon",Maison,939000,223 m²,,8,Non precise,parking/garage,https://www.leboncoin.fr/ad/ventes_immobilieres/3135406654
+LeBonCoin,2024-12-02,Maison 4 pièces 61 m²,Maison,680000,61 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2895108694
+LeBonCoin,2026-01-12,Maison 5 pièces 90 m²,Maison,525000,90 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126691259
+LeBonCoin,2026-01-30,Maison 6 pièces 156 m²,Maison,725000,156 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136331611
+LeBonCoin,2026-01-22,Maison 10 pièces 212 m²,Maison,625000,212 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3101694681
+LeBonCoin,2026-02-23,Villa 5 pièces 125 m²,Maison,695000,125 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3086772497
+LeBonCoin,2026-03-07,Maison 6 pièces 159 m²,Maison,522000,159 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3125719684
+LeBonCoin,2026-01-14,Maison de ville 2 pièces 50 m²,Maison,129000,50 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127850558
+LeBonCoin,2026-03-07,Terrain 387 m² Toulon,Terrain,217000,387,561.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3157387001
+LeBonCoin,2026-02-10,Propriété 7 pièces 160 m²,Maison,899900,160 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078937818
+LeBonCoin,2026-03-02,Appartement 3 pièces 113 m²,Appartement,369000,113 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153942501
+LeBonCoin,2025-05-02,Villa 5 pièces 165 m²,Maison,694500,165 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2982602779
+LeBonCoin,2026-03-02,Appartement 4 pièces 87 m²,Appartement,305000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153971571
+LeBonCoin,2024-04-03,Terrain 653 m² Toulon,Terrain,365000,653,559.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2625668827
+LeBonCoin,2026-01-26,Appartement 3 pièces 60 m²,Appartement,239000,60 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134555000
+LeBonCoin,2026-01-30,Terrain Toulon,Terrain,400000,,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412257
+LeBonCoin,2026-03-02,Maison 8 pièces 220 m²,Maison,1290000,220 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153973816
+LeBonCoin,2026-02-25,Maison 6 pièces 165 m²,Maison,830000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150911034
+LeBonCoin,2025-02-21,Appartement 3 pièces 55 m²,Appartement,119000,55 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2940477044
+LeBonCoin,2026-02-03,Maison 5 pièces 145 m²,Maison,925000,145 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139064013
+LeBonCoin,2026-02-04,Maison 3 pièces 74 m²,Maison,480000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139424081
+LeBonCoin,2026-02-09,Maison 6 pièces 131 m²,Maison,598000,131 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078261295
+LeBonCoin,2026-03-02,Appartement 3 pièces 53 m²,Appartement,172000,53 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154121552
+LeBonCoin,2026-02-02,Maison 4 pièces 90 m²,Maison,299000,90 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138367312
+LeBonCoin,2026-01-30,Maison 3 pièces 81 m²,Maison,377000,81 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412258
+LeBonCoin,2026-01-29,Terrain 387 m² Toulon,Terrain,217000,387,561.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3105842859
+LeBonCoin,2026-03-02,Maison 9 pièces 210 m²,Maison,1290000,210 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154258344
+LeBonCoin,2026-01-14,Propriété 11 pièces 292 m²,Maison,2290000,292 m²,,11,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127765279
+LeBonCoin,2026-01-13,Toulon centre / haut de ville - fond de commerce,Autre,290000,100 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135404693
+LeBonCoin,2026-01-18,Maison 8 pièces 138 m²,Maison,750000,138 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3129853033
+LeBonCoin,2026-01-26,Villa 8 pièces 223 m²,Maison,939000,223 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134317017
+LeBonCoin,2026-01-30,Appartement 1 pièce 23 m²,Appartement,96000,23 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412254
+LeBonCoin,2025-06-04,Maison 3 pièces 80 m²,Maison,377000,80 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3001297111
+LeBonCoin,2026-02-07,Maison 5 pièces 152 m²,Maison,1050000,152 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140935966
+LeBonCoin,2026-01-22,Maison 5 pièces 113 m²,Maison,478800,113 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3067987946
+LeBonCoin,2026-02-24,Maison 2 pièces 50 m²,Maison,300000,50 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150850556
+LeBonCoin,2026-01-20,Appartement 1 pièce 16 m²,Appartement,79000,16 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130714850
+LeBonCoin,2026-02-10,Propriété 6 pièces 136 m²,Maison,690000,136 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078844072
+LeBonCoin,2026-01-26,Immeuble 150 m² Toulon,Autre,685000,150 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104132439
+LeBonCoin,2026-03-04,Maison 5 pièces 88 m²,Maison,470000,88 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155223179
+LeBonCoin,2026-03-07,Maison de ville 4 pièces 67 m²,Maison,245000,67 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3125286447
+LeBonCoin,2026-02-09,Appartement 2 pièces 57 m²,Appartement,120000,57 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142329591
+LeBonCoin,2026-01-30,Maison 5 pièces 152 m²,Maison,545000,152 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412251
+LeBonCoin,2026-02-27,Maison 6 pièces 125 m²,Maison,655000,125 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3152150392
+LeBonCoin,2026-02-21,Maison 4 pièces 71 m²,Maison,345000,71 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148780339
+LeBonCoin,2026-02-11,Appartement 4 pièces 85 m²,Appartement,445000,85 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3114226461
+LeBonCoin,2026-01-30,Appartement 5 pièces 107 m²,Appartement,310000,107 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412255
+LeBonCoin,2025-06-05,Maison 6 pièces 165 m²,Maison,2484000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3002276494
+LeBonCoin,2026-02-13,Maison de village 9 pièces 200 m²,Maison,525000,200 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144321135
+LeBonCoin,2025-09-17,Appartement 4 pièces 97 m²,Appartement,465000,97 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078612580
+LeBonCoin,2026-02-04,Propriété 5 pièces 170 m²,Maison,890000,170 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3110039326
+LeBonCoin,2026-02-03,Maison 5 pièces 110 m²,Maison,475000,110 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138658516
+LeBonCoin,2026-02-04,Maison 7 pièces 200 m²,Maison,1900000,200 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3075228097
+LeBonCoin,2026-02-02,Maison 4 pièces 96 m²,Maison,247000,96 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138368770
+LeBonCoin,2026-02-09,Duplex 5 pièces 120 m²,Appartement,880000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142335271
+LeBonCoin,2025-08-15,Maison 5 pièces 126 m²,Maison,549000,126 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059481939
+LeBonCoin,2026-01-15,Villa 10 pièces 373 m²,Maison,2495000,373 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3128085054
+LeBonCoin,2025-09-04,Villa 7 pièces 160 m²,Maison,765000,160 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3051211154
+LeBonCoin,2026-01-20,Triplex 4 pièces 80 m²,Appartement,344500,80 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131008268
+LeBonCoin,2026-01-30,Appartement 4 pièces 72 m²,Appartement,244000,72 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3136412248
+LeBonCoin,2026-01-27,Propriété 6 pièces 165 m²,Maison,920000,165 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134947386
+LeBonCoin,2025-07-30,Maison 6 pièces 125 m²,Maison,550000,125 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3032475957
+LeBonCoin,2026-02-26,Propriété 6 pièces 140 m²,Maison,885000,140 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151549913
+LeBonCoin,2026-02-09,Appartement 3 pièces 58 m²,Appartement,215000,58 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142298715
+LeBonCoin,2026-03-06,Propriété 5 pièces 134 m²,Maison,560000,134 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3093228009
+LeBonCoin,2025-09-07,Appartement - 2 pièces - LA CLOSERAIE TOULON,Appartement,219526,45 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3053901190
+LeBonCoin,2026-01-23,Toulon centre - haute ville / claret,Appartement,229500,67 m²,,4,"haute ville, claret",,https://www.leboncoin.fr/ad/ventes_immobilieres/3135403006
+LeBonCoin,2026-02-04,Appartement 2 pièces 39 m²,Appartement,107500,39 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3139308727
+LeBonCoin,2026-03-01,Appartement 4 pièces 78 m²,Appartement,345000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153149023
+LeBonCoin,2026-02-24,Appartement 5 pièces 82 m²,Appartement,274000,82 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3119692423
+LeBonCoin,2026-02-13,Maison 4 pièces 100 m²,Maison,320000,100 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144119945
+LeBonCoin,2026-01-27,Maison 9 pièces 185 m²,Maison,960000,185 m²,,9,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134755957
+LeBonCoin,2026-02-28,Maison de ville 6 pièces 153 m²,Maison,522000,153 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3121874427
+LeBonCoin,2026-02-19,Appartement 4 pièces 102 m²,Appartement,560000,102 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147797698
+LeBonCoin,2025-09-24,Appartement 5 pièces 127 m²,Appartement,249000,127 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3078673581
+LeBonCoin,2026-02-06,Villa 6 pièces 150 m²,Maison,770000,150 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140519031
+LeBonCoin,2026-03-06,Maison 5 pièces 90 m²,Maison,420000,90 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124757240
+LeBonCoin,2026-02-02,Appartement 6 pièces 154 m²,Appartement,375000,154 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3074127857
+LeBonCoin,2026-03-06,Villa 5 pièces 150 m²,Maison,950000,150 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092909264
+LeBonCoin,2026-03-05,Maison 5 pièces 94 m²,Maison,443000,94 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155904373
+LeBonCoin,2026-03-05,Maison 8 pièces 138 m²,Maison,750000,138 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092788261
+LeBonCoin,2026-02-27,Maison 5 pièces 120 m²,Maison,625000,120 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3152380027
+LeBonCoin,2025-03-13,Maison 8 pièces 270 m²,Maison,1555000,270 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2952380875
+LeBonCoin,2026-03-05,Maison 6 pièces 136 m²,Maison,640000,136 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155869521
+LeBonCoin,2026-01-31,Appartement 4 pièces 78 m²,Appartement,175000,78 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3095111828
+LeBonCoin,2026-02-11,Villa 5 pièces 94 m²,Maison,385000,94 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113721615
+LeBonCoin,2026-02-23,Maison 7 pièces 150 m²,Maison,810000,150 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150145648
+LeBonCoin,2026-01-12,Terrain 2 151 m² Toulon,Terrain,370000,151,2450.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3126691272
+LeBonCoin,2026-02-13,Appartement 4 pièces 84 m²,Appartement,124000,84 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144160601
+LeBonCoin,2025-09-19,Appartement 4 pièces 87 m²,Appartement,226000,87 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3060674621
+LeBonCoin,2026-03-05,Maison 5 pièces 125 m²,Maison,860000,125 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155743363
+LeBonCoin,2026-03-05,Maison 5 pièces 121 m²,Maison,665000,121 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155743057
+LeBonCoin,2026-03-05,Terrain 511 m² Toulon,Terrain,223000,511 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155734166
+LeBonCoin,2026-01-30,Villa 5 pièces 141 m²,Maison,698000,141 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3072612359
+LeBonCoin,2026-02-18,Appartement 3 pièces 54 m²,Appartement,200000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146994433
+LeBonCoin,2026-02-03,Appartement 4 pièces 77 m²,Appartement,315000,77 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138658346
+LeBonCoin,2026-01-19,Appartement 2 pièces 54 m²,Appartement,230000,54 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130281807
+LeBonCoin,2026-02-18,Appartement 5 pièces 116 m²,Appartement,305000,116 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147096090
+LeBonCoin,2026-02-12,Maison de ville 5 pièces 230 m²,Maison,568000,230 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3144040147
+LeBonCoin,2026-01-13,Maison 4 pièces 72 m²,Maison,380000,72 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127189203
+LeBonCoin,2026-02-23,Maison 5 pièces 142 m²,Maison,665000,142 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150061182
+LeBonCoin,2025-02-27,Maison 4 pièces 72 m²,Maison,350000,72 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2944404754
+LeBonCoin,2026-03-05,Studio toulon mourillon,Appartement,160000,24 m²,,1,mourillon,,https://www.leboncoin.fr/ad/ventes_immobilieres/3087291046
+LeBonCoin,2026-03-05,Maison 3 pièces 45 m²,Maison,262000,45 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155598555
+LeBonCoin,2026-02-03,Appartement 3 pièces 71 m²,Appartement,216000,71 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138782895
+LeBonCoin,2026-02-27,Maison 3 pièces 70 m²,Maison,349000,70 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3121043495
+LeBonCoin,2025-09-08,Villa 8 pièces 266 m²,Maison,3900000,266 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3054030336
+LeBonCoin,2025-07-24,Maison en Viager 4 pièces 126 m²,Maison,83750,126 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3028957445
+LeBonCoin,2026-03-04,Maison 6 pièces 240 m²,Maison,1190000,240 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155384706
+LeBonCoin,2026-03-04,Appartement 6 pièces 135 m²,Appartement,420000,135 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3092119218
+LeBonCoin,2026-02-09,Maison 5 pièces 132 m²,Maison,560000,132 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142329589
+LeBonCoin,2026-02-02,Maison 4 pièces 200 m²,Maison,1115000,200 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138363688
+LeBonCoin,2026-02-10,Maison 4 pièces 131 m²,Maison,599000,131 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3113414821
+LeBonCoin,2026-02-12,Maison 6 pièces 186 m²,Maison,960000,186 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3079994298
+LeBonCoin,2026-02-02,Maison 7 pièces 161 m²,Maison,599000,161 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138448134
+LeBonCoin,2025-09-18,Maison 5 pièces 72 m²,Maison,380000,72 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059867717
+LeBonCoin,2026-02-07,Maison 5 pièces 130 m²,Maison,467000,130 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3111641375
+LeBonCoin,2025-08-10,Maison 2 pièces 61 m²,Maison,270000,61 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3037855277
+LeBonCoin,2026-02-26,Maison 4 pièces 105 m²,Maison,419000,105 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151872923
+LeBonCoin,2026-01-28,Appartement 2 pièces 66 m²,Appartement,176000,66 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3105246339
+LeBonCoin,2026-01-30,Maison 6 pièces 150 m²,Maison,695000,150 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106494685
+LeBonCoin,2026-01-27,Villa 7 pièces 223 m²,Maison,939000,223 m²,,7,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135026295
+LeBonCoin,2026-01-19,Appartement 3 pièces 62 m²,Appartement,275000,62 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3130281797
+LeBonCoin,2026-02-12,Appartement 2 pièces 46 m²,Appartement,128000,46 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143661276
+LeBonCoin,2026-01-22,Appartement en viager 3 pièces 54 m²,Appartement,116000,54 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131819632
+LeBonCoin,2026-02-26,Terrain 543 m² Toulon,Terrain,369000,543 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151689043
+LeBonCoin,2026-03-02,Appartement 2 pièces 41 m²,Appartement,159000,41 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153906297
+LeBonCoin,2025-09-19,Appartement 4 pièces 80 m²,Appartement,315000,80 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3060524040
+LeBonCoin,2026-01-29,Terrain 503 m² Toulon,Terrain,245000,503,487.0,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135976013
+LeBonCoin,2026-02-12,Propriété en Viager 6 pièces 185 m²,Maison,521880,185 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143603561
+LeBonCoin,2026-01-28,Maison 6 pièces 156 m²,Maison,595000,156 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3071212528
+LeBonCoin,2026-01-23,Maison 2 pièces 44 m²,Maison,179000,44 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3132465430
+LeBonCoin,2026-01-15,Maison 4 pièces 102 m²,Maison,525000,102 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3131784598
+LeBonCoin,2025-12-08,Appartement 2 pièces 60 m²,Appartement,265000,60 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3114259553
+LeBonCoin,2025-09-02,Appartement - 3 pièces - LA CLOSERAIE TOULON,Appartement,296872,61 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3050545681
+LeBonCoin,2026-02-26,Villa T4 Toulon Cap brun,Maison,925000,145 m²,,4,cap brun,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151743481
+LeBonCoin,2026-02-09,Appartement 3 pièces 74 m²,Appartement,159000,74 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3142329590
+LeBonCoin,2025-04-11,Appartement 2 pièces 47 m²,Appartement,232000,47 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2970471499
+LeBonCoin,2026-02-06,Toulon mourillon appartement T4,Appartement,420000,82 m²,,4,mourillon,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140229521
+LeBonCoin,2026-01-24,Haut de Villa - F2 - 250 mètres des plages,Appartement,249000,38 m²,,2,Non precise,proche mer,https://www.leboncoin.fr/ad/ventes_immobilieres/3133359436
+LeBonCoin,2025-05-28,Studio 1 pièce 18 m²,Appartement,75000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2997340203
+LeBonCoin,2025-06-07,Studio 1 pièce 31 m²,Appartement,169000,31 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3003539448
+LeBonCoin,2026-03-02,Appartement 1 pièce 21 m²,Appartement,78000,21 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3153857722
+LeBonCoin,2026-02-19,Studio 1 pièce 25 m²,Appartement,98000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147650633
+LeBonCoin,2026-02-23,Studio 5 pièces 153 m²,Appartement,1490000,153 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3119192195
+LeBonCoin,2026-01-25,Studio 1 pièce 21 m²,Appartement,58200,21 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3133466705
+LeBonCoin,2026-02-02,Immeuble 10 pièces 163 m²,Autre,685000,163 m²,,10,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3109059902
+LeBonCoin,2026-03-06,LMNP Toulon – Résidence étudiante GSA Alfred Nobel – Loyer 3 121 HT/an – 55 000 – Parking,Appartement,55000,18.39 m²,,1,Non precise,parking/garage,https://www.leboncoin.fr/ad/ventes_immobilieres/3156481224
+LeBonCoin,2026-03-06,Studio 1 pièce 19 m²,Appartement,82500,19 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3156478285
+LeBonCoin,2026-01-25,Studio 1 pièce 30 m²,Appartement,110000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3133888360
+LeBonCoin,2026-02-28,Studio 1 pièce 30 m²,Appartement,85000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3089370228
+LeBonCoin,2025-05-02,Studio 1 pièce 25 m²,Appartement,79000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2982602845
+LeBonCoin,2026-01-30,Studio 3 pièces 78 m²,Appartement,320000,78 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3106327638
+LeBonCoin,2026-03-06,Studio 4 pièces 113 m²,Appartement,573000,113 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3156031273
+LeBonCoin,2026-02-22,Studio 1 pièce 25 m²,Appartement,89000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3086167833
+LeBonCoin,2025-07-21,Studio 1 pièce 20 m²,Appartement,82500,20 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3026989532
+LeBonCoin,2026-01-26,Studio 1 pièce 24 m²,Appartement,119000,24 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3134529149
+LeBonCoin,2026-03-05,Appartement en Viager 3 pièces 138 m²,Appartement,755250,138 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3155905777
+LeBonCoin,2024-08-07,Studio 1 pièce 18 m²,Appartement,59000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2809749525
+LeBonCoin,2026-02-05,Studio 1 pièce 22 m²,Appartement,95000,22 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3140118397
+LeBonCoin,2026-01-15,Immeuble 11 pièces 223 m²,Autre,499000,223 m²,,11,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3097463711
+LeBonCoin,2026-02-03,Immeuble 340 m² TOULON,Autre,595000,340 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3138768097
+LeBonCoin,2026-02-18,Toulon petit bois cap brun studio dernier etage exposé sud,Appartement,135000,29 m²,,1,cap brun,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146997748
+LeBonCoin,2026-02-17,Appartement 5 pièces 153 m²,Appartement,1490000,153 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3116638670
+LeBonCoin,2025-04-18,Immeuble 38 pièces 800 m²,Autre,3100000,800 m²,,8,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2974278966
+LeBonCoin,2026-01-15,Studio 1 pièce 22 m²,Appartement,99000,22 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3064174638
+LeBonCoin,2026-01-13,Immeuble 2 pièces 339 m²,Autre,499000,339 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127308707
+LeBonCoin,2026-02-12,Studio 5 pièces 157 m²,Appartement,590000,157 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3143628316
+LeBonCoin,2025-08-12,Studio 1 pièce 28 m²,Appartement,109000,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3038855241
+LeBonCoin,2026-02-06,Studio 1 pièce 20 m²,Appartement,76990,20 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3111057518
+LeBonCoin,2024-05-09,Appartement 2 pièces 32 m²,Appartement,138000,32 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2688305799
+LeBonCoin,2026-01-13,Studio 1 pièce 32 m²,Appartement,109000,32 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3096505074
+LeBonCoin,2025-09-17,Appartement 1 pièce 32 m²,Appartement,105000,32 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3066194008
+LeBonCoin,2026-03-04,Studio + cellier vue port de toulon,Appartement,120000,27 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3154893946
+LeBonCoin,2026-03-04,Immeuble 382 m² Toulon,Autre,750000,382 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091804196
+LeBonCoin,2026-03-03,Immeuble 270 m² Toulon,Autre,1150000,270 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091804194
+LeBonCoin,2026-03-03,Studio 1 pièce 30 m²,Appartement,128000,30 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3091669461
+LeBonCoin,2025-09-17,Immeuble 72 m² Toulon,Autre,310000,72 m²,,,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3059176636
+LeBonCoin,2026-01-27,Studio 1 pièce 25 m²,Appartement,114000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3104628546
+LeBonCoin,2026-02-25,Appartement 5 pièces 87 m²,Appartement,255000,87 m²,,5,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3151399272
+LeBonCoin,2024-06-28,Studio 1 pièce 18 m²,Appartement,60000,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2760237151
+LeBonCoin,2026-02-09,Appartement 1 pièce 39 m²,Appartement,114900,39 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3112881020
+LeBonCoin,2023-07-21,Appartement - 2 pièces - Toulon au coeur d'un quartier vivant et commerçant,Appartement,206604,40 m²,,2,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2382750791
+LeBonCoin,2023-07-20,Appartement - 4 pièces - Toulon au coeur d'un quartier vivant et commerçant,Appartement,325292,75 m²,,4,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2382750793
+LeBonCoin,2026-02-25,Studio 1 pièce 17 m²,Appartement,53000,17 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3150917652
+LeBonCoin,2023-07-19,Appartement - 3 pièces - Toulon au coeur d'un quartier vivant et commerçant,Appartement,276938,60 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/2382750792
+LeBonCoin,2026-02-19,Studio 1 pièce 18 m²,Appartement,88391,18 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3147650741
+LeBonCoin,2026-02-06,Studio 1 pièce 28 m²,Appartement,81990,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3111057510
+LeBonCoin,2026-02-20,Maison 6 pièces 168 m²,Maison,830000,168 m²,,6,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3148336591
+LeBonCoin,2026-02-18,Studio 1 pièce 23 m²,Appartement,184000,23 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3146972041
+LeBonCoin,2026-01-13,Studio 1 pièce 28 m²,Appartement,130000,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3062865417
+LeBonCoin,2026-02-07,"Studio meublé avec terrasse – zero charges – Centre & gare à pied
 Toulon – Haut Claret / Bas Saint-Roch",Appartement,98500,21 m²,,1,"claret, saint-roch",jardin/terrasse,https://www.leboncoin.fr/ad/ventes_immobilieres/3141193147
-LeBonCoin,2026-03-09,Immeuble de rapport 223m2 centre ville TOULON,Autre,490000,223 m²,,10,centre ville,,https://www.leboncoin.fr/ad/ventes_immobilieres/3068045970
-LeBonCoin,2026-03-09,Toulon hyper centre,Appartement,122000,27 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3137167360
-LeBonCoin,2026-03-09,Studio 3 pièces 40 m²,Appartement,149000,40 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3009851051
-LeBonCoin,2026-03-09,Studio atypique,Appartement,28000,12 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135276082
-LeBonCoin,2026-03-09,TOULON CENTRE Idéal investissement locatif,Appartement,76000,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124974327
-LeBonCoin,2026-03-09,Studio 1 pièce 25 m²,Appartement,98000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127993137
-LeBonCoin,2026-03-09,Studio 26m²,Appartement,78000,26 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127662815
+LeBonCoin,2026-02-01,Immeuble de rapport 223m2 centre ville TOULON,Autre,490000,223 m²,,10,centre ville,,https://www.leboncoin.fr/ad/ventes_immobilieres/3068045970
+LeBonCoin,2026-01-31,Toulon hyper centre,Appartement,122000,27 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3137167360
+LeBonCoin,2025-06-18,Studio 3 pièces 40 m²,Appartement,149000,40 m²,,3,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3009851051
+LeBonCoin,2026-01-28,Studio atypique,Appartement,28000,12 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3135276082
+LeBonCoin,2026-01-09,TOULON CENTRE Idéal investissement locatif,Appartement,76000,28 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3124974327
+LeBonCoin,2026-01-15,Studio 1 pièce 25 m²,Appartement,98000,25 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127993137
+LeBonCoin,2026-01-14,Studio 26m²,Appartement,78000,26 m²,,1,Non precise,,https://www.leboncoin.fr/ad/ventes_immobilieres/3127662815

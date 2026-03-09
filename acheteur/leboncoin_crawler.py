@@ -224,9 +224,12 @@ def crawl_leboncoin(max_pages=3, output_file="acheteur/data/marche_leboncoin.csv
 
     # Stats rapides
     print(f"\n--- Stats marche Toulon (LeBonCoin) ---")
-    print(f"Prix median  : {df['prix'].median():,.0f} EUR") if df['prix'].notna().any() else None
-    print(f"Prix/m2 med  : {df['prix_m2'].median():,.0f} EUR/m2") if df['prix_m2'].notna().any() else None
-    print(f"Surface med  : {df['surface'].median():.0f} m2") if df['surface'].notna().any() else None
+    surf_num = pd.to_numeric(df['surface'].astype(str).str.extract(r'(\d+)')[0], errors='coerce')
+    prix_num = pd.to_numeric(df['prix'], errors='coerce')
+    pm2_num  = pd.to_numeric(df['prix_m2'], errors='coerce')
+    print(f"Prix median  : {prix_num.median():,.0f} EUR") if prix_num.notna().any() else None
+    print(f"Prix/m2 med  : {pm2_num.median():,.0f} EUR/m2") if pm2_num.notna().any() else None
+    print(f"Surface med  : {surf_num.median():.0f} m2") if surf_num.notna().any() else None
     print(f"\nRepartition type bien :\n{df['type_bien'].value_counts()}")
     print(f"\nQuartiers :\n{df['quartier'].value_counts().head(10)}")
 
