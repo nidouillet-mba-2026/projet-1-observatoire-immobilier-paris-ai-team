@@ -69,21 +69,18 @@ def apply_css():
     [data-testid="stSidebar"] label {{ color: #CBD5E1 !important; font-size: 0.82rem; }}
     [data-testid="stSidebar"] .stRadio > label {{ color: {GOLD} !important; font-weight: 600; font-size: 0.9rem; }}
 
-    /* ── Hide default streamlit chrome ── */
-    #MainMenu {{ display: none !important; }}
-    footer {{ display: none !important; }}
-    [data-testid="stToolbar"] {{ display: none !important; }}
-    [data-testid="stDecoration"] {{ display: none !important; }}
-    [data-testid="stHeader"] {{ background: transparent !important; }}
-
-    /* ── Bouton toggle sidebar : toujours visible et cliquable ── */
-    [data-testid="collapsedControl"] {{
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        z-index: 999 !important;
+    /* ── Header : transparent, pas de barre visible ── */
+    [data-testid="stHeader"] {{
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
     }}
+    /* Cacher uniquement le menu et le footer, PAS le toolbar (contient le toggle) */
+    #MainMenu {{ visibility: hidden !important; }}
+    footer {{ visibility: hidden !important; }}
+    [data-testid="stDecoration"] {{ display: none !important; }}
+    /* Cacher les boutons inutiles dans le toolbar, garder le toggle */
+    [data-testid="stToolbarActions"] {{ display: none !important; }}
 
     /* ── Metric cards ── */
     .kpi-card {{
