@@ -5,4 +5,5 @@ plotly
 scikit-learn
 requests
 python-dotenv
+beautifulsoup4
 
