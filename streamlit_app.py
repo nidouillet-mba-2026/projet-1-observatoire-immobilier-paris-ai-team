@@ -427,19 +427,38 @@ def load_data(data_type="DVF"):
         df['date_mutation'] = pd.Timestamp.now()
 
     else:  # Annonces Bien'Ici
-        file_path = "data/annonces_clean.csv" if os.path.exists("data/annonces_clean.csv") else "data/annonces_toulon_clean.csv"
-        if not os.path.exists(file_path):
-            st.error(f"Fichier {file_path} introuvable.")
+        # Priorité : fichier le plus récent de la branche data
+        candidates = [
+            "data/clean_annonces_toulon_clean.csv",
+            "data/annonces_clean.csv",
+            "data/annonces_toulon_clean.csv",
+        ]
+        file_path = next((p for p in candidates if os.path.exists(p)), None)
+        if file_path is None:
+            st.error("Aucun fichier d'annonces Bien'Ici trouvé.")
             return pd.DataFrame()
         df = pd.read_csv(file_path, encoding='utf-8-sig')
-        if 'prix_vente' in df.columns:
+
+        # Normalisation colonnes selon le fichier chargé
+        if 'prix_total' in df.columns:
+            # Format clean_annonces_toulon_clean.csv
+            df = df.rename(columns={
+                'prix_total': 'budget',
+                'prix_m2_final': 'prix_m2',
+                'date_publication': 'date_mutation',
+            })
+        elif 'prix_vente' in df.columns:
             df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
         else:
             df = df.rename(columns={'Prix_total_net': 'budget', 'Surface_m2': 'surface', 'Quartier': 'quartier'})
             pm2 = [c for c in df.columns if 'm2' in c.lower() and c != 'surface']
             if pm2:
                 df = df.rename(columns={pm2[0]: 'prix_m2'})
-        df['date_mutation'] = pd.Timestamp.now()
+
+        if 'date_mutation' not in df.columns:
+            df['date_mutation'] = pd.Timestamp.now()
+        else:
+            df['date_mutation'] = pd.to_datetime(df['date_mutation'], errors='coerce').fillna(pd.Timestamp.now())
     return df
 
 # ─────────────────────────────────────────────
