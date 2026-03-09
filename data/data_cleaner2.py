@@ -45,6 +45,7 @@ def extract_quartier(address):
     return None
 
 
+
 def extract_publication_date(text):
 
     if pd.isna(text):
@@ -55,24 +56,54 @@ def extract_publication_date(text):
 
     mois = {
         "janvier": 1,
+        "janv": 1,
+        "janv.": 1,
+
         "février": 2,
+        "fevrier": 2,
+        "févr": 2,
+        "févr.": 2,
+
         "mars": 3,
+
         "avril": 4,
+        "avr": 4,
+        "avr.": 4,
+
         "mai": 5,
+
         "juin": 6,
+
         "juillet": 7,
+        "juil": 7,
+        "juil.": 7,
+
         "août": 8,
+        "aout": 8,
+
         "septembre": 9,
+        "sept": 9,
+        "sept.": 9,
+
         "octobre": 10,
+        "oct": 10,
+        "oct.": 10,
+
         "novembre": 11,
-        "décembre": 12
+        "nov": 11,
+        "nov.": 11,
+
+        "décembre": 12,
+        "decembre": 12,
+        "déc": 12,
+        "déc.": 12
     }
 
-    match = re.search(r"publiée le (\d{1,2}) (\w+) (\d{4})", text)
+    match = re.search(r"publiée le (\d{1,2}) ([a-zéûô\.]+) (\d{4})", text)
 
     if match:
         jour = int(match.group(1))
-        mois_str = match.group(2)
+        mois_str = match.group(2).strip()
         annee = int(match.group(3))
 
         if mois_str in mois:
