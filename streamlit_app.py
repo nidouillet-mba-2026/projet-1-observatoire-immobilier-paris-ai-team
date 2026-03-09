@@ -26,7 +26,14 @@ def load_acheteurs():
                 pass
     if not dfs:
         return pd.DataFrame()
-    return pd.concat(dfs, ignore_index=True)
+    df = pd.concat(dfs, ignore_index=True)
+    # Nettoie les colonnes numériques (peuvent contenir "95 m²", "250 000 €", etc.)
+    for col in ['budget_max', 'surface_min', 'nb_pieces', 'prix', 'surface', 'prix_m2']:
+        if col in df.columns:
+            df[col] = df[col].astype(str).str.extract(r'(\d[\d\s]*)')[0]
+            df[col] = df[col].str.replace(r'\s', '', regex=True)
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+    return df
 
 @st.cache_data
 def load_data(data_type="DVF"):
