@@ -69,22 +69,16 @@ def apply_css():
     [data-testid="stSidebar"] label {{ color: #CBD5E1 !important; font-size: 0.82rem; }}
     [data-testid="stSidebar"] .stRadio > label {{ color: {GOLD} !important; font-weight: 600; font-size: 0.9rem; }}
 
-    /* ── Hide default streamlit header (sans cacher le bouton toggle sidebar) ── */
+    /* ── Hide default streamlit chrome ── */
     #MainMenu {{ visibility: hidden; }}
     footer {{ visibility: hidden; }}
-    header [data-testid="stToolbar"] {{ visibility: hidden; }}
+    header {{ visibility: hidden; height: 0 !important; }}
 
-    /* ── Bouton toggle sidebar : toujours visible ── */
+    /* ── Bouton toggle sidebar : toujours visible même sidebar fermée ── */
     [data-testid="collapsedControl"] {{
-        display: flex !important;
         visibility: visible !important;
-        opacity: 1 !important;
-        background: {NAVY} !important;
-        border-radius: 0 8px 8px 0 !important;
-        color: {GOLD} !important;
-    }}
-    [data-testid="collapsedControl"] svg {{
-        fill: {GOLD} !important;
+        height: auto !important;
+        top: 8px !important;
     }}
 
     /* ── Metric cards ── */
