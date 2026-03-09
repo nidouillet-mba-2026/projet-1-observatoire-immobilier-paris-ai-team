@@ -221,6 +221,28 @@ def apply_css():
         margin: 24px 0;
         border: none;
     }}
+
+    /* ── Calendar & Date Input ── */
+    [data-testid="stDateInput"] input,
+    [data-testid="stDateInput"] input[type="text"],
+    input[type="date"],
+    .stDateInput input {{
+        color: #000000 !important;
+    }}
+
+    /* Calendar dropdown/picker */
+    [data-baseweb="popover"] {{
+        color: #000000 !important;
+    }}
+    
+    [data-baseweb="popover"] * {{
+        color: #000000 !important;
+    }}
+
+    /* Ensure date input text is black */
+    [data-testid="stDateInput"] input::placeholder {{
+        color: #666666 !important;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
