@@ -30,6 +30,35 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
+# SIDEBAR VISIBILITY MANAGEMENT
+# ─────────────────────────────────────────────
+st.markdown("""
+<style>
+    /* Keep sidebar toggle button always visible */
+    [data-testid="stSidebarCollapseButton"] {
+        display: block !important;
+        visibility: visible !important;
+        z-index: 999 !important;
+    }
+    
+    /* Keep header minimal but with toggle button visible */
+    header {
+        display: flex !important;
+        align-items: center !important;
+        min-height: 60px !important;
+        background: transparent !important;
+        border: none !important;
+    }
+    
+    /* Ensure toggle button is always clickable */
+    header button {
+        visibility: visible !important;
+        display: inline-flex !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# ─────────────────────────────────────────────
 # THEME & CSS
 # ─────────────────────────────────────────────
 NAVY   = "#1B3A5C"
@@ -75,12 +104,17 @@ def apply_css():
         box-shadow: none !important;
         border: none !important;
     }}
-    /* Cacher uniquement le menu et le footer, PAS le toolbar (contient le toggle) */
     #MainMenu {{ visibility: hidden !important; }}
     footer {{ visibility: hidden !important; }}
     [data-testid="stDecoration"] {{ display: none !important; }}
-    /* Cacher les boutons inutiles dans le toolbar, garder le toggle */
     [data-testid="stToolbarActions"] {{ display: none !important; }}
+    /* Boutons du header (toggle sidebar) toujours visibles */
+    header button {{
+        visibility: visible !important;
+        display: inline-flex !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }}
 
     /* ── Metric cards ── */
     .kpi-card {{
