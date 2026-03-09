@@ -308,12 +308,10 @@ def _extract_from_title(df):
 @st.cache_data
 def load_acheteurs():
     dfs = []
+    # Uniquement les vraies sources de profils acheteurs
     files = {
-        "acheteur/data/acheteurs_annonces.csv":       "Annonces (PAP/Logic-Immo)",
-        "acheteur/data/acheteurs_leboncoin.csv":       "LeBonCoin (acheteurs)",
-        "acheteur/data/marche_leboncoin_clean.csv":    "Marché LeBonCoin",
-        "acheteur/data/marche_leboncoin.csv":          "Marché LeBonCoin",   # fallback
-        "acheteur/data/facebook_manuel.csv":           "Facebook (manuel)",
+        "acheteur/data/acheteurs_annonces.csv":  "PAP / Logic-Immo",
+        "acheteur/data/facebook_manuel.csv":     "Facebook (manuel)",
     }
     seen_paths = set()
     for path, label in files.items():
@@ -352,34 +350,57 @@ def load_acheteurs():
 @st.cache_data
 def load_data(data_type="DVF"):
     if data_type == "DVF":
-        # Utilise le fichier nettoyé si disponible
         file_path = "data/dvf_clean.csv" if os.path.exists("data/dvf_clean.csv") else "data/dvf_toulon_2020_now.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()
         df = pd.read_csv(file_path, encoding='utf-8-sig')
         df['date_mutation'] = pd.to_datetime(df['date_mutation'])
-        # Colonnes normalisées
         if 'prix_vente' in df.columns:
             df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
         else:
             df['prix_m2'] = df['budget'] / df['surface']
             df.loc[df['surface'] <= 0, 'prix_m2'] = None
-    else:
-        # Utilise le fichier nettoyé si disponible
+
+    elif data_type == "LBC":
+        file_path = "acheteur/data/marche_leboncoin_clean.csv"
+        if not os.path.exists(file_path):
+            file_path = "acheteur/data/marche_leboncoin.csv"
+        if not os.path.exists(file_path):
+            st.error("Fichier LeBonCoin introuvable. Lancez : python acheteur/leboncoin_crawler.py")
+            return pd.DataFrame()
+        df = pd.read_csv(file_path, encoding='utf-8-sig')
+        df = _extract_from_title(df)
+        # Normalise vers les colonnes standard de l'app
+        df = df.rename(columns={'prix': 'budget', 'surface_m2': 'surface'})
+        if 'surface' not in df.columns and 'surface_m2' in df.columns:
+            df = df.rename(columns={'surface_m2': 'surface'})
+        # Nettoyage numérique
+        for col in ['budget', 'surface', 'prix_m2']:
+            if col in df.columns:
+                df[col] = pd.to_numeric(
+                    df[col].astype(str).str.extract(r'(\d[\d\s]*)')[0].str.replace(r'\s','',regex=True),
+                    errors='coerce'
+                )
+        # Recalcul prix_m2 si manquant
+        mask = df['surface'].gt(0) & df['budget'].notna()
+        df.loc[mask, 'prix_m2'] = (df.loc[mask, 'budget'] / df.loc[mask, 'surface']).round(0)
+        # Quartier : null si "Non precise"
+        if 'quartier' in df.columns:
+            df['quartier'] = df['quartier'].replace({'Non precise': None, 'Non précisé': None})
+            df['quartier'] = df['quartier'].fillna("Quartier non renseigné")
+        df['date_mutation'] = pd.Timestamp.now()
+
+    else:  # Annonces Bien'Ici
         file_path = "data/annonces_clean.csv" if os.path.exists("data/annonces_clean.csv") else "data/annonces_toulon_clean.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()
         df = pd.read_csv(file_path, encoding='utf-8-sig')
-        # Colonnes normalisées
         if 'prix_vente' in df.columns:
             df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
         else:
-            df = df.rename(columns={
-                'Prix_total_net': 'budget', 'Surface_m2': 'surface',
-                'Quartier': 'quartier',
-            })
+            df = df.rename(columns={'Prix_total_net': 'budget', 'Surface_m2': 'surface', 'Quartier': 'quartier'})
             pm2 = [c for c in df.columns if 'm2' in c.lower() and c != 'surface']
             if pm2:
                 df = df.rename(columns={pm2[0]: 'prix_m2'})
@@ -401,18 +422,24 @@ with st.sidebar:
     st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Source de données</p>', unsafe_allow_html=True)
     data_mode = st.radio(
         "",
-        ["Ventes Passées (DVF)", "Annonces Actuelles (Bien'Ici)", "Profils Acheteurs"],
+        ["Ventes Passées (DVF)", "Annonces Vendeurs (Bien'Ici)", "Annonces Vendeurs (LeBonCoin)", "Profils Acheteurs"],
         label_visibility="collapsed"
     )
-    mode_key = "DVF" if "DVF" in data_mode else ("Acheteurs" if "Acheteurs" in data_mode else "Annonces")
+    mode_key = (
+        "DVF"      if "DVF"        in data_mode else
+        "LBC"      if "LeBonCoin"  in data_mode else
+        "Acheteurs" if "Acheteurs" in data_mode else
+        "Annonces"
+    )
 
 # ─────────────────────────────────────────────
 # HERO HEADER
 # ─────────────────────────────────────────────
 MODE_META = {
-    "DVF":      ("Ventes Passées",        "Transactions notariales depuis 2020 · Source DVF Étalab",      "📊"),
-    "Annonces": ("Annonces Actuelles",    "Offres en cours sur le marché toulonnais · Source Bien'Ici",   "🏠"),
-    "Acheteurs":("Profils Acheteurs",     "Demandes & critères des acheteurs à Toulon · Multi-sources",   "👥"),
+    "DVF":      ("Ventes Passées",          "Transactions notariales depuis 2020 · Source DVF Étalab",          "📊"),
+    "Annonces": ("Annonces Vendeurs",       "Offres en cours sur le marché toulonnais · Source Bien'Ici",       "🏠"),
+    "LBC":      ("Annonces Vendeurs",       "Offres en cours sur le marché toulonnais · Source LeBonCoin",      "🔖"),
+    "Acheteurs":("Profils Acheteurs",       "Demandes & critères des acheteurs à Toulon · PAP / Facebook",      "👥"),
 }
 title, subtitle, icon = MODE_META[mode_key]
 
@@ -585,7 +612,7 @@ if mode_key == "Acheteurs":
 else:
     df = load_data(mode_key)
 
-if mode_key != "Acheteurs" and not df.empty:
+if mode_key not in ("Acheteurs",) and not df.empty:
 
     with st.sidebar:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
@@ -737,9 +764,10 @@ if mode_key != "Acheteurs" and not df.empty:
                 use_container_width=True, hide_index=True
             )
 
-    elif mode_key == "Annonces":
+    elif mode_key in ("Annonces", "LBC"):
         with t3:
-            section_title("Annonces en cours — Bien'Ici")
+            label = "Bien'Ici" if mode_key == "Annonces" else "LeBonCoin"
+            section_title(f"Annonces en cours — {label}")
             st.dataframe(df_filtered, use_container_width=True, hide_index=True)
 
 elif mode_key != "Acheteurs":
