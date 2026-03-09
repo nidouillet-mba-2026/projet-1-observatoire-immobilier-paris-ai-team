@@ -269,10 +269,11 @@ def section_title(text):
 def load_acheteurs():
     dfs = []
     files = {
-        "acheteur/data/acheteurs_annonces.csv": "Annonces (PAP/Logic-Immo)",
-        "acheteur/data/acheteurs_leboncoin.csv": "LeBonCoin",
-        "acheteur/data/marche_leboncoin.csv": "Marché LeBonCoin",
-        "acheteur/data/facebook_manuel.csv": "Facebook (manuel)",
+        "acheteur/data/acheteurs_annonces.csv":       "Annonces (PAP/Logic-Immo)",
+        "acheteur/data/acheteurs_leboncoin.csv":       "LeBonCoin (acheteurs)",
+        "acheteur/data/marche_leboncoin_clean.csv":    "Marché LeBonCoin",
+        "acheteur/data/marche_leboncoin.csv":          "Marché LeBonCoin",   # fallback
+        "acheteur/data/facebook_manuel.csv":           "Facebook (manuel)",
     }
     for path, label in files.items():
         if os.path.exists(path):
@@ -295,26 +296,37 @@ def load_acheteurs():
 @st.cache_data
 def load_data(data_type="DVF"):
     if data_type == "DVF":
-        file_path = "data/dvf_toulon_2020_now.csv"
+        # Utilise le fichier nettoyé si disponible
+        file_path = "data/dvf_clean.csv" if os.path.exists("data/dvf_clean.csv") else "data/dvf_toulon_2020_now.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, encoding='utf-8-sig')
         df['date_mutation'] = pd.to_datetime(df['date_mutation'])
-        df['prix_m2'] = df['budget'] / df['surface']
-        df.loc[df['surface'] <= 0, 'prix_m2'] = None
+        # Colonnes normalisées
+        if 'prix_vente' in df.columns:
+            df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
+        else:
+            df['prix_m2'] = df['budget'] / df['surface']
+            df.loc[df['surface'] <= 0, 'prix_m2'] = None
     else:
-        file_path = "data/annonces_toulon_clean.csv"
+        # Utilise le fichier nettoyé si disponible
+        file_path = "data/annonces_clean.csv" if os.path.exists("data/annonces_clean.csv") else "data/annonces_toulon_clean.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()
-        df = pd.read_csv(file_path)
-        df = df.rename(columns={
-            'Prix_total_net': 'budget',
-            'Surface_m2': 'surface',
-            'Quartier': 'quartier',
-            'Prix_m2_calculé': 'prix_m2'
-        })
+        df = pd.read_csv(file_path, encoding='utf-8-sig')
+        # Colonnes normalisées
+        if 'prix_vente' in df.columns:
+            df = df.rename(columns={'prix_vente': 'budget', 'surface_m2': 'surface'})
+        else:
+            df = df.rename(columns={
+                'Prix_total_net': 'budget', 'Surface_m2': 'surface',
+                'Quartier': 'quartier',
+            })
+            pm2 = [c for c in df.columns if 'm2' in c.lower() and c != 'surface']
+            if pm2:
+                df = df.rename(columns={pm2[0]: 'prix_m2'})
         df['date_mutation'] = pd.Timestamp.now()
     return df
 
