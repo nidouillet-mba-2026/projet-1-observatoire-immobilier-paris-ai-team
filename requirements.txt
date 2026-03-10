@@ -6,4 +6,5 @@ scikit-learn
 requests
 python-dotenv
 beautifulsoup4
-
+pytest
+random
