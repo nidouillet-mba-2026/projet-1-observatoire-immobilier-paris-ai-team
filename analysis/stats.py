@@ -37,7 +37,7 @@ def variance(xs: list[float]) -> float:
     """Retourne la variance d'une liste de nombres."""
     n=len(xs)
     deviation=de_mean(xs)
-    return sum_of_squares(deviation) / (n-1)
+    return sum_of_squares(deviation) / (n)
 
 
 def standard_deviation(xs: list[float]) -> float:
@@ -49,7 +49,7 @@ def covariance(xs: list[float], ys: list[float]) -> float:
     """Retourne la covariance entre deux series."""
     assert len(xs) == len(ys) #les listes doivent avoir la meme longueur
     n=len(xs)
-    return sum(x*y for x,y in zip(de_mean(xs), de_mean(ys))) / (n - 1)
+    return sum(x*y for x,y in zip(de_mean(xs), de_mean(ys))) / (n)
 
 
 def correlation(xs: list[float], ys: list[float]) -> float:
