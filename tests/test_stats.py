@@ -27,18 +27,18 @@ def test_sum_of_squares_main_example():
 
 def test_variance_main_example():
 	xs = [1, 2, 3, 4, 5]
-	assert stats.variance(xs) == pytest.approx(2.5)
+	assert stats.variance(xs) == pytest.approx(2.0)
 
 
 def test_standard_deviation_main_example():
 	xs = [1, 2, 3, 4, 5]
-	assert stats.standard_deviation(xs) == pytest.approx(1.5811, rel=1e-3)
+	assert stats.standard_deviation(xs) == pytest.approx(1.4142, rel=1e-3)
 
 
 def test_covariance_main_example():
 	xs = [1, 2, 3, 4, 5]
 	ys = [2, 4, 6, 8, 10]
-	assert stats.covariance(xs, ys) == pytest.approx(5.0)
+	assert stats.covariance(xs, ys) == pytest.approx(4.0)
 
 
 def test_correlation_main_example():

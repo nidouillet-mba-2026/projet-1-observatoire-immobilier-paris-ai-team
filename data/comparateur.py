@@ -1,4 +1,8 @@
 import pandas as pd
+import os
+
+# Changer le répertoire de travail pour le dossier du script
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 annonces = pd.read_csv("annonces_toulon.csv")
 dvf = pd.read_csv("dvf_toulon.csv")

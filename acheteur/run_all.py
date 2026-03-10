@@ -8,7 +8,7 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from acheteur.leboncoin_crawler import crawl_leboncoin
+from acheteur.leboncoin_crawler import crawl_leboncoin, crawl_acheteurs_leboncoin
 from acheteur.forum_crawler import crawl_forums
 from acheteur.facebook_template import load_or_create_template
 from acheteur.profiler import load_all, generate_report
@@ -18,10 +18,13 @@ def main():
     print("  CRAWLER ACHETEURS IMMOBILIER - TOULON")
     print("=" * 50)
 
-    print("\n[1/3] LeBonCoin...")
-    crawl_leboncoin(max_pages=10)
+    print("\n[1/4] LeBonCoin (Marché)...")
+    crawl_leboncoin(max_pages=5)
 
-    print("\n[2/3] Forums (PAP, Logic-Immo)...")
+    print("\n[2/4] LeBonCoin (Demandes Acheteurs)...")
+    crawl_acheteurs_leboncoin(max_pages=5)
+
+    print("\n[3/4] Forums (PAP, Logic-Immo)...")
     crawl_forums()
 
     print("\n[3/3] Données Facebook (template)...")

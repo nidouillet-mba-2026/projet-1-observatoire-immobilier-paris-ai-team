@@ -4,20 +4,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 import os
 
-def format_price(price):
-    """Format price to short notation (ex: 205k, 1.2M)"""
-    try:
-        if pd.isnull(price) or price is None or (isinstance(price, str) and price == ""):
-            return ""
-        price = float(price)
-        if price >= 1_000_000:
-            return f"{price / 1_000_000:.1f}M"
-        elif price >= 1_000:
-            return f"{price / 1_000:.0f}k"
-        else:
-            return f"{price:.0f}"
-    except (ValueError, TypeError):
-        return str(price)
+from streamlit_utils import (
+    format_price, apply_css, styled_chart, kpi, section_title,
+    load_acheteurs, load_data,
+    NAVY, GOLD, BLUE, LIGHT, WHITE, GREY, GREEN, RED,
+    CHART_COLORS, PLOTLY_LAYOUT, MODE_META
+)
 
 st.set_page_config(
     page_title="Observatoire Immobilier Toulon",
@@ -65,287 +57,21 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+@st.cache_data
+def load_comparaison():
+    file_path = "data/comparaison_marche.csv"
+    if os.path.exists(file_path):
+        return pd.read_csv(file_path)
+    return pd.DataFrame()
+
 # ─────────────────────────────────────────────
 # THEME & CSS
 # ─────────────────────────────────────────────
-NAVY   = "#1B3A5C"
-GOLD   = "#C9A84C"
-BLUE   = "#2E86AB"
-LIGHT  = "#F4F6F9"
-WHITE  = "#FFFFFF"
-GREY   = "#6B7280"
-GREEN  = "#10B981"
-RED    = "#EF4444"
-
-CHART_COLORS = [BLUE, GOLD, "#E74C3C", "#2ECC71", "#9B59B6", "#F39C12", "#1ABC9C"]
-
-def apply_css():
-    st.markdown(f"""
-    <style>
-    /* ── Fonts & base ── */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    html, body, [class*="css"] {{ font-family: 'Inter', sans-serif; }}
-
-    /* ── App background ── */
-    .stApp {{ background-color: {LIGHT}; }}
-
-    /* ── Sidebar ── */
-    [data-testid="stSidebar"] {{
-        background: linear-gradient(180deg, {NAVY} 0%, #0f2337 100%);
-        border-right: none;
-    }}
-    [data-testid="stSidebar"] * {{ color: #E2E8F0 !important; }}
-    [data-testid="stSidebar"] .stMarkdown h1,
-    [data-testid="stSidebar"] .stMarkdown h2,
-    [data-testid="stSidebar"] .stMarkdown h3 {{
-        color: {GOLD} !important;
-        font-weight: 600;
-    }}
-    [data-testid="stSidebar"] hr {{ border-color: rgba(255,255,255,0.15) !important; }}
-    [data-testid="stSidebar"] label {{ color: #CBD5E1 !important; font-size: 0.82rem; }}
-    [data-testid="stSidebar"] .stRadio > label {{ color: {GOLD} !important; font-weight: 600; font-size: 0.9rem; }}
-
-    /* ── Header : transparent, pas de barre visible ── */
-    [data-testid="stHeader"] {{
-        background-color: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-    }}
-    #MainMenu {{ visibility: hidden !important; }}
-    footer {{ visibility: hidden !important; }}
-    [data-testid="stDecoration"] {{ display: none !important; }}
-    [data-testid="stToolbarActions"] {{ display: none !important; }}
-    /* Boutons du header (toggle sidebar) toujours visibles */
-    header button {{
-        visibility: visible !important;
-        display: inline-flex !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }}
-
-    /* ── Metric cards ── */
-    .kpi-card {{
-        background: {WHITE};
-        border-radius: 12px;
-        padding: 20px 24px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-        border-left: 4px solid {BLUE};
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }}
-    .kpi-card:hover {{
-        transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    }}
-    .kpi-card.gold {{ border-left-color: {GOLD}; }}
-    .kpi-card.green {{ border-left-color: {GREEN}; }}
-    .kpi-card.navy {{ border-left-color: {NAVY}; }}
-    .kpi-label {{
-        font-size: 0.78rem;
-        font-weight: 500;
-        color: {GREY};
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 6px;
-    }}
-    .kpi-value {{
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: {NAVY};
-        line-height: 1;
-    }}
-    .kpi-sub {{
-        font-size: 0.75rem;
-        color: {GREY};
-        margin-top: 4px;
-    }}
-
-    /* ── Main content text ── */
-
-    /* ── Section headers ── */
-    .section-title {{
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: {NAVY};
-        margin: 8px 0 14px 0;
-        padding-bottom: 8px;
-        border-bottom: 2px solid {GOLD};
-        display: inline-block;
-        letter-spacing: -0.01em;
-    }}
-
-    /* ── Chart cards ── */
-    .chart-card {{
-        background: {WHITE};
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        margin-bottom: 16px;
-    }}
-
-    /* ── Tab styling ── */
-    .stTabs [data-baseweb="tab-list"] {{
-        gap: 4px;
-        background: {WHITE};
-        border-radius: 10px;
-        padding: 4px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        margin-bottom: 16px;
-    }}
-    .stTabs [data-baseweb="tab"] {{
-        border-radius: 8px;
-        padding: 8px 20px;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: {GREY};
-        background: transparent;
-    }}
-    .stTabs [aria-selected="true"] {{
-        background: {NAVY} !important;
-        color: {WHITE} !important;
-    }}
-
-    /* ── Hero banner ── */
-    .hero {{
-        background: linear-gradient(135deg, {NAVY} 0%, #2563EB 100%);
-        border-radius: 16px;
-        padding: 32px 40px;
-        margin-bottom: 28px;
-        color: white;
-        position: relative;
-        overflow: hidden;
-    }}
-    .hero::before {{
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 400px;
-        height: 400px;
-        background: rgba(255,255,255,0.04);
-        border-radius: 50%;
-    }}
-    .hero-title {{
-        font-size: 1.9rem;
-        font-weight: 700;
-        margin: 0 0 6px 0;
-        letter-spacing: -0.02em;
-    }}
-    .hero-subtitle {{
-        font-size: 1rem;
-        opacity: 0.75;
-        margin: 0;
-        font-weight: 400;
-    }}
-    .hero-badge {{
-        display: inline-block;
-        background: rgba(255,255,255,0.15);
-        border: 1px solid rgba(255,255,255,0.25);
-        border-radius: 20px;
-        padding: 3px 12px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        margin-bottom: 12px;
-        backdrop-filter: blur(4px);
-    }}
-
-    /* ── Dataframe ── */
-    .stDataFrame {{ border-radius: 10px; overflow: hidden; }}
-
-    /* ── Download button ── */
-    .stDownloadButton > button {{
-        background: {NAVY};
-        color: white;
-        border-radius: 8px;
-        border: none;
-        padding: 8px 20px;
-        font-weight: 500;
-        font-size: 0.875rem;
-    }}
-    .stDownloadButton > button:hover {{ background: {BLUE}; }}
-
-    /* ── Divider ── */
-    .divider {{
-        height: 1px;
-        background: linear-gradient(90deg, {GOLD}, transparent);
-        margin: 24px 0;
-        border: none;
-    }}
-
-    /* ── Calendar & Date Input ── */
-    [data-testid="stDateInput"] input,
-    [data-testid="stDateInput"] input[type="text"],
-    input[type="date"],
-    .stDateInput input {{
-        color: #000000 !important;
-    }}
-
-    /* Calendar dropdown/picker */
-    [data-baseweb="popover"] {{
-        color: #000000 !important;
-    }}
-    
-    [data-baseweb="popover"] * {{
-        color: #000000 !important;
-    }}
-
-    /* Ensure date input text is black */
-    [data-testid="stDateInput"] input::placeholder {{
-        color: #666666 !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
+# (Couleurs et styles importés depuis streamlit_utils)
 
 apply_css()
-
-# ─────────────────────────────────────────────
-# PLOTLY THEME
-# ─────────────────────────────────────────────
-PLOTLY_LAYOUT = dict(
-    paper_bgcolor=WHITE,
-    plot_bgcolor=WHITE,
-    font=dict(family="Inter", color="#111827", size=12),
-    margin=dict(l=8, r=8, t=36, b=8),
-    legend=dict(bgcolor=WHITE, font=dict(size=12, color="#111827")),
-    xaxis=dict(
-        gridcolor="#E5E7EB",
-        linecolor="#D1D5DB",
-        tickfont=dict(color="#111827", size=11),
-        title=dict(font=dict(color="#111827", size=12)),
-    ),
-    yaxis=dict(
-        gridcolor="#E5E7EB",
-        linecolor="#D1D5DB",
-        tickfont=dict(color="#111827", size=11),
-        title=dict(font=dict(color="#111827", size=12)),
-    ),
-    coloraxis_colorbar=dict(
-        tickfont=dict(size=11, color="#111827"),
-        title=dict(font=dict(size=12, color="#111827")),
-    ),
-)
-
-def styled_chart(fig, height=360):
-    fig.update_layout(**PLOTLY_LAYOUT, height=height)
-    # Force dark text on all annotations and hover
-    fig.update_traces(
-        hoverlabel=dict(bgcolor=WHITE, font_color="#111827", font_size=12),
-    )
-    # Fix pie/donut label color
-    if fig.data and fig.data[0].type in ('pie', 'sunburst', 'treemap'):
-        fig.update_traces(textfont=dict(color="#111827", size=12))
-    return fig
-
-def kpi(label, value, color="", sub=""):
-    return f"""
-    <div class="kpi-card {color}">
-        <div class="kpi-label">{label}</div>
-        <div class="kpi-value">{value}</div>
-        {"<div class='kpi-sub'>" + sub + "</div>" if sub else ""}
-    </div>"""
-
-def section_title(text):
-    st.markdown(f'<p class="section-title">{text}</p>', unsafe_allow_html=True)
 st.title("🏙️ Observatoire Immobilier - Toulon (DVF)")
+
 # ─────────────────────────────────────────────
 # DATA LOADERS
 # ─────────────────────────────────────────────
@@ -389,47 +115,20 @@ def _extract_from_title(df):
 
     return df
 
-@st.cache_data
-def load_acheteurs():
-    dfs = []
-    # Uniquement les vraies sources de profils acheteurs
-    files = {
-        "acheteur/data/acheteurs_annonces.csv":  "PAP / Logic-Immo",
-        "acheteur/data/facebook_manuel.csv":     "Facebook (manuel)",
-    }
-    seen_paths = set()
-    for path, label in files.items():
-        if path in seen_paths or not os.path.exists(path):
-            continue
-        seen_paths.add(path)
-        try:
-            df = pd.read_csv(path, encoding='utf-8-sig')
-            df = _extract_from_title(df)   # enrichit surface/pièces depuis les titres
-            df['_source_file'] = label
-            dfs.append(df)
-        except Exception:
-            pass
-    if not dfs:
+@st.cache_data(ttl=60)
+def load_acheteurs_data():
+    path = "acheteur/data/rapport_acheteurs.csv"
+    if not os.path.exists(path):
         return pd.DataFrame()
-    df = pd.concat(dfs, ignore_index=True)
-    # Normalise : surface_m2 / surface → surface_min (colonne unique pour l'onglet acheteurs)
-    for alt in ['surface_m2', 'surface']:
-        if alt in df.columns and 'surface_min' not in df.columns:
-            df['surface_min'] = df[alt]
-        elif alt in df.columns:
-            df['surface_min'] = df['surface_min'].fillna(df[alt])
-    # Prix marché → budget_max si manquant
-    for alt in ['prix']:
-        if alt in df.columns and 'budget_max' not in df.columns:
-            df['budget_max'] = df[alt]
-        elif alt in df.columns:
-            df['budget_max'] = df['budget_max'].fillna(df[alt]) if 'budget_max' in df.columns else df[alt]
-    for col in ['budget_max', 'surface_min', 'nb_pieces', 'prix', 'surface', 'prix_m2']:
-        if col in df.columns:
-            df[col] = df[col].astype(str).str.extract(r'(\d[\d\s]*)')[0]
-            df[col] = df[col].str.replace(r'\s', '', regex=True)
-            df[col] = pd.to_numeric(df[col], errors='coerce')
-    return df
+    try:
+        df = pd.read_csv(path, encoding='utf-8-sig')
+        # S'assurer que les colonnes numériques sont bien typées pour Streamlit
+        for col in ['budget_max', 'surface_min', 'nb_pieces']:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+        return df
+    except Exception:
+        return pd.DataFrame()
 
 @st.cache_data
 def load_data(data_type="DVF"):
@@ -483,6 +182,7 @@ def load_data(data_type="DVF"):
     else:  # Annonces Bien'Ici
         # Priorité : fichier le plus récent de la branche data
         candidates = [
+            "data/annonces_toulon.csv",
             "data/clean_annonces_toulon_clean.csv",
             "data/annonces_clean.csv",
             "data/annonces_toulon_clean.csv",
@@ -530,25 +230,21 @@ with st.sidebar:
     st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Source de données</p>', unsafe_allow_html=True)
     data_mode = st.radio(
         "",
-        ["Ventes Passées (DVF)", "Annonces Vendeurs (Bien'Ici)", "Annonces Vendeurs (LeBonCoin)", "Profils Acheteurs"],
+        ["Ventes Passées (DVF)", "Annonces Vendeurs (Bien'Ici)", "Annonces Vendeurs (LeBonCoin)", "Comparaison Marché", "Profils Acheteurs"],
         label_visibility="collapsed"
     )
     mode_key = (
         "DVF"      if "DVF"        in data_mode else
         "LBC"      if "LeBonCoin"  in data_mode else
         "Acheteurs" if "Acheteurs" in data_mode else
+        "Comparaison" if "Comparaison" in data_mode else
         "Annonces"
     )
 
 # ─────────────────────────────────────────────
 # HERO HEADER
 # ─────────────────────────────────────────────
-MODE_META = {
-    "DVF":      ("Ventes Passées",          "Transactions notariales depuis 2020 · Source DVF Étalab",          "📊"),
-    "Annonces": ("Annonces Vendeurs",       "Offres en cours sur le marché toulonnais · Source Bien'Ici",       "🏠"),
-    "LBC":      ("Annonces Vendeurs",       "Offres en cours sur le marché toulonnais · Source LeBonCoin",      "🔖"),
-    "Acheteurs":("Profils Acheteurs",       "Demandes & critères des acheteurs à Toulon · PAP / Facebook",      "👥"),
-}
+# MODE_META importé depuis streamlit_utils
 title, subtitle, icon = MODE_META[mode_key]
 
 st.markdown(f"""
@@ -563,7 +259,7 @@ st.markdown(f"""
 # MODE : ACHETEURS
 # ─────────────────────────────────────────────
 if mode_key == "Acheteurs":
-    df_ach = load_acheteurs()
+    df_ach = load_acheteurs_data()
 
     if df_ach.empty:
         st.warning("Aucune donnée acheteur. Lancez : `python acheteur/run_all.py`")
@@ -747,12 +443,70 @@ if mode_key == "Acheteurs":
             )
 
 # ─────────────────────────────────────────────
+# MODE : COMPARAISON MARCHÉ
+# ─────────────────────────────────────────────
+elif mode_key == "Comparaison":
+    df_comp = load_comparaison()
+    if df_comp.empty:
+        st.warning("Aucune donnée de comparaison. Lancez : `python data/comparateur.py`")
+    else:
+        with st.sidebar:
+            st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Filtres</p>', unsafe_allow_html=True)
+            
+            unique_quartiers = sorted(df_comp['quartier'].dropna().unique())
+            q_selected = st.multiselect("Filtrer par quartier", options=unique_quartiers, default=[])
+            
+            # Filtre écart
+            ecart_min = st.slider("Écart minimum (%)", -100, 100, -100)
+            ecart_max = st.slider("Écart maximum (%)", -100, 100, 100)
+
+        # Filtrage
+        mask = (df_comp['ecart_pct'] >= ecart_min) & (df_comp['ecart_pct'] <= ecart_max)
+        if q_selected:
+            mask = mask & (df_comp['quartier'].isin(q_selected))
+        df_filtered = df_comp.loc[mask]
+
+        # KPIs
+        c1, c2, c3, c4 = st.columns(4)
+        c1.markdown(kpi("Biens analysés", f"{len(df_filtered)}", "navy"), unsafe_allow_html=True)
+        c2.markdown(kpi("Sous-cotés (<-5%)", f"{len(df_filtered[df_filtered['ecart_pct'] < -5])}", "green"), unsafe_allow_html=True)
+        c3.markdown(kpi("Écart moyen", f"{df_filtered['ecart_pct'].mean():.1f}%", "gold"), unsafe_allow_html=True)
+        c4.markdown(kpi("Sur-cotés (>+5%)", f"{len(df_filtered[df_filtered['ecart_pct'] > 5])}", "red"), unsafe_allow_html=True)
+
+        st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+
+        tab1, tab2 = st.tabs(["Analyse Graphique", "Liste des Opportunités"])
+        
+        with tab1:
+            col1, col2 = st.columns([2, 1])
+            with col1:
+                section_title("Analyse des prix : Annonce vs Marché")
+                fig = px.scatter(df_filtered, x='prix_marche_m2', y='prix_annonce_m2',
+                                 hover_data=['quartier', 'surface', 'ecart_pct'],
+                                 color='ecart_pct', color_continuous_scale='RdYlGn_r',
+                                 labels={'prix_marche_m2': 'Prix Marché (€/m²)', 'prix_annonce_m2': 'Prix Annonce (€/m²)'})
+                max_v = max(df_filtered['prix_marche_m2'].max(), df_filtered['prix_annonce_m2'].max()) if not df_filtered.empty else 10000
+                fig.add_shape(type='line', x0=0, y0=0, x1=max_v, y1=max_v, line=dict(color='grey', dash='dash'))
+                st.plotly_chart(styled_chart(fig), use_container_width=True)
+            
+            with col2:
+                section_title("Distribution des écarts (%)")
+                fig = px.histogram(df_filtered, x='ecart_pct', nbins=30, color_discrete_sequence=[BLUE])
+                st.plotly_chart(styled_chart(fig), use_container_width=True)
+
+        with tab2:
+            section_title("Détails des annonces et écarts")
+            st.dataframe(df_filtered.sort_values('ecart_pct'), use_container_width=True, hide_index=True,
+                         column_config={"url": st.column_config.LinkColumn("url")})
+
+# ─────────────────────────────────────────────
 # MODE : DVF / ANNONCES
 # ─────────────────────────────────────────────
 else:
     df = load_data(mode_key)
 
-if mode_key not in ("Acheteurs",) and not df.empty:
+if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
 
     with st.sidebar:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
@@ -941,6 +695,7 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             )
 
     elif mode_key in ("Annonces", "LBC"):
+        # ── Tab 3 : Liste des annonces ──
         with t3:
             label = "Bien'Ici" if mode_key == "Annonces" else "LeBonCoin"
             section_title(f"Annonces en cours — {label}")
@@ -981,5 +736,5 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             st.dataframe(df_display_annonces, use_container_width=True, hide_index=True,
                         column_config=column_config if column_config else None)
 
-elif mode_key != "Acheteurs":
+elif mode_key not in ("Acheteurs", "Comparaison"):
     st.info("Aucune donnée disponible. Vérifiez vos filtres ou lancez le crawler.")
