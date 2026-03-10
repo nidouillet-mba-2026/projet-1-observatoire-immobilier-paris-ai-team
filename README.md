@@ -49,16 +49,16 @@ streamlit run app/streamlit_app.py
 
 ## Application deployee
 
-**URL :** <!-- REMPLACEZ PAR VOTRE URL DE DEPLOIEMENT -->
+**URL :** https://projet-1-observatoire-immobilier-paris.onrender.com
 
 ## Repartition du travail
 
 | Membre | Role | Contributions principales |
 |--------|------|--------------------------|
-| Prenom NOM | Data Engineer | ... |
-| Prenom NOM | Data Scientist | ... |
-| Prenom NOM | AI Engineer | ... |
-| Prenom NOM | Frontend / DevOps | ... |
+| Colin Cayre | Data Engineer | ... |
+| Christian Rubis | Data Scientist | ... |
+| Alexandre Delmotte | AI Engineer | ... |
+| Alexis Wone | Frontend / DevOps | ... |
 
 ## Donnees
 
@@ -68,3 +68,4 @@ streamlit run app/streamlit_app.py
 ## References
 
 - Joel Grus, *Data Science From Scratch*, ch.5 (statistiques) et ch.14 (regression)
+
