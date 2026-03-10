@@ -38,7 +38,8 @@ def least_squares_fit(x: list[float], y: list[float]) -> tuple[float, float]:
 
 def total_sum_of_squares(y):
     """the total squared variation of y_i's from their mean"""
-    return sum(v ** 2 for v in mean(y))
+    y_mean = mean(y)
+    return sum((y_i - y_mean) ** 2 for y_i in y)
 
 
 def r_squared(alpha: float, beta: float, x: list, y: list) -> float:
