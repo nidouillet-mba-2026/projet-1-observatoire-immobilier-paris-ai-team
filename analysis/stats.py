@@ -71,31 +71,3 @@ def correlation(xs: list[float], ys: list[float]) -> float:
     else:
         return 0
     raise NotImplementedError("Implementez correlation() - voir Grus ch.5")
-
-if __name__ == "__main__":
-    xs = [1, 2, 3, 4, 5]
-    ys = [2, 4, 6, 8, 10]
-
-    print("Test mean:")
-    print(mean(xs))  # attendu: 3
-
-    print("\nTest median:")
-    print(median(xs))  # attendu: 3
-
-    print("\nTest de_mean:")
-    print(de_mean(xs))  # attendu: [-2, -1, 0, 1, 2]
-
-    print("\nTest sum_of_squares:")
-    print(sum_of_squares(xs))  # attendu: 55
-
-    print("\nTest variance:")
-    print(variance(xs))  # attendu: 2.5
-
-    print("\nTest standard_deviation:")
-    print(standard_deviation(xs))  # attendu: ~1.5811
-
-    print("\nTest covariance:")
-    print(covariance(xs, ys))  # attendu: 5.0
-
-    print("\nTest correlation:")
-    print(correlation(xs, ys))  # attendu: 1.0
