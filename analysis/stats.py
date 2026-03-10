@@ -37,7 +37,7 @@ def variance(xs: list[float]) -> float:
     """Retourne la variance d'une liste de nombres."""
     n=len(xs)
     deviation=de_mean(xs)
-    return sum_of_squares(deviation) / (n)
+    return sum_of_squares(deviation) / (n-1)
 
 
 def standard_deviation(xs: list[float]) -> float:
@@ -61,6 +61,6 @@ def correlation(xs: list[float], ys: list[float]) -> float:
     stdev_x = standard_deviation(xs)
     stdev_y = standard_deviation(ys)
     if stdev_x > 0 and stdev_y > 0:
-        return covariance(xs, ys) / (stdev_x * stdev_y)
+        return covariance(xs, ys) / stdev_x / stdev_y
     else:
         return 0
