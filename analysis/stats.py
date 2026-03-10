@@ -40,7 +40,7 @@ def variance(xs: list[float]) -> float:
     """Retourne la variance d'une liste de nombres."""
     n=len(xs)
     deviation=de_mean(xs)
-    return sum_of_squares(deviation) / (n - 1)
+    return sum_of_squares(deviation) / (n)
     raise NotImplementedError("Implementez variance() - voir Grus ch.5")
 
 
