@@ -55,14 +55,14 @@ def load_or_create_template(filepath="acheteur/data/facebook_manuel.csv"):
 
     if os.path.exists(filepath):
         df = pd.read_csv(filepath, encoding='utf-8-sig')
-        print(f"✓ Fichier existant chargé : {len(df)} entrées")
+        print(f"OK Fichier existant charge : {len(df)} entrees")
         return df
 
     # Crée un fichier template avec des exemples
     df = pd.DataFrame(TEMPLATE_DATA)
     df.to_csv(filepath, index=False, encoding='utf-8-sig')
-    print(f"✓ Template créé : {filepath}")
-    print("  → Remplis ce fichier avec les données des groupes Facebook puis relance.")
+    print(f"OK Template cree : {filepath}")
+    print("  -> Remplis ce fichier avec les donnees des groupes Facebook puis relance.")
     return df
 
 if __name__ == "__main__":

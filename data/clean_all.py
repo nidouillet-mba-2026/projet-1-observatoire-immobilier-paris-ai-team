@@ -75,7 +75,7 @@ def type_bien_from_surface(surface):
 # ─────────────────────────────────────────────
 # 1. DVF
 # ─────────────────────────────────────────────
-def clean_dvf(src="data/dvf_toulon_2020_now.csv", dst="data/dvf_clean.csv"):
+def clean_dvf(src="data/dvf_toulon_2020_now.csv", dst="data/dvf_toulon.csv"):
     print("Nettoyage DVF...")
     df = pd.read_csv(src, encoding='utf-8-sig')
 

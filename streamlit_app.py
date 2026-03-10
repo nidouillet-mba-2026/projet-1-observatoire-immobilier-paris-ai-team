@@ -434,7 +434,7 @@ def load_acheteurs():
 @st.cache_data
 def load_data(data_type="DVF"):
     if data_type == "DVF":
-        file_path = "data/dvf_clean.csv" if os.path.exists("data/dvf_clean.csv") else "data/dvf_toulon_2020_now.csv"
+        file_path = "data/dvf_toulon.csv" if os.path.exists("data/dvf_toulon.csv") else "data/dvf_toulon_2020_now.csv"
         if not os.path.exists(file_path):
             st.error(f"Fichier {file_path} introuvable.")
             return pd.DataFrame()

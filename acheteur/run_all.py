@@ -31,7 +31,7 @@ def main():
     df = load_all("acheteur/data")
     generate_report(df, "acheteur/data/rapport_acheteurs.csv")
 
-    print("\n✓ Terminé ! Fichiers dans acheteur/data/")
+    print("\nOK Termine ! Fichiers dans acheteur/data/")
 
 if __name__ == "__main__":
     main()

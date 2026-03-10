@@ -209,6 +209,9 @@ def crawl_leboncoin(max_pages=3, output_file="acheteur/data/marche_leboncoin.csv
         return pd.DataFrame()
 
     df = pd.DataFrame(all_listings)
+    # Nettoyage colonnes numériques
+    for col in ['prix', 'prix_m2', 'surface']:
+        df[col] = pd.to_numeric(df[col].astype(str).str.extract(r'([\d.]+)')[0], errors='coerce')
     df.to_csv(output_file, index=False, encoding='utf-8-sig')
     print(f"\nOK {len(df)} annonces sauvegardees dans {output_file}")
 
