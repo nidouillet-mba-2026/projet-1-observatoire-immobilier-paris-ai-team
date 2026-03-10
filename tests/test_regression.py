@@ -40,10 +40,10 @@ def test_least_squares_fit_uses_stats_helpers(monkeypatch):
 	assert alpha == pytest.approx(10.0)
 
 
-def test_total_sum_of_squares_raises_type_error_with_current_code(monkeypatch):
-	monkeypatch.setattr(regression, "mean", lambda _y: 2.0)
-	with pytest.raises(TypeError):
-		regression.total_sum_of_squares([1.0, 2.0, 3.0])
+def test_total_sum_of_squares_correct():
+	y = [1.0, 2.0, 3.0]
+	# mean = 2.0, (1-2)^2 + (2-2)^2 + (3-2)^2 = 1 + 0 + 1 = 2.0
+	assert regression.total_sum_of_squares(y) == pytest.approx(2.0)
 
 
 def test_r_squared_is_one_for_zero_residuals(monkeypatch):

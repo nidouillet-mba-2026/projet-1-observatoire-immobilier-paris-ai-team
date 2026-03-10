@@ -226,5 +226,71 @@ def crawl_leboncoin(max_pages=3, output_file="acheteur/data/marche_leboncoin.csv
     return df
 
 
+def crawl_acheteurs_leboncoin(max_pages=5, output_file="acheteur/data/acheteurs_leboncoin.csv"):
+    """Cherche spécifiquement les annonces de RECHERCHE de bien (Acheteurs)."""
+    print("\n=== Crawler LeBonCoin - Profils Acheteurs Toulon ===")
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    
+    queries = ["cherche appartement", "recherche maison", "recherche appartement toulon", "cherche villa"]
+    all_profiles = []
+    seen_urls = set()
+
+    for query in queries:
+        print(f"Recherche acheteurs : '{query}'")
+        for page in range(1, max_pages + 1):
+            html = fetch_page(query, page)
+            if not html: break
+            
+            ads = parse_page(html)
+            if not ads: break
+
+            for ad in ads:
+                title = ad.get('subject', '').lower()
+                desc = ad.get('body', '').lower()
+                full_text = title + ' ' + desc
+                url = ad.get('url', '')
+
+                # On ne garde que si le titre contient un mot-clé de recherche
+                if not any(w in title for w in ['cherche', 'recherche', 'recherchons', 'souhaite']):
+                    continue
+
+                if url in seen_urls: continue
+                seen_urls.add(url)
+
+                # Extraction budget (souvent dans le titre ou description)
+                budget = None
+                nums = re.findall(r'(\d{2,}[\d\s]{3,})', full_text.replace(' ', '').replace('\xa0', ''))
+                if nums:
+                    val = int(nums[0])
+                    if 10000 < val < 2000000: budget = val
+
+                profile = {
+                    'source': 'LeBonCoin (Acheteur)',
+                    'date_annonce': datetime.now().strftime('%Y-%m-%d'),
+                    'date_crawl': datetime.now().strftime('%Y-%m-%d'),
+                    'titre': ad.get('subject', ''),
+                    'type_bien': extract_type_bien(full_text),
+                    'type_achat': 'Residence principale' if 'habiter' in full_text else 'Non precise',
+                    'budget_max': budget,
+                    'surface_min': extract_surface(full_text),
+                    'nb_pieces': extract_pieces(full_text),
+                    'quartier_souhaite': extract_quartier(full_text),
+                    'criteres': extract_criteres(full_text),
+                    'url': url,
+                    'description': desc[:400]
+                }
+                all_profiles.append(profile)
+            time.sleep(1)
+
+    if all_profiles:
+        df = pd.DataFrame(all_profiles)
+        df.to_csv(output_file, index=False, encoding='utf-8-sig')
+        print(f"OK {len(df)} profils acheteurs trouves.")
+        return df
+    print("Aucun profil acheteur trouve.")
+    return pd.DataFrame()
+
+
 if __name__ == "__main__":
-    crawl_leboncoin(max_pages=5)
+    crawl_leboncoin(max_pages=2)
+    crawl_acheteurs_leboncoin(max_pages=2)

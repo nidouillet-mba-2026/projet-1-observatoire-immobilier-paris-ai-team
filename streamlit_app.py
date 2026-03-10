@@ -65,6 +65,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+@st.cache_data
+def load_comparaison():
+    file_path = "data/comparaison_marche.csv"
+    if os.path.exists(file_path):
+        return pd.read_csv(file_path)
+    return pd.DataFrame()
+
 # ─────────────────────────────────────────────
 # THEME & CSS
 # ─────────────────────────────────────────────
@@ -389,47 +396,20 @@ def _extract_from_title(df):
 
     return df
 
-@st.cache_data
-def load_acheteurs():
-    dfs = []
-    # Uniquement les vraies sources de profils acheteurs
-    files = {
-        "acheteur/data/acheteurs_annonces.csv":  "PAP / Logic-Immo",
-        "acheteur/data/facebook_manuel.csv":     "Facebook (manuel)",
-    }
-    seen_paths = set()
-    for path, label in files.items():
-        if path in seen_paths or not os.path.exists(path):
-            continue
-        seen_paths.add(path)
-        try:
-            df = pd.read_csv(path, encoding='utf-8-sig')
-            df = _extract_from_title(df)   # enrichit surface/pièces depuis les titres
-            df['_source_file'] = label
-            dfs.append(df)
-        except Exception:
-            pass
-    if not dfs:
+@st.cache_data(ttl=60)
+def load_acheteurs_data():
+    path = "acheteur/data/rapport_acheteurs.csv"
+    if not os.path.exists(path):
         return pd.DataFrame()
-    df = pd.concat(dfs, ignore_index=True)
-    # Normalise : surface_m2 / surface → surface_min (colonne unique pour l'onglet acheteurs)
-    for alt in ['surface_m2', 'surface']:
-        if alt in df.columns and 'surface_min' not in df.columns:
-            df['surface_min'] = df[alt]
-        elif alt in df.columns:
-            df['surface_min'] = df['surface_min'].fillna(df[alt])
-    # Prix marché → budget_max si manquant
-    for alt in ['prix']:
-        if alt in df.columns and 'budget_max' not in df.columns:
-            df['budget_max'] = df[alt]
-        elif alt in df.columns:
-            df['budget_max'] = df['budget_max'].fillna(df[alt]) if 'budget_max' in df.columns else df[alt]
-    for col in ['budget_max', 'surface_min', 'nb_pieces', 'prix', 'surface', 'prix_m2']:
-        if col in df.columns:
-            df[col] = df[col].astype(str).str.extract(r'(\d[\d\s]*)')[0]
-            df[col] = df[col].str.replace(r'\s', '', regex=True)
-            df[col] = pd.to_numeric(df[col], errors='coerce')
-    return df
+    try:
+        df = pd.read_csv(path, encoding='utf-8-sig')
+        # S'assurer que les colonnes numériques sont bien typées pour Streamlit
+        for col in ['budget_max', 'surface_min', 'nb_pieces']:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+        return df
+    except Exception:
+        return pd.DataFrame()
 
 @st.cache_data
 def load_data(data_type="DVF"):
@@ -483,6 +463,7 @@ def load_data(data_type="DVF"):
     else:  # Annonces Bien'Ici
         # Priorité : fichier le plus récent de la branche data
         candidates = [
+            "data/annonces_toulon.csv",
             "data/clean_annonces_toulon_clean.csv",
             "data/annonces_clean.csv",
             "data/annonces_toulon_clean.csv",
@@ -530,13 +511,14 @@ with st.sidebar:
     st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Source de données</p>', unsafe_allow_html=True)
     data_mode = st.radio(
         "",
-        ["Ventes Passées (DVF)", "Annonces Vendeurs (Bien'Ici)", "Annonces Vendeurs (LeBonCoin)", "Profils Acheteurs"],
+        ["Ventes Passées (DVF)", "Annonces Vendeurs (Bien'Ici)", "Annonces Vendeurs (LeBonCoin)", "Comparaison Marché", "Profils Acheteurs"],
         label_visibility="collapsed"
     )
     mode_key = (
         "DVF"      if "DVF"        in data_mode else
         "LBC"      if "LeBonCoin"  in data_mode else
         "Acheteurs" if "Acheteurs" in data_mode else
+        "Comparaison" if "Comparaison" in data_mode else
         "Annonces"
     )
 
@@ -548,6 +530,7 @@ MODE_META = {
     "Annonces": ("Annonces Vendeurs",       "Offres en cours sur le marché toulonnais · Source Bien'Ici",       "🏠"),
     "LBC":      ("Annonces Vendeurs",       "Offres en cours sur le marché toulonnais · Source LeBonCoin",      "🔖"),
     "Acheteurs":("Profils Acheteurs",       "Demandes & critères des acheteurs à Toulon · PAP / Facebook",      "👥"),
+    "Comparaison":("Comparaison Marché",     "Analyse des écarts de prix : Annonces vs Marché DVF",              "⚖️"),
 }
 title, subtitle, icon = MODE_META[mode_key]
 
@@ -563,7 +546,7 @@ st.markdown(f"""
 # MODE : ACHETEURS
 # ─────────────────────────────────────────────
 if mode_key == "Acheteurs":
-    df_ach = load_acheteurs()
+    df_ach = load_acheteurs_data()
 
     if df_ach.empty:
         st.warning("Aucune donnée acheteur. Lancez : `python acheteur/run_all.py`")
@@ -747,12 +730,70 @@ if mode_key == "Acheteurs":
             )
 
 # ─────────────────────────────────────────────
+# MODE : COMPARAISON MARCHÉ
+# ─────────────────────────────────────────────
+elif mode_key == "Comparaison":
+    df_comp = load_comparaison()
+    if df_comp.empty:
+        st.warning("Aucune donnée de comparaison. Lancez : `python data/comparateur.py`")
+    else:
+        with st.sidebar:
+            st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Filtres</p>', unsafe_allow_html=True)
+            
+            unique_quartiers = sorted(df_comp['quartier'].dropna().unique())
+            q_selected = st.multiselect("Filtrer par quartier", options=unique_quartiers, default=[])
+            
+            # Filtre écart
+            ecart_min = st.slider("Écart minimum (%)", -100, 100, -100)
+            ecart_max = st.slider("Écart maximum (%)", -100, 100, 100)
+
+        # Filtrage
+        mask = (df_comp['ecart_pct'] >= ecart_min) & (df_comp['ecart_pct'] <= ecart_max)
+        if q_selected:
+            mask = mask & (df_comp['quartier'].isin(q_selected))
+        df_filtered = df_comp.loc[mask]
+
+        # KPIs
+        c1, c2, c3, c4 = st.columns(4)
+        c1.markdown(kpi("Biens analysés", f"{len(df_filtered)}", "navy"), unsafe_allow_html=True)
+        c2.markdown(kpi("Sous-cotés (<-5%)", f"{len(df_filtered[df_filtered['ecart_pct'] < -5])}", "green"), unsafe_allow_html=True)
+        c3.markdown(kpi("Écart moyen", f"{df_filtered['ecart_pct'].mean():.1f}%", "gold"), unsafe_allow_html=True)
+        c4.markdown(kpi("Sur-cotés (>+5%)", f"{len(df_filtered[df_filtered['ecart_pct'] > 5])}", "red"), unsafe_allow_html=True)
+
+        st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+
+        tab1, tab2 = st.tabs(["Analyse Graphique", "Liste des Opportunités"])
+        
+        with tab1:
+            col1, col2 = st.columns([2, 1])
+            with col1:
+                section_title("Analyse des prix : Annonce vs Marché")
+                fig = px.scatter(df_filtered, x='prix_marche_m2', y='prix_annonce_m2',
+                                 hover_data=['quartier', 'surface', 'ecart_pct'],
+                                 color='ecart_pct', color_continuous_scale='RdYlGn_r',
+                                 labels={'prix_marche_m2': 'Prix Marché (€/m²)', 'prix_annonce_m2': 'Prix Annonce (€/m²)'})
+                max_v = max(df_filtered['prix_marche_m2'].max(), df_filtered['prix_annonce_m2'].max()) if not df_filtered.empty else 10000
+                fig.add_shape(type='line', x0=0, y0=0, x1=max_v, y1=max_v, line=dict(color='grey', dash='dash'))
+                st.plotly_chart(styled_chart(fig), use_container_width=True)
+            
+            with col2:
+                section_title("Distribution des écarts (%)")
+                fig = px.histogram(df_filtered, x='ecart_pct', nbins=30, color_discrete_sequence=[BLUE])
+                st.plotly_chart(styled_chart(fig), use_container_width=True)
+
+        with tab2:
+            section_title("Détails des annonces et écarts")
+            st.dataframe(df_filtered.sort_values('ecart_pct'), use_container_width=True, hide_index=True,
+                         column_config={"url": st.column_config.LinkColumn("url")})
+
+# ─────────────────────────────────────────────
 # MODE : DVF / ANNONCES
 # ─────────────────────────────────────────────
 else:
     df = load_data(mode_key)
 
-if mode_key not in ("Acheteurs",) and not df.empty:
+if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
 
     with st.sidebar:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
@@ -941,6 +982,7 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             )
 
     elif mode_key in ("Annonces", "LBC"):
+        # ── Tab 3 : Liste des annonces ──
         with t3:
             label = "Bien'Ici" if mode_key == "Annonces" else "LeBonCoin"
             section_title(f"Annonces en cours — {label}")
@@ -981,5 +1023,5 @@ if mode_key not in ("Acheteurs",) and not df.empty:
             st.dataframe(df_display_annonces, use_container_width=True, hide_index=True,
                         column_config=column_config if column_config else None)
 
-elif mode_key != "Acheteurs":
+elif mode_key not in ("Acheteurs", "Comparaison"):
     st.info("Aucune donnée disponible. Vérifiez vos filtres ou lancez le crawler.")

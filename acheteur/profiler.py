@@ -9,15 +9,20 @@ import os
 
 def load_all(data_dir="acheteur/data"):
     dfs = []
-    for f in os.listdir(data_dir):
-        if f.endswith('.csv'):
-            path = os.path.join(data_dir, f)
+    # On ne charge QUE les fichiers de profils acheteurs connus
+    buyer_files = ['acheteurs_annonces.csv', 'facebook_manuel.csv', 'acheteurs_leboncoin.csv']
+    
+    for f in buyer_files:
+        path = os.path.join(data_dir, f)
+        if os.path.exists(path):
             try:
                 df = pd.read_csv(path, encoding='utf-8-sig')
-                dfs.append(df)
-                print(f"  Chargé: {f} ({len(df)} lignes)")
+                if not df.empty:
+                    dfs.append(df)
+                    print(f"  Chargé: {f} ({len(df)} lignes)")
             except Exception as e:
                 print(f"  Erreur {f}: {e}")
+    
     if not dfs:
         return pd.DataFrame()
     return pd.concat(dfs, ignore_index=True).drop_duplicates(subset=['titre', 'source'])
