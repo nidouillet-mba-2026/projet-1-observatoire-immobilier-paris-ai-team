@@ -12,7 +12,6 @@ import math
 def mean(xs: list[float]) -> float:
     """Retourne la moyenne d'une liste de nombres."""
     return sum(xs) / len(xs)
-    raise NotImplementedError("Implementez mean() - voir Grus ch.5")
 
 def de_mean(xs: list[float]) -> list[float]:
     """translate x by subtracting its mean (so the result has mean 0)"""
@@ -29,25 +28,21 @@ def median(xs: list[float]) -> float:
         return xs_sorted[mid]
     else:
         return (xs_sorted[mid-1]+xs_sorted[mid])/2
-    raise NotImplementedError("Implementez median() - voir Grus ch.5")
 
 def sum_of_squares(xs: list[float]) -> float:
     """Retourne la somme des carrés d'une liste de nombres."""
     return sum(x**2 for x in xs)
-    raise NotImplementedError("Implementez sum_of_squares() - voir Grus ch.5")
 
 def variance(xs: list[float]) -> float:
     """Retourne la variance d'une liste de nombres."""
     n=len(xs)
     deviation=de_mean(xs)
     return sum_of_squares(deviation) / (n)
-    raise NotImplementedError("Implementez variance() - voir Grus ch.5")
 
 
 def standard_deviation(xs: list[float]) -> float:
     """Retourne l'ecart-type d'une liste de nombres."""
     return math.sqrt(variance(xs))
-    raise NotImplementedError("Implementez standard_deviation() - voir Grus ch.5")
 
 
 def covariance(xs: list[float], ys: list[float]) -> float:
@@ -55,7 +50,6 @@ def covariance(xs: list[float], ys: list[float]) -> float:
     assert len(xs) == len(ys) #les listes doivent avoir la meme longueur
     n=len(xs)
     return sum(x*y for x,y in zip(de_mean(xs), de_mean(ys))) / (n - 1)
-    raise NotImplementedError("Implementez covariance() - voir Grus ch.5")
 
 
 def correlation(xs: list[float], ys: list[float]) -> float:
@@ -70,4 +64,3 @@ def correlation(xs: list[float], ys: list[float]) -> float:
         return covariance(xs, ys) / (stdev_x * stdev_y)
     else:
         return 0
-    raise NotImplementedError("Implementez correlation() - voir Grus ch.5")
