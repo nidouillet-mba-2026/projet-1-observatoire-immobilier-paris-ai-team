@@ -6,6 +6,7 @@ IMPORTANT : N'importez pas numpy ou scipy pour ces fonctions.
 """
 
 import random
+import json
 from pathlib import Path
 from collections.abc import Callable, Iterator, Sequence
 from typing import TypeVar
@@ -163,13 +164,95 @@ def fit_linear_regression_sgd(
     return alpha, beta
 
 
+def fit_models_by_quartier(
+    df: pd.DataFrame,
+    x_col: str = "surface_m2",
+    y_col: str = "prix_vente",
+    quartier_col: str = "quartier",
+) -> dict[str, tuple[float, float, float]]:
+    """
+    Train one (alpha, beta) closed-form model per quartier.
+
+    Returns: {quartier: (alpha, beta, r2)}
+    """
+    required_cols = {x_col, y_col, quartier_col}
+    if not required_cols.issubset(df.columns):
+        missing = required_cols - set(df.columns)
+        raise ValueError(f"Missing required columns: {sorted(missing)}")
+
+    models: dict[str, tuple[float, float, float]] = {}
+
+    grouped = df.dropna(subset=[x_col, y_col, quartier_col]).groupby(quartier_col, dropna=True)
+    for quartier, group in grouped:
+        x_values = group[x_col].tolist()
+        y_values = group[y_col].tolist()
+
+        # At least 2 points with non-zero x variance are required.
+        if len(x_values) < 2:
+            continue
+        if standard_deviation(x_values) == 0:
+            continue
+
+        alpha_q, beta_q = least_squares_fit(x_values, y_values)
+        r2_q = r_squared(alpha_q, beta_q, x_values, y_values)
+        models[str(quartier)] = (alpha_q, beta_q, r2_q)
+
+    return models
+
+
+def save_models_by_quartier_to_json(
+    models_by_quartier: dict[str, tuple[float, float, float]],
+    output_path: Path,
+) -> None:
+    """Save per-quartier coefficients to a JSON file."""
+    output_data = {
+        quartier: {"alpha": alpha, "beta": beta, "r2": r2}
+        for quartier, (alpha, beta, r2) in models_by_quartier.items()
+    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as json_file:
+        json.dump(output_data, json_file, indent=2, ensure_ascii=False)
+
+
+def run_main_if_models_missing_or_empty(models_path: Path) -> None:
+    """
+    Run main() only if models JSON does not exist or has no usable data.
+    """
+    if not models_path.exists():
+        print(f"{models_path} not found. Running main() to generate models.")
+        main()
+        return
+
+    try:
+        with models_path.open("r", encoding="utf-8") as json_file:
+            data = json.load(json_file)
+    except (OSError, json.JSONDecodeError):
+        print(f"{models_path} is unreadable/invalid. Running main() to regenerate models.")
+        main()
+        return
+
+    if not isinstance(data, dict) or len(data) == 0:
+        print(f"{models_path} is empty. Running main() to generate models.")
+        main()
+        return
+
+    print(f"{models_path} already contains models. Skipping main().")
+
+
 
 project_root = Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
     df = pd.read_csv(project_root / "data" / "dvf_toulon.csv")
-
+    print(df.head())
+    print(f"mean(prix_m2) = {mean(df['prix_m2'].tolist())}")
+    if "quartier" in df.columns and "prix_m2" in df.columns:
+        print("mean(prix_m2) per quartier:")
+        print(df.groupby("quartier", dropna=True)["prix_m2"].mean().sort_values(ascending=False))
+    print(f"mean(surface_m2) = {mean(df['surface_m2'].tolist())}")
+    print(f"mean(prix_vente) = {mean(df['prix_vente'].tolist())}")
+    
     prix_vente_list = df["prix_vente"].tolist()
     surface_m2_list = df["surface_m2"].tolist()
 
@@ -182,7 +265,19 @@ def main() -> None:
     print(f"R2 (SGD)         = {r_squared(alpha_sgd, beta_sgd, surface_m2_list, prix_vente_list):.4f}")
     print(f"Prediction 113m2 (closed-form): {predict(alpha_closed, beta_closed, 113):.2f}")
     print(f"Prediction 113m2 (SGD):         {predict(alpha_sgd, beta_sgd, 113):.2f}")
+    
+
+    if "quartier" in df.columns:
+        print("\nPer-quartier closed-form models (y = alpha + beta * surface_m2):")
+        models_by_quartier = fit_models_by_quartier(df)
+        for quartier in sorted(models_by_quartier):
+            alpha_q, beta_q, r2_q = models_by_quartier[quartier]
+            print(f"  {quartier}: alpha = {alpha_q:.4f}, beta = {beta_q:.4f}, R2 = {r2_q:.4f}")
+
+        output_json_path = project_root / "data" / "models_by_quartier.json"
+        save_models_by_quartier_to_json(models_by_quartier, output_json_path)
+        print(f"Saved per-quartier coefficients to: {output_json_path}")
 
 
 if __name__ == "__main__":
-    main()
+    run_main_if_models_missing_or_empty(project_root / "data" / "models_by_quartier.json")
