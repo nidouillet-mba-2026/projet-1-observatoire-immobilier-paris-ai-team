@@ -329,7 +329,7 @@ def apply_css():
     [data-baseweb="popover"] {{
         color: #000000 !important;
     }}
-    
+
     [data-baseweb="popover"] * {{
         color: #000000 !important;
     }}
@@ -337,6 +337,115 @@ def apply_css():
     /* Ensure date input text is black */
     [data-testid="stDateInput"] input::placeholder {{
         color: #666666 !important;
+    }}
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {{
+        from {{ opacity: 0; transform: translateY(20px); }}
+        to   {{ opacity: 1; transform: translateY(0); }}
+    }}
+    @keyframes fadeInLeft {{
+        from {{ opacity: 0; transform: translateX(-24px); }}
+        to   {{ opacity: 1; transform: translateX(0); }}
+    }}
+    @keyframes fadeIn {{
+        from {{ opacity: 0; }}
+        to   {{ opacity: 1; }}
+    }}
+    @keyframes pulse-gold {{
+        0%, 100% {{ box-shadow: 0 0 0 0 rgba(201,168,76,0.35); }}
+        50%       {{ box-shadow: 0 0 0 8px rgba(201,168,76,0); }}
+    }}
+    @keyframes shimmer {{
+        0%   {{ background-position: -400px 0; }}
+        100% {{ background-position: 400px 0; }}
+    }}
+    @keyframes gradientShift {{
+        0%   {{ background-position: 0% 50%; }}
+        50%  {{ background-position: 100% 50%; }}
+        100% {{ background-position: 0% 50%; }}
+    }}
+
+    /* Hero animé */
+    .hero {{
+        animation: fadeIn 0.7s ease both;
+        background-size: 200% 200%;
+        animation: gradientShift 8s ease infinite, fadeIn 0.7s ease both;
+    }}
+    .hero-title {{
+        animation: fadeInLeft 0.6s ease 0.1s both;
+    }}
+    .hero-subtitle {{
+        animation: fadeInLeft 0.6s ease 0.25s both;
+    }}
+    .hero-badge {{
+        animation: fadeInLeft 0.6s ease 0.0s both;
+    }}
+
+    /* KPI cards animées à l'entrée */
+    .kpi-card {{
+        animation: fadeInUp 0.5s ease both;
+    }}
+    /* délais en cascade via nth-child */
+    .kpi-card:nth-child(1) {{ animation-delay: 0.05s; }}
+    .kpi-card:nth-child(2) {{ animation-delay: 0.12s; }}
+    .kpi-card:nth-child(3) {{ animation-delay: 0.19s; }}
+    .kpi-card:nth-child(4) {{ animation-delay: 0.26s; }}
+    .kpi-card:nth-child(5) {{ animation-delay: 0.33s; }}
+
+    /* Insight cards animées */
+    .insight-card {{
+        animation: fadeInUp 0.5s ease 0.1s both;
+    }}
+
+    /* Chart cards */
+    .chart-card {{
+        animation: fadeInUp 0.5s ease 0.08s both;
+    }}
+
+    /* Section title soulignement animé */
+    .section-title {{
+        position: relative;
+        animation: fadeInLeft 0.5s ease both;
+    }}
+
+    /* Badge pulse */
+    .insight-badge {{
+        animation: pulse-gold 2.5s ease-in-out infinite;
+    }}
+
+    /* Sidebar items glissent à l'ouverture */
+    [data-testid="stSidebar"] .stRadio,
+    [data-testid="stSidebar"] .stMultiSelect,
+    [data-testid="stSidebar"] .stSelectbox {{
+        animation: fadeInLeft 0.4s ease both;
+    }}
+
+    /* Tabs fade in */
+    .stTabs [data-baseweb="tab-panel"] {{
+        animation: fadeIn 0.35s ease both;
+    }}
+
+    /* Metrics natifs Streamlit */
+    [data-testid="stMetric"] {{
+        animation: fadeInUp 0.5s ease both;
+    }}
+
+    /* Dataframe */
+    [data-testid="stDataFrame"] {{
+        animation: fadeIn 0.5s ease 0.15s both;
+    }}
+
+    /* Boutons */
+    .stButton > button, .stDownloadButton > button {{
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+    }}
+    .stButton > button:hover, .stDownloadButton > button:hover {{
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }}
+    .stButton > button:active, .stDownloadButton > button:active {{
+        transform: translateY(0px);
     }}
     </style>
     """, unsafe_allow_html=True)
