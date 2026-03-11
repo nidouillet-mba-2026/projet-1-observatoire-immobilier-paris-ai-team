@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import os
 
 from streamlit_utils import (
-    format_price, apply_css, styled_chart, kpi, section_title,
+    format_price, apply_css, styled_chart, kpi, section_title, insight_card,
     load_acheteurs, load_data,
     NAVY, GOLD, BLUE, LIGHT, WHITE, GREY, GREEN, RED,
     CHART_COLORS, PLOTLY_LAYOUT, MODE_META
@@ -63,6 +63,71 @@ def load_comparaison():
     if os.path.exists(file_path):
         return pd.read_csv(file_path)
     return pd.DataFrame()
+
+@st.cache_data
+def compute_comparaison_lbc():
+    """Compare annonces LeBonCoin vs médiane DVF par type de bien et surface similaire."""
+    lbc_path = "acheteur/data/marche_leboncoin_clean.csv"
+    dvf_path = "data/dvf_toulon.csv" if os.path.exists("data/dvf_toulon.csv") else "data/dvf_toulon_2020_now.csv"
+    if not os.path.exists(lbc_path) or not os.path.exists(dvf_path):
+        return pd.DataFrame()
+    try:
+        lbc = pd.read_csv(lbc_path, encoding='utf-8-sig')
+        dvf = pd.read_csv(dvf_path, encoding='utf-8-sig')
+    except Exception:
+        return pd.DataFrame()
+
+    # Normalise DVF
+    if 'surface_m2' in dvf.columns:
+        dvf = dvf.rename(columns={'surface_m2': 'surface'})
+    dvf['prix_m2'] = pd.to_numeric(dvf['prix_m2'], errors='coerce')
+    dvf['surface']  = pd.to_numeric(dvf['surface'],  errors='coerce')
+
+    # Normalise LBC
+    for col in ['prix_m2', 'surface_m2', 'prix']:
+        if col in lbc.columns:
+            lbc[col] = pd.to_numeric(lbc[col], errors='coerce')
+
+    resultats = []
+    for _, row in lbc.iterrows():
+        pm2  = row.get('prix_m2')
+        surf = row.get('surface_m2')
+        if pd.isna(pm2) or pm2 <= 0 or pd.isna(surf) or surf <= 0:
+            continue
+
+        type_b = str(row.get('type_bien', ''))
+        keyword = type_b.split()[0] if type_b else ''
+
+        # Comparables DVF : même type, surface ±30%
+        dvf_type = dvf[dvf['type_bien'].str.contains(keyword, case=False, na=False)] if keyword and 'type_bien' in dvf.columns else dvf
+        comparables = dvf_type[
+            dvf_type['surface'].between(surf * 0.7, surf * 1.3) &
+            dvf_type['prix_m2'].notna() & (dvf_type['prix_m2'] > 0)
+        ]
+        # Fallback : juste par type si pas assez de comparables
+        if len(comparables) < 3:
+            comparables = dvf_type[dvf_type['prix_m2'].notna() & (dvf_type['prix_m2'] > 0)]
+        if len(comparables) < 3:
+            continue
+
+        prix_marche = comparables['prix_m2'].mean()
+        ecart       = pm2 - prix_marche
+        ecart_pct   = (ecart / prix_marche) * 100
+
+        q = row.get('quartier', '')
+        resultats.append({
+            'url':            row.get('url', ''),
+            'source':         'LeBonCoin',
+            'quartier':       str(q) if pd.notna(q) and str(q).strip() else 'Non renseigné',
+            'surface':        surf,
+            'type_bien':      type_b,
+            'titre':          row.get('titre', ''),
+            'prix_annonce_m2': round(pm2, 0),
+            'prix_marche_m2': round(prix_marche, 2),
+            'ecart_m2':       round(ecart, 2),
+            'ecart_pct':      round(ecart_pct, 2),
+        })
+    return pd.DataFrame(resultats)
 
 # ─────────────────────────────────────────────
 # THEME & CSS
@@ -476,6 +541,55 @@ elif mode_key == "Comparaison":
 
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
+        # ── Insights : bonnes affaires Bien'Ici + LBC ──
+        def _render_bonnes_affaires(df_ba, source_label, url_label, n=3):
+            bonnes = df_ba[df_ba['ecart_pct'] < -10].nsmallest(n, 'ecart_pct')
+            if bonnes.empty:
+                return False
+            cols_ba = st.columns(min(3, len(bonnes)))
+            for i, (_, row) in enumerate(bonnes.iterrows()):
+                with cols_ba[i % 3]:
+                    q    = row.get('quartier', 'N/A')
+                    surf = row.get('surface', None)
+                    prix = row.get('prix_annonce_m2', None)
+                    url  = row.get('url', '')
+                    titre = str(row.get('titre', '')) if row.get('titre') else ''
+                    parts = []
+                    if q and q != 'Non renseigné':
+                        parts.append(f"Quartier : {q}")
+                    if surf and not pd.isna(surf):
+                        parts.append(f"{surf:.0f} m²")
+                    if prix and not pd.isna(prix):
+                        parts.append(f"{prix:,.0f} €/m²")
+                    if titre:
+                        parts.append(titre[:40] + ("…" if len(titre) > 40 else ""))
+                    st.markdown(insight_card(
+                        f"💎 Bonne affaire · {source_label}",
+                        f"Ce bien est {abs(row['ecart_pct']):.0f}% sous-évalué par rapport au marché DVF",
+                        sub=" · ".join(parts), color="green",
+                        url=url if isinstance(url, str) and url.startswith("http") else "",
+                        source=url_label
+                    ), unsafe_allow_html=True)
+            return True
+
+        showed_any = False
+        bonnes_bienici = df_filtered[df_filtered['ecart_pct'] < -10]
+        if not bonnes_bienici.empty:
+            section_title("Meilleures opportunités · Bien'Ici vs DVF")
+            _render_bonnes_affaires(df_filtered, "Bien'Ici", "Voir l'annonce Bien'Ici", n=3)
+            showed_any = True
+
+        df_lbc_comp = compute_comparaison_lbc()
+        if not df_lbc_comp.empty:
+            bonnes_lbc = df_lbc_comp[df_lbc_comp['ecart_pct'] < -10]
+            if not bonnes_lbc.empty:
+                section_title("Meilleures opportunités · LeBonCoin vs DVF")
+                _render_bonnes_affaires(df_lbc_comp, "LeBonCoin", "Voir l'annonce LeBonCoin", n=3)
+                showed_any = True
+
+        if showed_any:
+            st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+
         tab1, tab2 = st.tabs(["Analyse Graphique", "Liste des Opportunités"])
         
         with tab1:
@@ -537,13 +651,18 @@ if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
 
     # TABS
     if mode_key == "DVF":
-        tab_titles = ["Vue d'ensemble", "Analyse par quartier", "Adresses & Rues", "Données brutes"]
+        tab_titles = ["Vue d'ensemble", "Analyse par quartier", "Adresses & Rues", "Insights marché", "Données brutes"]
     else:
         tab_titles = ["Vue d'ensemble", "Analyse par quartier", "Liste des annonces"]
 
     tabs = st.tabs(tab_titles)
     t1, t2, t3 = tabs[0], tabs[1], tabs[2]
-    t4 = tabs[3] if len(tabs) > 3 else None
+    if mode_key == "DVF":
+        t_insights = tabs[3]
+        t4 = tabs[4]
+    else:
+        t_insights = None
+        t4 = tabs[3] if len(tabs) > 3 else None
 
     # ── Tab 1 : Vue d'ensemble ──
     with t1:
@@ -635,6 +754,224 @@ if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
                 bgcolor='rgba(0,0,0,0)',
             ))
             st.plotly_chart(styled_chart(fig, height=460), use_container_width=True)
+
+    # ── Tab Insights : DVF uniquement ──
+    if mode_key == "DVF" and t_insights:
+        with t_insights:
+            section_title("Insights marché — Toulon")
+
+            col_ins1, col_ins2 = st.columns(2)
+
+            # Insight 1 : Tendance prix sur 2 ans
+            with col_ins1:
+                if df_filtered['prix_m2'].notna().any() and 'date_mutation' in df_filtered.columns:
+                    now_dt = df_filtered['date_mutation'].max()
+                    recent = df_filtered[df_filtered['date_mutation'] >= now_dt - pd.DateOffset(months=6)]
+                    ref_start = now_dt - pd.DateOffset(months=30)
+                    ref_end   = now_dt - pd.DateOffset(months=18)
+                    old = df_filtered[
+                        (df_filtered['date_mutation'] >= ref_start) &
+                        (df_filtered['date_mutation'] <= ref_end)
+                    ]
+                    pm2_recent = recent['prix_m2'].mean()
+                    pm2_old    = old['prix_m2'].mean()
+
+                    if pm2_old and pm2_old > 0 and not pd.isna(pm2_recent):
+                        evo = (pm2_recent - pm2_old) / pm2_old * 100
+                        direction = "augmenté" if evo > 0 else "baissé"
+                        ins_color = "green" if evo > 0 else "red"
+                        sub_txt = (
+                            f"Récent (6 derniers mois) : {pm2_recent:,.0f} €/m² "
+                            f"· Référence (il y a 2 ans) : {pm2_old:,.0f} €/m²"
+                        )
+                        st.markdown(insight_card(
+                            "📈 Tendance 2 ans",
+                            f"Les prix ont {direction} de {abs(evo):.1f}% sur les 2 dernières années",
+                            sub=sub_txt, color=ins_color
+                        ), unsafe_allow_html=True)
+                    else:
+                        st.info("Pas assez d'historique pour calculer la tendance sur 2 ans.")
+
+            # Insight 2 : Comparaison quartiers
+            with col_ins2:
+                if 'quartier' in df_filtered.columns and df_filtered['prix_m2'].notna().any():
+                    q_prices = df_filtered.groupby('quartier')['prix_m2'].median().dropna()
+                    q_prices = q_prices[q_prices > 0]
+                    if len(q_prices) >= 2:
+                        most_exp_q  = q_prices.idxmax()
+                        least_exp_q = q_prices.idxmin()
+                        diff_pct = (q_prices[most_exp_q] - q_prices[least_exp_q]) / q_prices[least_exp_q] * 100
+                        sub_txt = (
+                            f"{most_exp_q} : {q_prices[most_exp_q]:,.0f} €/m²"
+                            f" · {least_exp_q} : {q_prices[least_exp_q]:,.0f} €/m²"
+                        )
+                        st.markdown(insight_card(
+                            "🏘️ Comparaison quartiers",
+                            f"{most_exp_q} est {diff_pct:.0f}% plus cher que {least_exp_q}",
+                            sub=sub_txt, color="gold"
+                        ), unsafe_allow_html=True)
+
+            # Classement complet des quartiers
+            if 'quartier' in df_filtered.columns and df_filtered['prix_m2'].notna().any():
+                q_prices = df_filtered.groupby('quartier')['prix_m2'].median().dropna()
+                q_prices = q_prices[q_prices > 0]
+                if len(q_prices) >= 2:
+                    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+                    section_title("Classement des quartiers par prix au m²")
+                    df_q_rank = q_prices.sort_values(ascending=False).reset_index()
+                    df_q_rank.columns = ['Quartier', 'Prix médian (€/m²)']
+                    df_q_rank['Prix médian (€/m²)'] = df_q_rank['Prix médian (€/m²)'].round(0).astype(int)
+                    min_price = df_q_rank['Prix médian (€/m²)'].min()
+                    df_q_rank['vs. moins cher'] = df_q_rank['Prix médian (€/m²)'].apply(
+                        lambda x: f"+{((x - min_price) / min_price * 100):.0f}%" if x > min_price else "référence"
+                    )
+                    df_q_rank.index = range(1, len(df_q_rank) + 1)
+                    st.dataframe(df_q_rank, use_container_width=True)
+
+            # ── Corrélations DVF ──
+            import numpy as np
+            st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+            section_title("Corrélations — Facteurs influençant le prix de vente")
+
+            df_reg = df_filtered[['surface', 'budget', 'prix_m2']].copy()
+            if 'annee' in df_filtered.columns:
+                df_reg['annee'] = df_filtered['annee']
+            df_reg = df_reg.dropna()
+            df_reg = df_reg[df_reg['surface'].between(10, 400) & df_reg['budget'].between(10_000, 3_000_000)]
+
+            col_c1, col_c2 = st.columns(2)
+
+            with col_c1:
+                section_title("Surface vs Prix de vente")
+                if len(df_reg) >= 5:
+                    coeffs = np.polyfit(df_reg['surface'], df_reg['budget'], 1)
+                    r_corr = np.corrcoef(df_reg['surface'], df_reg['budget'])[0, 1]
+                    r2 = r_corr ** 2
+                    fig = px.scatter(
+                        df_reg, x='surface', y='budget', opacity=0.35,
+                        labels={'surface': 'Surface (m²)', 'budget': 'Prix de vente (€)'},
+                        color_discrete_sequence=[BLUE],
+                    )
+                    x0, x1 = df_reg['surface'].min(), df_reg['surface'].max()
+                    fig.add_trace(go.Scatter(
+                        x=[x0, x1], y=[coeffs[0]*x0 + coeffs[1], coeffs[0]*x1 + coeffs[1]],
+                        mode='lines',
+                        line=dict(color=GOLD, width=2.5, dash='dash'),
+                        name=f'Régression (R²={r2:.2f})',
+                    ))
+                    fig.update_layout(annotations=[dict(
+                        x=0.02, y=0.97, xref='paper', yref='paper',
+                        text=f'R² = {r2:.3f}  ·  {coeffs[0]:,.0f} €/m²',
+                        showarrow=False,
+                        bgcolor='rgba(255,255,255,0.85)',
+                        bordercolor=NAVY, borderwidth=1,
+                        font=dict(size=11, color=NAVY),
+                        align='left',
+                    )])
+                    st.plotly_chart(styled_chart(fig), use_container_width=True)
+
+            with col_c2:
+                section_title("Matrice de corrélation")
+                num_cols = {
+                    'Surface (m²)': 'surface',
+                    'Prix vente (€)': 'budget',
+                    'Prix/m²': 'prix_m2',
+                }
+                if 'annee' in df_reg.columns:
+                    num_cols['Année'] = 'annee'
+                df_corr_data = df_filtered[[v for v in num_cols.values() if v in df_filtered.columns]].dropna()
+                df_corr_data.columns = [k for k, v in num_cols.items() if v in df_filtered.columns]
+                corr_mat = df_corr_data.corr()
+                labels = corr_mat.columns.tolist()
+                z_vals = corr_mat.values.tolist()
+                fig = go.Figure(data=go.Heatmap(
+                    z=z_vals, x=labels, y=labels,
+                    colorscale='RdBu_r', zmin=-1, zmax=1,
+                    text=[[f'{v:.2f}' for v in row] for row in z_vals],
+                    texttemplate='%{text}',
+                    textfont=dict(size=13),
+                    hoverongaps=False,
+                ))
+                st.plotly_chart(styled_chart(fig, height=300), use_container_width=True)
+
+            # Box plot : prix de vente par type de bien
+            if 'type_bien' in df_filtered.columns:
+                section_title("Distribution du prix de vente par type de bien")
+                df_box = df_filtered[df_filtered['budget'].between(10_000, 3_000_000)].copy()
+                fig = px.box(
+                    df_box, x='type_bien', y='budget',
+                    color='type_bien', color_discrete_sequence=CHART_COLORS,
+                    labels={'type_bien': '', 'budget': 'Prix de vente (€)'},
+                    points=False,
+                )
+                fig.update_layout(showlegend=False)
+                st.plotly_chart(styled_chart(fig, height=350), use_container_width=True)
+
+            # Insight 3 : Bonnes affaires Bien'Ici + LBC
+            df_comp_ins = load_comparaison()
+            df_lbc_ins  = compute_comparaison_lbc()
+            has_bienici = not df_comp_ins.empty and 'ecart_pct' in df_comp_ins.columns
+            has_lbc     = not df_lbc_ins.empty  and 'ecart_pct' in df_lbc_ins.columns
+
+            if has_bienici or has_lbc:
+                st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+
+            if has_bienici:
+                section_title("Bonnes affaires · Bien'Ici vs DVF")
+                bonnes_bi = df_comp_ins[df_comp_ins['ecart_pct'] < -10].nsmallest(6, 'ecart_pct')
+                if not bonnes_bi.empty:
+                    cols_b = st.columns(min(3, len(bonnes_bi)))
+                    for i, (_, row) in enumerate(bonnes_bi.iterrows()):
+                        with cols_b[i % 3]:
+                            q    = row.get('quartier', 'N/A')
+                            surf = row.get('surface', None)
+                            prix = row.get('prix_annonce_m2', None)
+                            url  = row.get('url', '')
+                            parts = [f"Quartier : {q}"]
+                            if surf and not pd.isna(surf):
+                                parts.append(f"{surf:.0f} m²")
+                            if prix and not pd.isna(prix):
+                                parts.append(f"{prix:,.0f} €/m²")
+                            st.markdown(insight_card(
+                                "💎 Bonne affaire",
+                                f"Ce bien est {abs(row['ecart_pct']):.0f}% sous-évalué",
+                                sub=" · ".join(parts), color="green",
+                                url=url if isinstance(url, str) and url.startswith("http") else "",
+                                source="Voir l'annonce Bien'Ici"
+                            ), unsafe_allow_html=True)
+                else:
+                    st.info("Aucune bonne affaire Bien'Ici avec un écart > 10%.")
+
+            if has_lbc:
+                section_title("Bonnes affaires · LeBonCoin vs DVF")
+                bonnes_lbc = df_lbc_ins[df_lbc_ins['ecart_pct'] < -10].nsmallest(6, 'ecart_pct')
+                if not bonnes_lbc.empty:
+                    cols_l = st.columns(min(3, len(bonnes_lbc)))
+                    for i, (_, row) in enumerate(bonnes_lbc.iterrows()):
+                        with cols_l[i % 3]:
+                            q     = row.get('quartier', 'Non renseigné')
+                            surf  = row.get('surface', None)
+                            prix  = row.get('prix_annonce_m2', None)
+                            url   = row.get('url', '')
+                            titre = str(row.get('titre', ''))
+                            parts = []
+                            if q and q != 'Non renseigné':
+                                parts.append(f"Quartier : {q}")
+                            if surf and not pd.isna(surf):
+                                parts.append(f"{surf:.0f} m²")
+                            if prix and not pd.isna(prix):
+                                parts.append(f"{prix:,.0f} €/m²")
+                            if titre:
+                                parts.append(titre[:40] + ("…" if len(titre) > 40 else ""))
+                            st.markdown(insight_card(
+                                "💎 Bonne affaire",
+                                f"Ce bien est {abs(row['ecart_pct']):.0f}% sous-évalué",
+                                sub=" · ".join(parts), color="green",
+                                url=url if isinstance(url, str) and url.startswith("http") else "",
+                                source="Voir l'annonce LeBonCoin"
+                            ), unsafe_allow_html=True)
+                else:
+                    st.info("Aucune bonne affaire LeBonCoin avec un écart > 10%.")
 
     # ── Tab 3 : Adresses (DVF) ou Annonces ──
     if mode_key == "DVF" and t4:
