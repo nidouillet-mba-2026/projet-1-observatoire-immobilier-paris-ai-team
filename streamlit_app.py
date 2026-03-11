@@ -894,18 +894,41 @@ if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
                 ))
                 st.plotly_chart(styled_chart(fig, height=300), use_container_width=True)
 
-            # Box plot : prix de vente par type de bien
-            if 'type_bien' in df_filtered.columns:
-                section_title("Distribution du prix de vente par type de bien")
-                df_box = df_filtered[df_filtered['budget'].between(10_000, 3_000_000)].copy()
-                fig = px.box(
-                    df_box, x='type_bien', y='budget',
-                    color='type_bien', color_discrete_sequence=CHART_COLORS,
-                    labels={'type_bien': '', 'budget': 'Prix de vente (€)'},
-                    points=False,
-                )
-                fig.update_layout(showlegend=False)
-                st.plotly_chart(styled_chart(fig, height=350), use_container_width=True)
+            # Box plots : type de bien + secteur
+            col_box1, col_box2 = st.columns(2)
+
+            with col_box1:
+                if 'type_bien' in df_filtered.columns:
+                    section_title("Prix de vente par type de bien")
+                    df_box = df_filtered[df_filtered['budget'].between(10_000, 3_000_000)].copy()
+                    fig = px.box(
+                        df_box, x='type_bien', y='budget',
+                        color='type_bien', color_discrete_sequence=CHART_COLORS,
+                        labels={'type_bien': '', 'budget': 'Prix de vente (€)'},
+                        points=False,
+                    )
+                    fig.update_layout(showlegend=False)
+                    st.plotly_chart(styled_chart(fig, height=380), use_container_width=True)
+
+            with col_box2:
+                if 'quartier' in df_filtered.columns:
+                    section_title("Prix de vente par secteur (top 12)")
+                    df_box_q = df_filtered[df_filtered['budget'].between(10_000, 3_000_000)].copy()
+                    # Garder les 12 quartiers les plus représentés
+                    top_q = df_box_q['quartier'].value_counts().head(12).index
+                    df_box_q = df_box_q[df_box_q['quartier'].isin(top_q)]
+                    # Trier par médiane décroissante
+                    ordre = df_box_q.groupby('quartier')['budget'].median().sort_values(ascending=True).index.tolist()
+                    fig = px.box(
+                        df_box_q, x='budget', y='quartier',
+                        orientation='h',
+                        color='quartier', color_discrete_sequence=CHART_COLORS,
+                        category_orders={'quartier': ordre},
+                        labels={'quartier': '', 'budget': 'Prix de vente (€)'},
+                        points=False,
+                    )
+                    fig.update_layout(showlegend=False)
+                    st.plotly_chart(styled_chart(fig, height=380), use_container_width=True)
 
             # Insight 3 : Bonnes affaires Bien'Ici + LBC
             df_comp_ins = load_comparaison()
