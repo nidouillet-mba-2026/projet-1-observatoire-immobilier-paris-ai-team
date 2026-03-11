@@ -267,6 +267,26 @@ if mode_key == "Acheteurs":
         with st.sidebar:
             st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
             st.markdown('<p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; font-weight:600; margin-bottom:8px;">Filtres</p>', unsafe_allow_html=True)
+            budget_range = st.slider(
+                "Budget acheteur (€)",
+                min_value=0,
+                max_value=500000,
+                value=(0, 500000),
+                step=10000
+            )
+
+            budget_min, budget_max = budget_range
+            # ─────────────────────────────
+            # FILTRE BUDGET
+            # ─────────────────────────────
+            mask_budget = (
+                (df_ach["budget_max"] >= budget_min) &
+                (df_ach["budget_max"] <= budget_max)
+            )
+
+            df_ach = df_ach[mask_budget]
+
+            df_ach["budget_format"] = df_ach["budget_max"].apply(format_price)
             sources_dispo = sorted(df_ach['source'].dropna().unique().tolist()) if 'source' in df_ach.columns else []
             # Filtrer la sélection précédente pour ne garder que les sources disponibles
             sources_sel = st.multiselect("Source", sources_dispo, 
@@ -278,7 +298,10 @@ if mode_key == "Acheteurs":
                                        default=[t for t in st.session_state.selected_types if t in types_bien],
                                        key="selected_types")
 
-        mask_ach = pd.Series([True] * len(df_ach), index=df_ach.index)
+        mask_ach = (
+            (df_ach["budget_max"] >= budget_min) &
+            (df_ach["budget_max"] <= budget_max)
+        )
         if 'source' in df_ach.columns and sources_sel:
             mask_ach &= df_ach['source'].isin(sources_sel)
         if 'type_bien' in df_ach.columns and types_sel:
@@ -456,7 +479,7 @@ elif mode_key == "Comparaison":
             
             unique_quartiers = sorted(df_comp['quartier'].dropna().unique())
             q_selected = st.multiselect("Filtrer par quartier", options=unique_quartiers, default=[])
-            
+
             # Filtre écart
             ecart_min = st.slider("Écart minimum (%)", -100, 100, -100)
             ecart_max = st.slider("Écart maximum (%)", -100, 100, 100)
@@ -517,7 +540,15 @@ if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
         quartiers = st.multiselect("Secteurs / Quartiers", options=unique_quartiers, 
                                    default=[q for q in st.session_state.selected_quartiers if q in unique_quartiers],
                                    key="selected_quartiers")
+        budget_range = st.slider(
+        "Budget (€)",
+        min_value=0,
+        max_value=500000,
+        value=(0, 500000),
+        step=10000
+    )
 
+        budget_min, budget_max = budget_range
         if mode_key == "DVF":
             default_dates = [df['date_mutation'].min().date(), df['date_mutation'].max().date()]
             date_range = st.date_input("Période d'analyse", value=default_dates)
@@ -527,11 +558,15 @@ if mode_key not in ("Acheteurs", "Comparaison") and not df.empty:
                 start_date = end_date = date_range[0]
             else:
                 start_date = end_date = date_range
-            mask = (df['quartier'].isin(quartiers)) & \
-                   (df['date_mutation'].dt.date >= start_date) & \
-                   (df['date_mutation'].dt.date <= end_date)
+            mask =  (df['quartier'].isin(quartiers)) & \
+                    (df['date_mutation'].dt.date >= start_date) & \
+                    (df['date_mutation'].dt.date <= end_date) & \
+                    (df['budget'] >= budget_min) & \
+                    (df['budget'] <= budget_max)
         else:
-            mask = df['quartier'].isin(quartiers)
+            mask = (df['quartier'].isin(quartiers)) & \
+                (df['budget'] >= budget_min) & \
+                (df['budget'] <= budget_max)
 
     df_filtered = df.loc[mask]
 
