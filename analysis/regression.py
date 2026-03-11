@@ -239,6 +239,38 @@ def run_main_if_models_missing_or_empty(models_path: Path) -> None:
     print(f"{models_path} already contains models. Skipping main().")
 
 
+def predict_price_by_quartier_surface(
+    quartier: str,
+    surface_m2: float,
+    models_path: Path | None = None,
+) -> float:
+    """
+    Predict prix_vente from quartier and surface using saved coefficients.
+    """
+    if surface_m2 < 0:
+        raise ValueError("surface_m2 must be non-negative")
+
+    if models_path is None:
+        models_path = project_root / "data" / "models_by_quartier.json"
+
+    run_main_if_models_missing_or_empty(models_path)
+
+    with models_path.open("r", encoding="utf-8") as json_file:
+        models_data = json.load(json_file)
+
+    quartier_key = str(quartier)
+    if quartier_key not in models_data:
+        available_quartiers = ", ".join(sorted(models_data.keys()))
+        raise KeyError(
+            f"Quartier '{quartier_key}' not found in model file. "
+            f"Available quartiers: {available_quartiers}"
+        )
+
+    alpha = float(models_data[quartier_key]["alpha"])
+    beta = float(models_data[quartier_key]["beta"])
+    return predict(alpha, beta, surface_m2)
+
+
 
 project_root = Path(__file__).resolve().parents[1]
 
@@ -281,3 +313,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     run_main_if_models_missing_or_empty(project_root / "data" / "models_by_quartier.json")
+    print(predict_price_by_quartier_surface("Porte d'Italie", 113))
