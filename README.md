@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/JY1xUUGg)
 # Projet 1 : Observatoire du Marche Immobilier Toulonnais
 
 ## Objectif
@@ -48,16 +49,16 @@ streamlit run app/streamlit_app.py
 
 ## Application deployee
 
-**URL :** <!-- REMPLACEZ PAR VOTRE URL DE DEPLOIEMENT -->
+**URL :** https://projet-1-observatoire-immobilier-paris.onrender.com
 
 ## Repartition du travail
 
 | Membre | Role | Contributions principales |
 |--------|------|--------------------------|
-| Prenom NOM | Data Engineer | ... |
-| Prenom NOM | Data Scientist | ... |
-| Prenom NOM | AI Engineer | ... |
-| Prenom NOM | Frontend / DevOps | ... |
+| Colin Cayre | Data Engineer | ... |
+| Christian Rubis | Data Scientist | ... |
+| Alexandre Delmotte | AI Engineer | ... |
+| Alexis Wone | Frontend / DevOps | ... |
 
 ## Donnees
 
@@ -67,3 +68,4 @@ streamlit run app/streamlit_app.py
 ## References
 
 - Joel Grus, *Data Science From Scratch*, ch.5 (statistiques) et ch.14 (regression)
+
