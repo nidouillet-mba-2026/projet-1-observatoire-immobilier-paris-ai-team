@@ -3,6 +3,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
+from pathlib import Path
+
+from analysis.regression import (
+    run_main_if_models_missing_or_empty,
+    predict_price_by_quartier_surface
+)
 
 from streamlit_utils import (
     format_price, apply_css, styled_chart, kpi, section_title, insight_card,
@@ -17,6 +23,13 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ─────────────────────────────────────────────
+# INITIALIZATION & MODELS
+# ─────────────────────────────────────────────
+project_root = Path(__file__).resolve().parents[0]
+models_path = project_root / "data" / "models_by_quartier.json"
+run_main_if_models_missing_or_empty(models_path)
 
 # ─────────────────────────────────────────────
 # SESSION STATE INITIALIZATION
@@ -92,9 +105,21 @@ def compute_comparaison_lbc():
     for _, row in lbc.iterrows():
         pm2  = row.get('prix_m2')
         surf = row.get('surface_m2')
+        prix_annonce = row.get('prix')
+        quartier = row.get('quartier', '')
+        
         if pd.isna(pm2) or pm2 <= 0 or pd.isna(surf) or surf <= 0:
             continue
 
+        # --- NOUVELLE LOGIQUE : PREDICTION PAR REGRESSION ---
+        prix_predit = None
+        if pd.notna(quartier) and str(quartier).strip():
+            try:
+                prix_predit = predict_price_by_quartier_surface(quartier, surf, models_path)
+            except Exception:
+                prix_predit = None
+        
+        # Fallback sur l'ancienne méthode si pas de prédiction possible
         type_b = str(row.get('type_bien', ''))
         keyword = type_b.split()[0] if type_b else ''
 
@@ -104,28 +129,41 @@ def compute_comparaison_lbc():
             dvf_type['surface'].between(surf * 0.7, surf * 1.3) &
             dvf_type['prix_m2'].notna() & (dvf_type['prix_m2'] > 0)
         ]
+        
         # Fallback : juste par type si pas assez de comparables
         if len(comparables) < 3:
             comparables = dvf_type[dvf_type['prix_m2'].notna() & (dvf_type['prix_m2'] > 0)]
-        if len(comparables) < 3:
+        
+        prix_marche_m2 = comparables['prix_m2'].mean() if len(comparables) >= 3 else None
+        
+        # Utilisation du prix prédit (total) si disponible, sinon prix marché m2 * surface
+        if prix_predit is not None:
+            prix_comparaison = prix_predit
+            methode = "Régression"
+        elif prix_marche_m2 is not None:
+            prix_comparaison = prix_marche_m2 * surf
+            methode = "Moyenne Quartier"
+        else:
             continue
 
-        prix_marche = comparables['prix_m2'].mean()
-        ecart       = pm2 - prix_marche
-        ecart_pct   = (ecart / prix_marche) * 100
+        ecart = prix_annonce - prix_comparaison
+        ecart_pct = (ecart / prix_comparaison) * 100
+        
+        # Définition "Bonne Affaire" : si prix annonce est au moins 10% sous le prix prédit
+        is_bonne_affaire = ecart_pct <= -10
 
-        q = row.get('quartier', '')
         resultats.append({
             'url':            row.get('url', ''),
             'source':         'LeBonCoin',
-            'quartier':       str(q) if pd.notna(q) and str(q).strip() else 'Non renseigné',
+            'quartier':       str(quartier) if pd.notna(quartier) and str(quartier).strip() else 'Non renseigné',
             'surface':        surf,
             'type_bien':      type_b,
             'titre':          row.get('titre', ''),
-            'prix_annonce_m2': round(pm2, 0),
-            'prix_marche_m2': round(prix_marche, 2),
-            'ecart_m2':       round(ecart, 2),
-            'ecart_pct':      round(ecart_pct, 2),
+            'prix_annonce':   prix_annonce,
+            'prix_estime':    round(prix_comparaison, 0),
+            'ecart_pct':      round(ecart_pct, 1),
+            'bonne_affaire':  "OUI" if is_bonne_affaire else "NON",
+            'methode':        methode
         })
     return pd.DataFrame(resultats)
 
@@ -574,8 +612,10 @@ elif mode_key == "Comparaison":
                 with cols_ba[i % 3]:
                     q    = row.get('quartier', 'N/A')
                     surf = row.get('surface', None)
-                    prix = row.get('prix_annonce_m2', None)
+                    prix = row.get('prix_annonce', row.get('prix_annonce_m2', None))
                     url  = row.get('url', '')
+                    methode = row.get('methode', 'DVF')
+                    
                     titre = str(row.get('titre', '')) if row.get('titre') else ''
                     parts = []
                     if q and q != 'Non renseigné':
@@ -583,12 +623,16 @@ elif mode_key == "Comparaison":
                     if surf and not pd.isna(surf):
                         parts.append(f"{surf:.0f} m²")
                     if prix and not pd.isna(prix):
-                        parts.append(f"{prix:,.0f} €/m²")
+                        if prix > 10000: # Probablement un prix total
+                            parts.append(f"{format_price(prix)} €")
+                        else:
+                            parts.append(f"{prix:,.0f} €/m²")
                     if titre:
                         parts.append(titre[:40] + ("…" if len(titre) > 40 else ""))
+                    
                     st.markdown(insight_card(
                         f"💎 Bonne affaire · {source_label}",
-                        f"Ce bien est {abs(row['ecart_pct']):.0f}% sous-évalué par rapport au marché DVF",
+                        f"Ce bien est {abs(row['ecart_pct']):.1f}% sous-évalué (via {methode})",
                         sub=" · ".join(parts), color="green",
                         url=url if isinstance(url, str) and url.startswith("http") else "",
                         source=url_label

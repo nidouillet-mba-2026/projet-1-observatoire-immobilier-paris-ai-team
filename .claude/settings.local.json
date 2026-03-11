@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip --version)",
+      "Bash(pip install -r requirements.txt)",
+      "Bash(python -m streamlit run streamlit_app.py)",
+      "Bash(du -sh \"c:\\\\Users\\\\cococ\\\\Desktop\\\\Paris AI Team\\\\projet-1-observatoire-immobilier-paris-ai-team\\\\data\"/*.csv)",
+      "Bash(python acheteur/leboncoin_crawler.py)",
+      "Bash(pip install beautifulsoup4 -q)",
+      "Bash(python -c \":*)",
+      "Bash(python -u acheteur/leboncoin_crawler.py)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''streamlit_app.py''\\).read\\(\\)\\); print\\(''Syntaxe OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''streamlit_app.py'', encoding=''utf-8''\\).read\\(\\)\\); print\\(''Syntaxe OK''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''streamlit_app.py'', encoding=''utf-8''\\).read\\(\\)\\); print\\(''OK''\\)\")",
+      "Bash(python data/clean_all.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python data/clean_all.py)",
+      "Bash(python -u data/clean_all.py)",
+      "Bash(python -c \"import pandas as pd; df=pd.read_csv\\(''data/clean_annonces_toulon_clean.csv''\\); print\\(df.columns.tolist\\(\\)\\); print\\(df.shape\\); print\\(df.dtypes\\)\")",
+      "Bash(python -c \"import pandas as pd; df=pd.read_csv\\(''acheteur/data/marche_leboncoin_clean.csv''\\); print\\(df[[''date_publication'',''titre'',''prix'',''surface_m2'']].head\\(5\\)\\)\")",
+      "Bash(python -c \"import streamlit; print\\(streamlit.__version__\\)\")",
+      "Bash(streamlit run:*)",
+      "Bash(python acheteur/run_all.py)"
+    ]
+  }
+}
