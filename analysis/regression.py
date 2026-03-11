@@ -6,10 +6,10 @@ IMPORTANT : N'importez pas numpy ou scipy pour ces fonctions.
 """
 
 import random
+from pathlib import Path
 from collections.abc import Callable, Iterator, Sequence
 from typing import TypeVar
-
-from streamlit_app import load_data
+import pandas as pd
 
 try:
     from analysis.stats import mean, variance, covariance, correlation, standard_deviation
@@ -123,17 +123,66 @@ def minimize_stochastic(
     return min_theta if min_theta is not None else theta
 
 
+def fit_linear_regression_sgd(
+    x: Sequence[float],
+    y: Sequence[float],
+    alpha_0: float = 0.01,
+    seed: int = 0,
+) -> tuple[float, float]:
+    """
+    Fit y = alpha + beta * x with SGD using standardized x.
 
-df = load_data()
-prix_vente_list = df["prix_vente"].tolist()
-surface_m2_list = df["surface_m2"].tolist()
-random.seed(0)
-theta = [random.random(), random.random()]
-alpha, beta = minimize_stochastic(squared_error,
-                                squared_error_gradient,
-                                surface_m2_list,
-                                prix_vente_list,
-                                theta,
-                                0.0001)
+    Standardizing x avoids unstable steps when x has large values,
+    then coefficients are converted back to the original x scale.
+    """
+    if len(x) != len(y):
+        raise ValueError("x and y must have the same length")
+    if len(x) < 2:
+        raise ValueError("Need at least 2 points to fit regression")
+
+    x_mean = mean(x)
+    x_std = standard_deviation(x)
+    if x_std == 0:
+        raise ValueError("x has zero variance, slope is undefined")
+
+    x_scaled = [(x_i - x_mean) / x_std for x_i in x]
+
+    random.seed(seed)
+    theta_0 = [random.random(), random.random()]
+    alpha_scaled, beta_scaled = minimize_stochastic(
+        squared_error,
+        squared_error_gradient,
+        x_scaled,
+        y,
+        theta_0,
+        alpha_0,
+    )
+
+    beta = beta_scaled / x_std
+    alpha = alpha_scaled - beta * x_mean
+    return alpha, beta
 
 
+
+project_root = Path(__file__).resolve().parents[1]
+
+
+def main() -> None:
+    df = pd.read_csv(project_root / "data" / "dvf_toulon.csv")
+
+    prix_vente_list = df["prix_vente"].tolist()
+    surface_m2_list = df["surface_m2"].tolist()
+
+    alpha_closed, beta_closed = least_squares_fit(surface_m2_list, prix_vente_list)
+    alpha_sgd, beta_sgd = fit_linear_regression_sgd(surface_m2_list, prix_vente_list, alpha_0=0.01, seed=0)
+
+    print(f"Closed-form   -> alpha = {alpha_closed:.4f}, beta = {beta_closed:.4f}")
+    print(f"SGD (scaled)  -> alpha = {alpha_sgd:.4f}, beta = {beta_sgd:.4f}")
+    print(f"R2 (closed-form) = {r_squared(alpha_closed, beta_closed, surface_m2_list, prix_vente_list):.4f}")
+    print(f"R2 (SGD)         = {r_squared(alpha_sgd, beta_sgd, surface_m2_list, prix_vente_list):.4f}")
+    print(f"Prediction 113m2 (closed-form): {predict(alpha_closed, beta_closed, 113):.2f}")
+    print(f"Prediction 113m2 (SGD):         {predict(alpha_sgd, beta_sgd, 113):.2f}")
+
+
+if __name__ == "__main__":
+    main()
