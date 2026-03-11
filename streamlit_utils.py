@@ -272,6 +272,51 @@ def apply_css():
         border: none;
     }}
 
+    /* ── Insight cards ── */
+    .insight-card {{
+        background: {WHITE};
+        border-radius: 12px;
+        padding: 18px 22px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+        border-left: 4px solid {BLUE};
+        margin-bottom: 14px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }}
+    .insight-card:hover {{
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }}
+    .insight-card.gold {{ border-left-color: {GOLD}; }}
+    .insight-card.green {{ border-left-color: {GREEN}; }}
+    .insight-card.red {{ border-left-color: {RED}; }}
+    .insight-badge {{
+        display: inline-block;
+        background: #EFF6FF;
+        color: {NAVY};
+        border-radius: 20px;
+        padding: 2px 10px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
+    }}
+    .insight-badge.gold {{ background: #FEF3C7; color: #92400E; }}
+    .insight-badge.green {{ background: #D1FAE5; color: #065F46; }}
+    .insight-badge.red {{ background: #FEE2E2; color: #991B1B; }}
+    .insight-text {{
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #111827;
+        line-height: 1.4;
+        margin: 0;
+    }}
+    .insight-sub {{
+        font-size: 0.8rem;
+        color: {GREY};
+        margin-top: 6px;
+    }}
+
     /* ── Calendar & Date Input ── */
     [data-testid="stDateInput"] input,
     [data-testid="stDateInput"] input[type="text"],
@@ -320,6 +365,20 @@ def kpi(label, value, color="", sub=""):
 def section_title(text):
     """Display a section title."""
     st.markdown(f'<p class="section-title">{text}</p>', unsafe_allow_html=True)
+
+def insight_card(badge, text, sub="", color="", url="", source=""):
+    """Generate an insight card HTML."""
+    link_html = ""
+    if url:
+        src_label = source if source else "Voir l'annonce"
+        link_html = f'<a href="{url}" target="_blank" style="display:inline-block;margin-top:10px;font-size:0.8rem;font-weight:600;color:#2E86AB;text-decoration:none;">🔗 {src_label} →</a>'
+    return f"""
+    <div class="insight-card {color}">
+        <div class="insight-badge {color}">{badge}</div>
+        <p class="insight-text">{text}</p>
+        {"<p class='insight-sub'>" + sub + "</p>" if sub else ""}
+        {link_html}
+    </div>"""
 
 # ─────────────────────────────────────────────
 # DATA LOADERS
