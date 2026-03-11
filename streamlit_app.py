@@ -41,35 +41,6 @@ if "selected_sources" not in st.session_state:
 if "selected_types" not in st.session_state:
     st.session_state.selected_types = []
 
-# ─────────────────────────────────────────────
-# SIDEBAR VISIBILITY MANAGEMENT
-# ─────────────────────────────────────────────
-st.markdown("""
-<style>
-    /* Keep sidebar toggle button always visible */
-    [data-testid="stSidebarCollapseButton"] {
-        display: block !important;
-        visibility: visible !important;
-        z-index: 999 !important;
-    }
-    
-    /* Keep header minimal but with toggle button visible */
-    header {
-        display: flex !important;
-        align-items: center !important;
-        min-height: 60px !important;
-        background: transparent !important;
-        border: none !important;
-    }
-    
-    /* Ensure toggle button is always clickable */
-    header button {
-        visibility: visible !important;
-        display: inline-flex !important;
-    }
-</style>
-""", unsafe_allow_html=True)
-
 @st.cache_data
 def load_comparaison():
     file_path = "data/comparaison_marche.csv"
